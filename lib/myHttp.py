@@ -5,7 +5,7 @@ import urllib
 import web
 
 data = {"key": "开心"}
-host = ('127.0.0.1', 8000)
+host = ('127.0.0.1', 8787)
 
 class Resquest(BaseHTTPRequestHandler):
     input = {}

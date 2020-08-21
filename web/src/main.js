@@ -11,7 +11,7 @@ Vue.use(ViewUI);
 
 Vue.config.productionTip = false
 
-Vue.prototype.$api_host = 'http://127.0.0.1:8000/'
+Vue.prototype.$api_host = 'http://www.huiaxue.cn:8000/'
 Vue.prototype.$tx_host = 'http://bang.tx3.163.com/bang/role/'
 
 Vue.prototype.$axios = axios
