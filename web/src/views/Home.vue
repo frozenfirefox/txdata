@@ -247,6 +247,7 @@ export default {
         if (valid) {
           this.getList(1)
           this.$Message.success('查询成功!');
+          this.select_modal = false
         } else {
           this.$Message.error('fail!');
         }
