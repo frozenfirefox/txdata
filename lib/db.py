@@ -82,11 +82,13 @@ class Db:
             # print(insert)
             # print(value)
             sql = "insert into "+table+" ("+insert+") values ( "+value+" )"
+            print(sql)
             curl.execute(sql)   
             self.connect.commit()
-            return 'success insert ', sql
+            return curl.execute("select last_insert_rowid() from "+table).fetchone()[0] 
         except Exception as e:
             return e.message
+
     #创建数据表
     def createTable(self, sql):
         try:
@@ -96,6 +98,14 @@ class Db:
             return 'create table success!'
         except Exception as e:
             return e.message
+
+    #清空表
+    def truncTable(self, table):
+        deleteSq1 = "delete from '"+table+"'"
+        clearSq1 = "update sqlite_sequence SET seq = 0 where name ='"+table+"'"
+        curl = self.connect.cursor()
+        curl.execute(deleteSq1) 
+        curl.execute(clearSq1) 
 
     #关闭链接        
     def close(self):

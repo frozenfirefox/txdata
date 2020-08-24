@@ -4,6 +4,7 @@ import os
 from bs4 import BeautifulSoup
 import time
 import json
+
 #自己库
 import img
 import db
@@ -30,10 +31,13 @@ def return_list(data, count, page, pageSize):
 
 class Html:
     #初始化函数，目前只给定一个url链接
-    def __init__(self, url):
+    def __init__(self, url, sector = [], server = []):
         self.mydb = db.Db('tx.db')
-        self.initTable()
         self.url = url
+        #初始化数据
+        self.sector = sector
+        self.server = server
+        print(1)
         self.headers = {
             'Accept':'image/webp,image/apng,image/*,*/*;q=0.8',
             'Accept-Encoding':'gzip, deflate',
@@ -83,10 +87,18 @@ class Html:
                 # trString = trString+'    '+str(cell.get_text()
                 #自增
                 index = index+1
-            result = self.mydb.insert('info', 'bang_id, name,section_name,service_name,level,sect,union_name,abilities,equipment,all_abilities', sqlString)             
-            # self.WriteFile('./bang/bang.me', trString, 'bang')
-            # tdList = item.find_all('td').get_text()
-            
+
+            #这里处理一下如何bang_id存在就继续循环
+            data = self.mydb.select(TableConst.InfoName(), where = " bang_id = '"+bang_id+"'", fields = 'bang_id, name,section_name,service_name,level,sect,union_name,abilities,equipment,all_abilities')
+
+            #如果已经录入过，就跳出继续
+            if len(data) > 0:
+                self.dealRepeat(data[0], sqlString)
+                continue    
+            else:
+                result = self.mydb.insert('info', 'bang_id, name,section_name,service_name,level,sect,union_name,abilities,equipment,all_abilities', sqlString)             
+                # self.WriteFile('./bang/bang.me', trString, 'bang')
+                # tdList = item.find_all('td').get_text()
 
     #最大分页数   
     def Page(self, content):
@@ -113,18 +125,31 @@ class Html:
         # max_page = (25 > 1)?25:self.Page(content)
         max_page = 25
         #urllist 
+        #先处理服务器
+        sectorList = self.mydb.select(TableConst.SectorName(), where = '', fields = '*', page = 1, pageSize = 1000)
         #循环处理
-        for num in range(1, (max_page + 1)):
-            inurl = self.url+'&page='+ str(num)
-            print(inurl)
-            content = requests.get(inurl).text
-            self.Data(content)
-            time.sleep(0.5)
-        #开始处理
+        for sector in sectorList:
+            serverList = self.mydb.select(TableConst.ServerName(), where = "pid = "+str(sector[0]), fields = '*', page = 1, pageSize = 1000)
+            for server in serverList:
+                #开始处理爬虫程序
+                for num in range(1, (max_page + 1)):
+                    inurl = self.url+'&page='+ str(num)+'&sector='+ sector[1] + '&server='+ server[2]
+                    print(inurl)
+                    content = requests.get(inurl).text
+                    self.Data(content)
+                    time.sleep(0.5)
+        #循环处理
+        print("finished data: ")
 
     def initTable(self):
         infoSql = TableConst.InfoTable()
         result = self.mydb.createTable(infoSql)
+        sectorSql = TableConst.SectorTable()
+        result = self.mydb.createTable(sectorSql)
+        serverSql = TableConst.ServerTable()
+        result = self.mydb.createTable(serverSql)
+        infoRepeatSql = TableConst.InfoRepeatTable()
+        result = self.mydb.createTable(infoRepeatSql)
         # print(result)
         # # print(result)
         # tables = mydb.execute("select name from sqlite_master where type='table' order by name")
@@ -133,11 +158,105 @@ class Html:
         # result = mydb.select('info')
         # print(result)
 
+        #执行完成以后初始化数据库数据
+        self.initData()
+
+    #预初始化数据
+    def initData(self):
+        #初始化info表
+        # self.mydb.truncTable(TableConst.InfoName())
+        #初始化infoRepeat
+        self.mydb.truncTable(TableConst.InfoRepeatName())
+        #主要是初始化sector server
+        #初始化sector
+        self.mydb.truncTable(TableConst.SectorName())
+        #初始化server
+        self.mydb.truncTable(TableConst.ServerName())
+        #初始化infoRepeat
+
+        #初始化数据
+        index = -1
+        for item in self.sector:
+            index = index+1
+            pid = self.mydb.insert(TableConst.SectorName(), 'name', "'"+item+"'")  
+            #开始执行插入服务器
+            if pid > 0:
+                for server in self.server[index]:
+                    value = str(pid)+",'"+server+"'"
+                    # 循环插入
+                    print(value)
+                    self.mydb.insert(TableConst.ServerName(), 'pid, name', value)  
+            
     #获取列表数据
-    def getList(self, page = 1, pageSize = 10):
-        result = self.mydb.select('info', '', '*', page, pageSize)
+    def getList(self, data):
+        print(data)
+        page = int(data['page'])
+        pageSize = int(data['pageSize'])
+        #组合where条件
+        # name: '',//姓名
+        # union_name: '',//势力名称
+        # sect: '',//职业名称
+        # abilities_min: '',//修为最小值
+        # abilities_max: '',//修为最大值
+        # equipment_min: '',//装评最小值
+        # equipment_max: '',//装评最大值
+        # all_abilities_min: '',//总修为最小值
+        # all_abilities_max: '',//总修为最大值
+        where = ''
+        if 'name' in data.keys():
+            if where == '':
+                joinp = ''
+            else:
+                joinp = ' and '
+            where = where+joinp+" name like '%"+data['name']+"%'"
+
+        if 'union_name' in data.keys():
+            if where == '':
+                joinp = ''
+            else:
+                joinp = ' and '
+            where = where+joinp+" union_name like '%"+data['union_name']+"%'"
+            
+        if 'sect' in data.keys():
+            if where == '':
+                joinp = ''
+            else:
+                joinp = ' and '
+            where = where+joinp+" sect like '%"+data['sect']+"%'"
+
+        # if 'abilities_min' in data.keys():
+        #     if where == '':
+        #         joinp = ''
+        #     else:
+        #         joinp = ' sect '
+        #     where = where+joinp+" sect like %'"+data['sect']+"'%"
+
+        # if 'abilities_max' in data.keys():
+        #     if where == '':
+        #         joinp = ''
+        #     else:
+        #         joinp = ' sect '
+        #     where = where+joinp+" sect like %'"+data['sect']+"'%"
+
+        result = self.mydb.select('info', where, '*', page, pageSize)
         count = self.mydb.count('info', '')
         return return_list(result, count, page, pageSize)
+
+    #如果已经查询到存在的data
+    def dealRepeat(self, data, sql_value):
+        #
+        Tstring = ''
+        for item in data:
+            if Tstring == '':
+                prefix = ''
+            else:
+                prefix = ','
+            Tstring = Tstring + prefix +"'"+str(item)+"'"
+
+        if (Tstring.replace(' ', '')  == sql_value.replace(' ', '')) != True:
+            #进行录入修改后数据的展示
+            self.mydb.insert(TableConst.InfoRepeatName(), 'bang_id, name,section_name,service_name,level,sect,union_name,abilities,equipment,all_abilities', Tstring)
+            print("diff log")
 
 #开始使用方法
 
