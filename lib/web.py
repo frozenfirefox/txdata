@@ -255,8 +255,10 @@ class Html:
 
         if (Tstring.replace(' ', '')  == sql_value.replace(' ', '')) != True:
             #进行录入修改后数据的展示
-            self.mydb.insert(TableConst.InfoRepeatName(), 'bang_id, name,section_name,service_name,level,sect,union_name,abilities,equipment,all_abilities', Tstring)
-            print("diff log")
+            self.mydb.insert(TableConst.InfoRepeatName(), 'bang_id, name,section_name,service_name,level,sect,union_name,abilities,equipment,all_abilities', sql_value)
+            print("diff log："+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+            print(Tstring.replace(' ', ''))
+            print(sql_value.replace(' ', ''))
 
 #开始使用方法
 
