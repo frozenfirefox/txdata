@@ -202,6 +202,8 @@ class Html:
         # equipment_max: '',//装评最大值
         # all_abilities_min: '',//总修为最小值
         # all_abilities_max: '',//总修为最大值
+        # section_name: ''//大区名称
+        # service_name: ''//服务器名称
         where = ''
         if 'name' in data.keys():
             if where == '':
@@ -224,6 +226,20 @@ class Html:
                 joinp = ' and '
             where = where+joinp+" sect like '%"+data['sect']+"%'"
 
+        if 'section_name' in data.keys():
+            if where == '':
+                joinp = ''
+            else:
+                joinp = ' and '
+            where = where+joinp+" section_name like '%"+data['section_name']+"%'"
+        
+        if 'seservice_namect' in data.keys():
+            if where == '':
+                joinp = ''
+            else:
+                joinp = ' and '
+            where = where+joinp+" service_name like '%"+data['service_name']+"%'"
+
         # if 'abilities_min' in data.keys():
         #     if where == '':
         #         joinp = ''
@@ -238,9 +254,17 @@ class Html:
         #         joinp = ' sect '
         #     where = where+joinp+" sect like %'"+data['sect']+"'%"
 
-        result = self.mydb.select('info', where, '*', page, pageSize)
+        order = ' abilities desc'
+        if 'orderby' in data.keys():
+            order = data['orderby']
+
+        result = self.mydb.select('info', where, '*', page, pageSize, order)
         count = self.mydb.count('info', '')
         return return_list(result, count, page, pageSize)
+
+    #统计日活跃用户，去除死用户
+    #def getLiveList(self, data):
+        # liveList = self.mydb.select(TableConst.INFO_REPEAT_NAME(), where = '', fields = '*', page = 1, pageSize = 100, order = 'id desc')
 
     #如果已经查询到存在的data
     def dealRepeat(self, data, sql_value):

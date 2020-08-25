@@ -25,16 +25,29 @@ class Db:
             return e
 
     #查询，根据条件
-    def select(self, table, where = '', fields = '*', page = 1, pageSize = 10): 
+    def select(self, table, where = '', fields = '*', page = 1, pageSize = 10, order = 'id desc', having = '', group = ''): 
         try:
             curl = self.connect.cursor()
             if fields == '':
                 fields = '*'
             
             sql = "select "+fields+" from "+table
-            print(sql)
+
+            #where            
             if where != '':
                 sql = sql+' where '+where
+
+            #group
+            if group != '':
+                sql = sql+' group by '+group
+
+            #having
+            if having != '':
+                sql = sql+' having '+having
+                
+            #order
+            if order != '':
+                sql = sql+' order by '+order
 
             if page > 0:
                 #取全部
