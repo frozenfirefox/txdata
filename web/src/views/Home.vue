@@ -63,11 +63,41 @@
     <!--    做一个图钉-->
     <Affix :offset-bottom="0" style="color: black;padding-left: 10px">
       <Row>
-        <Col span="12">
+        <Col span="6">
           <Button type="warning" style="width: 100%" @click="selectData">筛选</Button>
         </Col>
-        <Col span="12">
-          <Button type="success" style="width: 100%" @click="$Message.info('敬请期待')">查询</Button>
+        <Col span="6">
+          <Dropdown trigger="click" @on-click="setOrder" style="width: 100%">
+            <Button type="primary" style="width: 100%">
+              {{orderName}}
+              <Icon type="ios-arrow-down"></Icon>
+            </Button>
+            <DropdownMenu slot="list">
+              <DropdownItem name="1">默认</DropdownItem>
+              <DropdownItem name="2">最新</DropdownItem>
+              <DropdownItem name="3">修为评价</DropdownItem>
+              <DropdownItem name="4">装备评价</DropdownItem>
+              <DropdownItem name="5">总修为</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </Col>
+        <Col span="6">
+          <Button type="success" style="width: 100%" @click="$Message.info('敬请期待')">日活统计</Button>
+        </Col>
+        <Col span="6">
+          <Dropdown trigger="click" style="width: 100%">
+            <Button type="info" style="width: 100%">
+              加入我们
+              <Icon type="ios-arrow-down"></Icon>
+            </Button>
+            <DropdownMenu slot="list">
+              <DropdownItem name="1">倔强的小红军</DropdownItem>
+              <DropdownItem name="2">开心消消乐</DropdownItem>
+              <DropdownItem name="3">点赞投币</DropdownItem>
+              <DropdownItem name="4">为她充电</DropdownItem>
+              <DropdownItem name="5">加入我们</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
         </Col>
       </Row>
     </Affix>
@@ -94,6 +124,21 @@
             <Col span="11">
               <FormItem label="" prop="abilities_max">
                 <Input v-model="request.abilities_max" placeholder="请输入最大修为值（2000）"></Input>
+              </FormItem>
+            </Col>
+          </Row>
+        </FormItem>
+        <FormItem label="大区-服务器">
+          <Row>
+            <Col span="11">
+              <FormItem label="" prop="section_name">
+                <Input v-model="request.section_name" placeholder="请输入大区（79专区）"></Input>
+              </FormItem>
+            </Col>
+            <Col span="2" style="text-align: center">-</Col>
+            <Col span="11">
+              <FormItem label="" prop="service_name">
+                <Input v-model="request.service_name" placeholder="请输入服务器（飞鸿踏雪）"></Input>
               </FormItem>
             </Col>
           </Row>
@@ -135,6 +180,28 @@
         </FormItem>
       </Form>
     </Drawer>
+
+<!--    更新提醒-->
+    <Modal v-model="modalUpdate"
+           title="更新提醒">
+      <Row>
+        <Col>
+          加入我们：美女多福利多！！！
+          特别鸣谢，
+        </Col>
+      </Row>
+      <divider/>
+      <Timeline>
+        <TimelineItem>
+          <p class="time">2020-08-25</p>
+          <p class="content">英雄榜搜索软件问世</p>
+        </TimelineItem>
+        <TimelineItem>
+          <p class="time">2020-08-26</p>
+          <p class="content">更新添加，筛选大区和服务器，以及按照排序筛选</p>
+        </TimelineItem>
+      </Timeline>
+    </Modal>
   </div>
 </template>
 
@@ -145,11 +212,14 @@ export default {
     return {
       bangList: [],
       request: {
+        orderby: 'abilities desc',
         page: 1,
         pageSize: 10,
         name: '',//姓名
         union_name: '',//势力名称
         sect: '',//职业名称
+        section_name: '',//大区
+        service_name: '',//服务器
         abilities_min: '',//修为最小值
         abilities_max: '',//修为最大值
         equipment_min: '',//装评最小值
@@ -189,6 +259,8 @@ export default {
           { required: false, type: 'string', message: '请输入正确的最大的总修为值', trigger: 'blur' }
         ]
       },
+      orderName: '排序',
+      modalUpdate: true,
     }
   },
   mounted() {
@@ -204,11 +276,14 @@ export default {
       if(parseInt(page) > 0){
         params.page = page;
       }
-
+    console.log(params)
       var vue = this;
       const url = this.$api_host+'getList.py'
       this.$axios.get(url, {
-        params: params
+        params: params,
+        paramsSerializer: function(params) {
+          return vue.$qs.stringify(params, {arrayFormat: 'brackets'})
+        },
       }).then(function(response){
         console.log(response)
         if(response.status == 200){
@@ -256,7 +331,39 @@ export default {
     handleReset (name) {
       // this.$refs[name].resetFields()
       this.select_modal = false
-    }
+    },
+    setOrder (name) {
+      switch (parseInt(name)) {
+        case 5:
+          //总修为
+          this.request.orderby = 'all_abilities desc'
+          this.orderName = '总修为'
+          break;
+        case 4:
+          //装备评价
+          this.request.orderby = 'equipment desc'
+          this.orderName = '装备评价'
+          break;
+        case 3:
+          this.request.orderby = 'abilities desc'
+          this.orderName = '修为'
+          //修为
+          break;
+        case 2:
+          this.request.orderby = 'id desc'
+          this.orderName = '最新'
+          //最新
+          break;
+        default:
+          this.request.orderby = 'all_abilities desc'
+          this.orderName = '默认'
+          //默认
+          break;
+      }
+      //清除数据
+      this.bangList = []
+      this.getList()
+    },
   }
 }
 </script>
