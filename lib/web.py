@@ -266,6 +266,28 @@ class Html:
     #def getLiveList(self, data):
         # liveList = self.mydb.select(TableConst.INFO_REPEAT_NAME(), where = '', fields = '*', page = 1, pageSize = 100, order = 'id desc')
 
+    #做属性等估价
+    def evalueate(self, url):
+        #获取数据
+        bang_id = url.split('/')[-1]
+        content = requests.get(url).text
+        bs4Html = BeautifulSoup(content, "lxml")
+        equipments = bs4Html.find_all('div', 'detail_wrap_block')
+        for equipment in equipments:
+            name = equipment.find('h3').get_text()
+            type = ''
+            if equipment.find('span', 'eq_type'):
+                type = equipment.find('span', 'eq_type').get_text()
+            #开始取下加护值
+            info = ''
+            
+            if equipment.find('div', 'tx3TextBlock'):
+                #说明有装备加护等信息
+                info = equipment.find('div', 'tx3TextBlock')['tx3text'].split('#r')[-1].replace('#w(0)', '').split('　')[-1]
+
+            print(name, '--', type, '--', info)
+        # self.WriteFile('222.txt', equipments)
+
     #如果已经查询到存在的data
     def dealRepeat(self, data, sql_value):
         #
@@ -289,8 +311,9 @@ class Html:
 # html = Html('http://bang.tx3.163.com/bang/ranks?order_key=xiuwei&school=&sector=79%E7%BA%A7%E4%B8%93%E5%8C%BA&server=%E9%A3%9E%E9%B8%BF%E8%B8%8F%E9%9B%AA&count=20')
 # # html.main()
 # html.getList()
-
+# html.evalueate('http://bang.tx3.163.com/bang/role/21_10885')
 #创建数据库
+
 
 
 
