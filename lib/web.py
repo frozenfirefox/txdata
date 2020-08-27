@@ -283,6 +283,14 @@ class Html:
         bs4Html = BeautifulSoup(content, "lxml")
         equipments = bs4Html.find_all('div', 'detail_wrap_block')
         jiahuInfo = bs4Html.find_all('div', 'jhz-box')
+        roleInfo = bs4Html.find('div', 'dInfo').find_all('span')
+        bangInfo = {
+            'level': roleInfo[0].get_text(),
+            'img': roleInfo[1].get_text(),
+            'name': roleInfo[2].get_text(),
+            'zhiye': roleInfo[3].get_text(),
+            'section': roleInfo[4].get_text()
+        }    
         zuanPrice = 0.00
         for equipment in equipments:
             name = equipment.find('h3').get_text()
@@ -322,10 +330,14 @@ class Html:
             # print(name, '--', type, '--', jiahuNumber, '--', lianhuNumber)
 
         #总的钻钱    
-        # print('钻钱：', '--', zuanPrice)
+        #print('钻钱：', '--', zuanPrice)
+        print({
+            "info": bangInfo,
+            "zuanPrice": round(zuanPrice, 2)
+        })
         return {
-            "name": "",
-            "zuanPrice": zuanPrice
+            "info": info,
+            "zuanPrice": round(zuanPrice, 2)
         }
         # self.WriteFile('222.txt', equipments)
 
@@ -352,7 +364,7 @@ class Html:
 html = Html('http://bang.tx3.163.com/bang/ranks?order_key=xiuwei&school=&sector=79%E7%BA%A7%E4%B8%93%E5%8C%BA&server=%E9%A3%9E%E9%B8%BF%E8%B8%8F%E9%9B%AA&count=20')
 # # html.main()
 # html.getList()
-html.evalueate('http://bang.tx3.163.com/bang/role/16_131481')
+html.evalueate('http://bang.tx3.163.com/bang/role/34_5578144')
 #创建数据库
 
 # price13 = function.account_cash(13)
