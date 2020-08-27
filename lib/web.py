@@ -4,11 +4,14 @@ import os
 from bs4 import BeautifulSoup
 import time
 import json
+import re
+from selenium import webdriver
 
 #自己库
 import img
 import db
 from TableConst import TableConst
+import function
 
 def to_int(str):
     try:
@@ -37,7 +40,7 @@ class Html:
         #初始化数据
         self.sector = sector
         self.server = server
-        print(1)
+        # print(1)
         self.headers = {
             'Accept':'image/webp,image/apng,image/*,*/*;q=0.8',
             'Accept-Encoding':'gzip, deflate',
@@ -268,11 +271,19 @@ class Html:
 
     #做属性等估价
     def evalueate(self, url):
+        driver_path = r'D:\Program Files\firefox\geckodriver.exe'
+        driver = webdriver.Firefox(executable_path=driver_path)
+        driver.get(url)
+        # self.WriteFile('333.bang', driver.page_source)
+        content = driver.page_source
+        driver.quit()
         #获取数据
         bang_id = url.split('/')[-1]
-        content = requests.get(url).text
+        # content = requests.get(url).text
         bs4Html = BeautifulSoup(content, "lxml")
         equipments = bs4Html.find_all('div', 'detail_wrap_block')
+        jiahuInfo = bs4Html.find_all('div', 'jhz-box')
+        zuanPrice = 0.00
         for equipment in equipments:
             name = equipment.find('h3').get_text()
             type = ''
@@ -280,12 +291,42 @@ class Html:
                 type = equipment.find('span', 'eq_type').get_text()
             #开始取下加护值
             info = ''
-            
+            jiahuNumber = 0
+            lianhuNumber = 0
             if equipment.find('div', 'tx3TextBlock'):
+                #加护
+                jiahu = equipment.find('div', 'tx3TextBlock').find('div', 'jhz-box')
+                if jiahu:
+                    jiahuNumber = int(int(re.findall(r"width:(.+?)px", jiahu.find('span', 'percentFornt').attrs['style'])[0])/8) 
+                #炼护
+                lianhu = equipment.find('div', 'tx3TextBlock').find('div', 'lhz-box')                
+                if lianhu:
+                    lianhuNumber = int(int(re.findall(r"width:(.+?)px", lianhu.find('span', 'percentFornt').attrs['style'])[0])/8) 
+                    #继续寻找
                 #说明有装备加护等信息
-                info = equipment.find('div', 'tx3TextBlock')['tx3text'].split('#r')[-1].replace('#w(0)', '').split('　')[-1]
+                # info = equipment.find('div', 'tx3TextBlock')['tx3text'].split('#r')[-1].replace('#w(0)', '').split('　')[-1]
+                # info = equipment.find('div', 'tx3TextBlock')['tx3text'].split('#r')
+            #     info = equipment.find('div', 'tx3TextBlock')['tx3text'].replace('　', '')
+            #     lianhu = re.findall(r"炼护值(.+?)#w", info) 
+            #     if type == '靴子':
+            #         jiahu = re.findall(r"#W加护值(.+?)$", info)
+            #     else:
+            #         jiahu = re.findall(r"#W加护值(.+?)#r", info)
+            #     #开始处理加护和炼护数值
+            #     if len(jiahu) > 0:
+            #         jiahuNumber = (len(jiahu[0].split('^')) - 1)
+            #     if len(lianhu) > 0:
+            #         lianhuNumber = (len(lianhu[0].split('^')) - 1)
+            zuanPrice = zuanPrice + function.account_cash(jiahuNumber)
+            zuanPrice = zuanPrice + function.account_cash(lianhuNumber)
+            # print(name, '--', type, '--', jiahuNumber, '--', lianhuNumber)
 
-            print(name, '--', type, '--', info)
+        #总的钻钱    
+        # print('钻钱：', '--', zuanPrice)
+        return {
+            "name": "",
+            "zuanPrice": zuanPrice
+        }
         # self.WriteFile('222.txt', equipments)
 
     #如果已经查询到存在的data
@@ -308,12 +349,28 @@ class Html:
 
 #开始使用方法
 
-# html = Html('http://bang.tx3.163.com/bang/ranks?order_key=xiuwei&school=&sector=79%E7%BA%A7%E4%B8%93%E5%8C%BA&server=%E9%A3%9E%E9%B8%BF%E8%B8%8F%E9%9B%AA&count=20')
+html = Html('http://bang.tx3.163.com/bang/ranks?order_key=xiuwei&school=&sector=79%E7%BA%A7%E4%B8%93%E5%8C%BA&server=%E9%A3%9E%E9%B8%BF%E8%B8%8F%E9%9B%AA&count=20')
 # # html.main()
 # html.getList()
-# html.evalueate('http://bang.tx3.163.com/bang/role/21_10885')
+html.evalueate('http://bang.tx3.163.com/bang/role/16_131481')
 #创建数据库
 
+# price13 = function.account_cash(13)
+# price14 = function.account_cash(14)
+# price15 = function.account_cash(15)
+# price16 = function.account_cash(16)
+# price17 = function.account_cash(17)
+# price18 = function.account_cash(18)
+# price19 = function.account_cash(19)
+# price20 = function.account_cash(20)
+# print("13钻：", price13)
+# print("14钻：", price14)
+# print("15钻：", price15)
+# print("16钻：", price16)
+# print("17钻：", price17)
+# print("18钻：", price18)
+# print("19钻：", price19)
+# print("20钻：", price20)
 
 
 
