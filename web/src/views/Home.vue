@@ -200,6 +200,10 @@
           <p class="time">2020-08-26</p>
           <p class="content">更新添加，筛选大区和服务器，以及按照排序筛选</p>
         </TimelineItem>
+        <TimelineItem>
+          <p class="time">2020-08-29</p>
+          <p class="content">更新添加，部分角色估价系统，估值入口：加入我们>>账号估值</p>
+        </TimelineItem>
       </Timeline>
     </Modal>
     <!--估价-->
@@ -212,12 +216,14 @@
         </Col>
       </Row>
       <divider/>
-      {{valueData.length}}
       <template v-if="valueData ==  ''">
         <Spin fix v-if="loading">
           <Icon type="ios-loading" size=18 class="demo-spin-icon-load"></Icon>
           <div>疯狂运算中</div>
         </Spin>
+        <div class="text-center" style="line-height: 700px;font-size: 50px">
+              对这片土地爱得深沉
+        </div>
       </template>
       <template v-if="valueData.length !=  ''">
         <Row class-name="line-height-20">
