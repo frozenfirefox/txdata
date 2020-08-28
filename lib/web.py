@@ -91,17 +91,9 @@ class Html:
                 #自增
                 index = index+1
 
-            #这里处理一下如何bang_id存在就继续循环
-            data = self.mydb.select(TableConst.InfoName(), where = " bang_id = '"+bang_id+"'", fields = 'bang_id, name,section_name,service_name,level,sect,union_name,abilities,equipment,all_abilities')
-
-            #如果已经录入过，就跳出继续
-            if len(data) > 0:
-                self.dealRepeat(data[0], sqlString)
-                continue    
-            else:
-                result = self.mydb.insert('info', 'bang_id, name,section_name,service_name,level,sect,union_name,abilities,equipment,all_abilities', sqlString)             
-                # self.WriteFile('./bang/bang.me', trString, 'bang')
-                # tdList = item.find_all('td').get_text()
+            self.dealInsert(bang_id, sqlString)
+            # self.WriteFile('./bang/bang.me', trString, 'bang')
+            # tdList = item.find_all('td').get_text()
 
     #最大分页数   
     def Page(self, content):
@@ -269,20 +261,55 @@ class Html:
     #def getLiveList(self, data):
         # liveList = self.mydb.select(TableConst.INFO_REPEAT_NAME(), where = '', fields = '*', page = 1, pageSize = 100, order = 'id desc')
 
+    #如果已经查询到存在的data
+    def dealRepeat(self, data, sql_value):
+        #
+        Tstring = ''
+        for item in data:
+            if Tstring == '':
+                prefix = ''
+            else:
+                prefix = ','
+            Tstring = Tstring + prefix +"'"+str(item)+"'"
+
+        if (Tstring.replace(' ', '')  == sql_value.replace(' ', '')) != True:
+            #进行录入修改后数据的展示
+            self.mydb.insert(TableConst.InfoRepeatName(), 'bang_id, name,section_name,service_name,level,sect,union_name,abilities,equipment,all_abilities', sql_value)
+            print("diff log："+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+            print(Tstring.replace(' ', ''))
+            print(sql_value.replace(' ', ''))
+
+    #如果不存在就插入 否则按照逻辑插入附表
+    def dealInsert(self, bang_id, sqlString, fields = 'bang_id, name,section_name,service_name,level,sect,union_name,abilities,equipment,all_abilities'):
+        #这里处理一下如何bang_id存在就继续循环
+        data = self.mydb.select(TableConst.InfoName(), where = " bang_id = '"+bang_id+"'", fields = fields)
+
+        #如果已经录入过，就跳出继续
+        if len(data) > 0:
+            self.dealRepeat(data[0], sqlString)
+        else:
+            result = self.mydb.insert('info', 'bang_id, name,section_name,service_name,level,sect,union_name,abilities,equipment,all_abilities', sqlString)       
+
     #做属性等估价
-    def evalueate(self, url):
+    def evalueate(self, data):
+        url = 'http://bang.tx3.163.com/bang/role/'
+        url = url + str(data['bang_id'])
+
         driver_path = r'D:\Program Files\firefox\geckodriver.exe'
         driver = webdriver.Firefox(executable_path=driver_path)
         driver.get(url)
         # self.WriteFile('333.bang', driver.page_source)
         content = driver.page_source
+        
         driver.quit()
-        #获取数据
-        bang_id = url.split('/')[-1]
+        ####start 获取数据
+        bang_id = url.split('/')[-1]       
         # content = requests.get(url).text
         bs4Html = BeautifulSoup(content, "lxml")
         equipments = bs4Html.find_all('div', 'detail_wrap_block')
         jiahuInfo = bs4Html.find_all('div', 'jhz-box')
+
+        #####start 获取基本信息-------------------------------------------------------
         roleInfo = bs4Html.find('div', 'dInfo').find_all('span')
         bangInfo = {
             'level': roleInfo[0].get_text(),
@@ -290,7 +317,33 @@ class Html:
             'name': roleInfo[2].get_text(),
             'zhiye': roleInfo[3].get_text(),
             'section': roleInfo[4].get_text()
-        }    
+        } 
+
+        equipmentValue = bs4Html.find_all('ul', 'ulList_3')
+        equipmentNumber = equipmentValue[0].find_all('span', 'ulList_3_v')[0].get_text()
+        abilitiesNumber = equipmentValue[1].find_all('span', 'ulList_3_v')[0].get_text()
+        all_abilities = int(equipmentNumber) + int(abilitiesNumber)
+        #处理获取数据
+        #'bang_id, name,section_name,service_name,level,sect,union_name,abilities,equipment,all_abilities'
+        
+        prefix = ''
+        sqlString = ''
+        sqlString = sqlString+prefix+"'"+bang_id+"'"
+        prefix = ','
+        sqlString = sqlString+prefix+"'"+(roleInfo[2].get_text())+"'"#角色名称
+        sqlString = sqlString+prefix+"'"+(roleInfo[4].get_text().split('\xa0')[0])+"'"#大区
+        sqlString = sqlString+prefix+"'"+(roleInfo[4].get_text().split('\xa0')[1])+"'"#服务器
+        sqlString = sqlString+prefix+"'"+(roleInfo[0].get_text().replace('等级', ''))+"'"#等级
+        sqlString = sqlString+prefix+"'"+(roleInfo[3].get_text())+"'"#职业
+        sqlString = sqlString+prefix+"''"#势力
+        sqlString = sqlString+prefix+"'"+(str(abilitiesNumber))+"'"#修为
+        sqlString = sqlString+prefix+"'"+(str(equipmentNumber))+"'"#装瓶
+        sqlString = sqlString+prefix+"'"+(str(all_abilities))+"'"#总修为
+        #插入    
+        self.dealInsert(bang_id, sqlString)
+        #####end 获取基本信息-------------------------------------------------------
+
+        #####start 处理钻钱------------------------------------------------------------
         zuanPrice = 0.00
         for equipment in equipments:
             name = equipment.find('h3').get_text()
@@ -328,43 +381,79 @@ class Html:
             zuanPrice = zuanPrice + function.account_cash(jiahuNumber)
             zuanPrice = zuanPrice + function.account_cash(lianhuNumber)
             # print(name, '--', type, '--', jiahuNumber, '--', lianhuNumber)
+        #####end 处理钻钱------------------------------------------------------------
+        
+        ####start 处理孩子
+        tableContents =  bs4Html.find(id="tableCHILD").find('div', 'TableContents')
+        childs = tableContents.find_all('div', 'TableContents_2')
+        dianPrice = 0.00
+        for child in childs:
+            ul = child.find_all('ul', 'DataListStyle')[1]
+            #获取加护值
+            li2 = ul.find_all('li', 'li2')
+            childZihi = int(li2[1].get_text())
+            childJiahu = int(li2[4].get_text())
+            #开始计算孩子
+            childJihuList = function.account_jiahu(childJiahu)
+            #计算孩子钻钱
+            for childJia in childJihuList:
+                zuanPrice = zuanPrice + function.account_cash(childJia)
+            
+        childDianhuaList = tableContents.find_all('div', 'TableContents_1')
+        ######处理孩子的炼护
+        for duanhua in childDianhuaList:
+            dianhuaData = duanhua.find_all('div', 'equip_pic')
+            for intro in dianhuaData:
+                introInfo = intro.attrs['intro']
+                dian = re.findall(r'点化：(.+?)#r#R', introInfo)
+                dianNumber = 0
+                if len(dian) > 0:
+                    dianNumberList = dian[0].split("#r#c")
+                    del dianNumberList[0]
+                    dianNumber = len(dianNumberList)
+                    dianPrice = dianPrice + function.account_dian(dianNumber)
+                    print(dianNumber)
+        ######处理天书
+      
+        tianshuPrice = 0.00
+        childTianshuList = tableContents.find_all('ul', 'tianshu-img-list')
+        for tianshuC in childTianshuList:
+            liList = tianshuC.find_all('li')
+            for li in liList:
+                tianshu = re.findall(r'尚书令等级(.+?)$', li.attrs['intro'])
+                tianshuNumber = 0
+                if len(tianshu):
+                    tianshuNumberList = tianshu[0].split("#r#c")
+                    del tianshuNumberList[0]
+                    tianshuNumber = len(tianshuNumberList)
+                    tianshuPrice = tianshuPrice + function.account_book(tianshuNumber)
+                    # print(tianshuNumberList,  tianshuNumber)
+        ####end 处理孩子
 
-        #总的钻钱    
         #print('钻钱：', '--', zuanPrice)
-        print({
+        returnData = {
             "info": bangInfo,
-            "zuanPrice": round(zuanPrice, 2)
-        })
-        return {
-            "info": info,
-            "zuanPrice": round(zuanPrice, 2)
+            "zuanPrice": round(zuanPrice, 2),
+            'dianPrice': round(dianPrice, 2),
+            'tianshuPrice': round(tianshuPrice, 2),
+            'allPrice': round(zuanPrice+dianPrice+tianshuPrice, 2)
         }
+        # print(returnData)
+        return returnData
         # self.WriteFile('222.txt', equipments)
 
-    #如果已经查询到存在的data
-    def dealRepeat(self, data, sql_value):
-        #
-        Tstring = ''
-        for item in data:
-            if Tstring == '':
-                prefix = ''
-            else:
-                prefix = ','
-            Tstring = Tstring + prefix +"'"+str(item)+"'"
-
-        if (Tstring.replace(' ', '')  == sql_value.replace(' ', '')) != True:
-            #进行录入修改后数据的展示
-            self.mydb.insert(TableConst.InfoRepeatName(), 'bang_id, name,section_name,service_name,level,sect,union_name,abilities,equipment,all_abilities', sql_value)
-            print("diff log："+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
-            print(Tstring.replace(' ', ''))
-            print(sql_value.replace(' ', ''))
-
 #开始使用方法
-
-html = Html('http://bang.tx3.163.com/bang/ranks?order_key=xiuwei&school=&sector=79%E7%BA%A7%E4%B8%93%E5%8C%BA&server=%E9%A3%9E%E9%B8%BF%E8%B8%8F%E9%9B%AA&count=20')
+# html = Html('http://bang.tx3.163.com/bang/ranks?order_key=xiuwei&school=&sector=79%E7%BA%A7%E4%B8%93%E5%8C%BA&server=%E9%A3%9E%E9%B8%BF%E8%B8%8F%E9%9B%AA&count=20')
 # # html.main()
 # html.getList()
-html.evalueate('http://bang.tx3.163.com/bang/role/34_5578144')
+# html.evalueate('http://bang.tx3.163.com/bang/role/30_11318203')
+#半度回眸
+# http://bang.tx3.163.com/bang/role/21_10885
+#靖戈
+#http://bang.tx3.163.com/bang/role/27_6815
+#嘘嘘
+#http://bang.tx3.163.com/bang/role/24_11995270
+#http://bang.tx3.163.com/bang/role/38_5860 
 #创建数据库
 
 # price13 = function.account_cash(13)
