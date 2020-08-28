@@ -17,6 +17,7 @@ Vue.prototype.$api_host = 'http://www.huiaxue.cn:8000/'
 // Vue.prototype.$api_host = 'http://192.168.0.138:8787/'
 Vue.prototype.$tx_host = 'http://bang.tx3.163.com/bang/role/'
 
+// axios.defaults.retryDelay = 10000; // 设置超时时间
 Vue.prototype.$axios = axios
 Vue.prototype.$qs = qs
 

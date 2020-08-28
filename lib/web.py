@@ -78,7 +78,7 @@ class Html:
                 if index == 0:
                     index = index+1
                     continue
-                    
+
                 #处理一下榜信息
                 if index == 1:
                     bang_id = cell.find('a')['href'].split('/')[-1]
@@ -95,17 +95,17 @@ class Html:
             # self.WriteFile('./bang/bang.me', trString, 'bang')
             # tdList = item.find_all('td').get_text()
 
-    #最大分页数   
+    #最大分页数
     def Page(self, content):
         bs4Html = BeautifulSoup(content, "lxml")
         pageList = bs4Html.select('div > a')
         max_page = 1
         for item in pageList:
             if to_int(item.get_text()) >= max_page:
-                max_page = to_int(item.get_text())  
+                max_page = to_int(item.get_text())
         return max_page
 
-    #write file 
+    #write file
     def WriteFile(self, name, content, dir = 'bang'):
         img_file_name = name
         if not os.path.exists(dir):
@@ -116,10 +116,10 @@ class Html:
     #main方法
     def main(self):
         content = requests.get(self.url).text
-        #self.Images(content) 
+        #self.Images(content)
         # max_page = (25 > 1)?25:self.Page(content)
         max_page = 25
-        #urllist 
+        #urllist
         #先处理服务器
         sectorList = self.mydb.select(TableConst.SectorName(), where = '', fields = '*', page = 1, pageSize = 1000)
         #循环处理
@@ -173,15 +173,15 @@ class Html:
         index = -1
         for item in self.sector:
             index = index+1
-            pid = self.mydb.insert(TableConst.SectorName(), 'name', "'"+item+"'")  
+            pid = self.mydb.insert(TableConst.SectorName(), 'name', "'"+item+"'")
             #开始执行插入服务器
             if pid > 0:
                 for server in self.server[index]:
                     value = str(pid)+",'"+server+"'"
                     # 循环插入
                     print(value)
-                    self.mydb.insert(TableConst.ServerName(), 'pid, name', value)  
-            
+                    self.mydb.insert(TableConst.ServerName(), 'pid, name', value)
+
     #获取列表数据
     def getList(self, data):
         print(data)
@@ -213,7 +213,7 @@ class Html:
             else:
                 joinp = ' and '
             where = where+joinp+" union_name like '%"+data['union_name']+"%'"
-            
+
         if 'sect' in data.keys():
             if where == '':
                 joinp = ''
@@ -227,7 +227,7 @@ class Html:
             else:
                 joinp = ' and '
             where = where+joinp+" section_name like '%"+data['section_name']+"%'"
-        
+
         if 'seservice_namect' in data.keys():
             if where == '':
                 joinp = ''
@@ -288,22 +288,28 @@ class Html:
         if len(data) > 0:
             self.dealRepeat(data[0], sqlString)
         else:
-            result = self.mydb.insert('info', 'bang_id, name,section_name,service_name,level,sect,union_name,abilities,equipment,all_abilities', sqlString)       
+            result = self.mydb.insert('info', 'bang_id, name,section_name,service_name,level,sect,union_name,abilities,equipment,all_abilities', sqlString)
 
     #做属性等估价
     def evalueate(self, data):
         url = 'http://bang.tx3.163.com/bang/role/'
         url = url + str(data['bang_id'])
 
+
         driver_path = r'D:\Program Files\firefox\geckodriver.exe'
-        driver = webdriver.Firefox(executable_path=driver_path)
+        driver_path = r'/usr/bin/geckodriver'
+        # 设置chrome为无界面浏览器
+        options = Options()
+        options.add_argument('--headless')
+        driver = webdriver.Firefox(executable_path=driver_path, options=options)
         driver.get(url)
+
         # self.WriteFile('333.bang', driver.page_source)
         content = driver.page_source
-        
+
         driver.quit()
         ####start 获取数据
-        bang_id = url.split('/')[-1]       
+        bang_id = url.split('/')[-1]
         # content = requests.get(url).text
         bs4Html = BeautifulSoup(content, "lxml")
         equipments = bs4Html.find_all('div', 'detail_wrap_block')
@@ -317,7 +323,7 @@ class Html:
             'name': roleInfo[2].get_text(),
             'zhiye': roleInfo[3].get_text(),
             'section': roleInfo[4].get_text()
-        } 
+        }
 
         equipmentValue = bs4Html.find_all('ul', 'ulList_3')
         equipmentNumber = equipmentValue[0].find_all('span', 'ulList_3_v')[0].get_text()
@@ -325,7 +331,7 @@ class Html:
         all_abilities = int(equipmentNumber) + int(abilitiesNumber)
         #处理获取数据
         #'bang_id, name,section_name,service_name,level,sect,union_name,abilities,equipment,all_abilities'
-        
+
         prefix = ''
         sqlString = ''
         sqlString = sqlString+prefix+"'"+bang_id+"'"
@@ -339,7 +345,7 @@ class Html:
         sqlString = sqlString+prefix+"'"+(str(abilitiesNumber))+"'"#修为
         sqlString = sqlString+prefix+"'"+(str(equipmentNumber))+"'"#装瓶
         sqlString = sqlString+prefix+"'"+(str(all_abilities))+"'"#总修为
-        #插入    
+        #插入
         self.dealInsert(bang_id, sqlString)
         #####end 获取基本信息-------------------------------------------------------
 
@@ -358,17 +364,17 @@ class Html:
                 #加护
                 jiahu = equipment.find('div', 'tx3TextBlock').find('div', 'jhz-box')
                 if jiahu:
-                    jiahuNumber = int(int(re.findall(r"width:(.+?)px", jiahu.find('span', 'percentFornt').attrs['style'])[0])/8) 
+                    jiahuNumber = int(int(re.findall(r"width:(.+?)px", jiahu.find('span', 'percentFornt').attrs['style'])[0])/8)
                 #炼护
-                lianhu = equipment.find('div', 'tx3TextBlock').find('div', 'lhz-box')                
+                lianhu = equipment.find('div', 'tx3TextBlock').find('div', 'lhz-box')
                 if lianhu:
-                    lianhuNumber = int(int(re.findall(r"width:(.+?)px", lianhu.find('span', 'percentFornt').attrs['style'])[0])/8) 
+                    lianhuNumber = int(int(re.findall(r"width:(.+?)px", lianhu.find('span', 'percentFornt').attrs['style'])[0])/8)
                     #继续寻找
                 #说明有装备加护等信息
                 # info = equipment.find('div', 'tx3TextBlock')['tx3text'].split('#r')[-1].replace('#w(0)', '').split('　')[-1]
                 # info = equipment.find('div', 'tx3TextBlock')['tx3text'].split('#r')
             #     info = equipment.find('div', 'tx3TextBlock')['tx3text'].replace('　', '')
-            #     lianhu = re.findall(r"炼护值(.+?)#w", info) 
+            #     lianhu = re.findall(r"炼护值(.+?)#w", info)
             #     if type == '靴子':
             #         jiahu = re.findall(r"#W加护值(.+?)$", info)
             #     else:
@@ -382,7 +388,7 @@ class Html:
             zuanPrice = zuanPrice + function.account_cash(lianhuNumber)
             # print(name, '--', type, '--', jiahuNumber, '--', lianhuNumber)
         #####end 处理钻钱------------------------------------------------------------
-        
+
         ####start 处理孩子
         tableContents =  bs4Html.find(id="tableCHILD").find('div', 'TableContents')
         childs = tableContents.find_all('div', 'TableContents_2')
@@ -398,7 +404,7 @@ class Html:
             #计算孩子钻钱
             for childJia in childJihuList:
                 zuanPrice = zuanPrice + function.account_cash(childJia)
-            
+
         childDianhuaList = tableContents.find_all('div', 'TableContents_1')
         ######处理孩子的炼护
         for duanhua in childDianhuaList:
@@ -414,7 +420,7 @@ class Html:
                     dianPrice = dianPrice + function.account_dian(dianNumber)
                     print(dianNumber)
         ######处理天书
-      
+
         tianshuPrice = 0.00
         childTianshuList = tableContents.find_all('ul', 'tianshu-img-list')
         for tianshuC in childTianshuList:
@@ -453,7 +459,7 @@ class Html:
 #http://bang.tx3.163.com/bang/role/27_6815
 #嘘嘘
 #http://bang.tx3.163.com/bang/role/24_11995270
-#http://bang.tx3.163.com/bang/role/38_5860 
+#http://bang.tx3.163.com/bang/role/38_5860
 #创建数据库
 
 # price13 = function.account_cash(13)
@@ -475,4 +481,3 @@ class Html:
 
 
 
-    

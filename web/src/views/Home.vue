@@ -85,13 +85,13 @@
           <Button type="success" style="width: 100%" @click="$Message.info('敬请期待')">日活统计</Button>
         </Col>
         <Col span="6">
-          <Dropdown trigger="click" style="width: 100%">
+          <Dropdown trigger="click" @on-click="toSource" style="width: 100%">
             <Button type="info" style="width: 100%">
               加入我们
               <Icon type="ios-arrow-down"></Icon>
             </Button>
             <DropdownMenu slot="list">
-              <DropdownItem name="1">倔强的小红军</DropdownItem>
+              <DropdownItem name="1">账号估值</DropdownItem>
               <DropdownItem name="2">开心消消乐</DropdownItem>
               <DropdownItem name="3">点赞投币</DropdownItem>
               <DropdownItem name="4">为她充电</DropdownItem>
@@ -202,6 +202,89 @@
         </TimelineItem>
       </Timeline>
     </Modal>
+    <!--估价-->
+    <Modal v-model="modalValue"
+           fullscreen
+           title="估价系统">
+      <Row>
+        <Col span="24">
+          <Input search v-model="bang_link" @on-search="toValue" enter-button="去估价" placeholder="请复制英雄榜链接" />
+        </Col>
+      </Row>
+      <divider/>
+      {{valueData.length}}
+      <template v-if="valueData ==  ''">
+        <Spin fix v-if="loading">
+          <Icon type="ios-loading" size=18 class="demo-spin-icon-load"></Icon>
+          <div>疯狂运算中</div>
+        </Spin>
+      </template>
+      <template v-if="valueData.length !=  ''">
+        <Row class-name="line-height-20">
+          <Col span="24" class-name="font-25 text-center">
+            估价详情
+          </Col>
+        </Row>
+
+        <Row class-name="line-height-20 text-center font-18">
+          <Col span="12" class-name="text-right">
+            角色名称：
+          </Col>
+          <Col span="12" class-name="text-left">
+            {{valueData.info.name}}
+          </Col>
+        </Row>
+        <Row class-name="line-height-20 font-18">
+          <Col span="12" class-name="text-right">
+            大区服务器势力：
+          </Col>
+          <Col span="12" class-name="text-left">
+            {{valueData.info.section}}
+          </Col>
+        </Row>
+
+        <Row class-name="line-height-20 font-18">
+          <Col span="12" class-name="text-right">
+            职业：
+          </Col>
+          <Col span="12" class-name="text-left">
+            {{valueData.info.zhiye}}
+          </Col>
+        </Row>
+        <Row class-name="line-height-20 font-18">
+          <Col span="12" class-name="text-right">
+            加护和炼护估价：
+          </Col>
+          <Col span="12" class-name="text-left">
+            {{valueData.zuanPrice}}
+          </Col>
+        </Row>
+        <Row class-name="line-height-20 font-18">
+          <Col span="12" class-name="text-right">
+            点化估价：
+          </Col>
+          <Col span="12" class-name="text-left">
+            {{valueData.dianPrice}}
+          </Col>
+        </Row>
+        <Row class-name="line-height-20 font-18">
+          <Col span="12" class-name="text-right">
+            天书估价：
+          </Col>
+          <Col span="12" class-name="text-left">
+            {{valueData.tianshuPrice}}
+          </Col>
+        </Row>
+        <Row class-name="line-height-20 font-18">
+          <Col span="12" class-name="text-right">
+            总价值（供参考）：
+          </Col>
+          <Col span="12" class-name="text-left">
+            {{valueData.allPrice}}
+          </Col>
+        </Row>
+      </template>
+    </Modal>
   </div>
 </template>
 
@@ -261,6 +344,10 @@ export default {
       },
       orderName: '排序',
       modalUpdate: true,
+      modalValue: false,
+      bang_link: '',
+      valueData: '',
+      loading: false,
     }
   },
   mounted() {
@@ -364,6 +451,61 @@ export default {
       this.bangList = []
       this.getList()
     },
+    toSource (name) {
+      console.log(name)
+      switch (parseInt(name)) {
+        case 5:
+        case 4:
+        case 3:
+        case 2:
+          this.$Message.info('敬请期待')
+          break;
+        default:
+          this.modalValue = true
+          //默认
+          break;
+      }
+    },
+    toValue () {
+      console.log(222)
+      //去估价
+      if(!this.bang_link){
+        return this.$Message.warning('请输入估计角色英雄榜')
+      }
+      //获取bang_id
+      const arrList = this.bang_link.split('/')
+      const bang_id = arrList[5]
+      var regu =/\d{2}_\d{1,10}$/;
+      var re = new RegExp(regu);
+      var result = re.test(bang_id)
+      if(result !== true){
+        return this.$Message.warning('请输入正确的角色英雄榜')
+      }
+      //开始请求
+      var vue = this;
+      const url = this.$api_host+'evalueate.py'
+      const params = {
+        bang_id: bang_id
+      }
+
+      this.loading = true
+      this.$axios.get(url, {
+        params: params,
+        paramsSerializer: function(params) {
+          return vue.$qs.stringify(params, {arrayFormat: 'brackets'})
+        },
+      }).then(function(response){
+        vue.loading = false
+        if(response.status == 200){
+          vue.valueData = response.data
+          console.log(vue.valueData)
+        }else{
+          vue.$Message.warning('出错误了');
+        }
+      }).catch(function(error){
+        vue.$Message.error('网络走丢了');
+      });
+    }
   }
 }
 </script>
@@ -372,4 +514,36 @@ export default {
     line-height: 25px;
     list-style: none;
   }
+  .demo-spin-icon-load{
+    animation: ani-demo-spin 1s linear infinite;
+  }
+  @keyframes ani-demo-spin {
+    from { transform: rotate(0deg);}
+    50%  { transform: rotate(180deg);}
+    to   { transform: rotate(360deg);}
+  }
+  .demo-spin-col{
+    height: 100px;
+    position: relative;
+    border: 1px solid #eee;
+  }
+  .text-left{
+    text-align: left;
+  }
+  .text-right{
+    text-align: right;
+  }
+  .text-center{
+    text-align: center;
+  }
+  .font-25{
+    font-size: 25px;
+  }
+  .font-18{
+    font-size: 18px;
+  }
+  .line-height-20{
+    line-height: 40px;
+  }
+
 </style>
