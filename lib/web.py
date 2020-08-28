@@ -6,6 +6,7 @@ import time
 import json
 import re
 from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
 
 #自己库
 import img
