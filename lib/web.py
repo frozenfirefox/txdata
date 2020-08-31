@@ -302,9 +302,9 @@ class Html:
         url = 'http://bang.tx3.163.com/bang/role/'
         url = url + str(data['bang_id'])
         #linux
-        # driver_path = r'/usr/bin/geckodriver'
+        driver_path = r'/usr/bin/geckodriver'
         #windows
-        driver_path = r'D:\Program Files\firefox\geckodriver.exe'
+        # driver_path = r'D:\Program Files\firefox\geckodriver.exe'
         #获取到榜id
         bang_id = url.split('/')[-1]
         #文件路径
