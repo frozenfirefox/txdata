@@ -304,7 +304,7 @@ class Html:
         #linux
         driver_path = r'/usr/bin/geckodriver'
         #windows
-        # driver_path = r'D:\Program Files\firefox\geckodriver.exe'
+        driver_path = r'D:\Program Files\firefox\geckodriver.exe'
         #获取到榜id
         bang_id = url.split('/')[-1]
         #文件路径
@@ -376,7 +376,11 @@ class Html:
         sqlString = sqlString+prefix+"'"+(roleInfo[4].get_text().split('\xa0')[1])+"'"#服务器
         sqlString = sqlString+prefix+"'"+(roleInfo[0].get_text().replace('等级', ''))+"'"#等级
         sqlString = sqlString+prefix+"'"+(roleInfo[3].get_text())+"'"#职业
-        sqlString = sqlString+prefix+"''"#势力
+        if 2 in roleInfo[4].get_text().split('\xa0'):
+            shili = roleInfo[4].get_text().split('\xa0')[2]
+        else:
+            shili = ''
+        sqlString = sqlString+prefix+"'"+shili+"'"#势力
         sqlString = sqlString+prefix+"'"+(str(abilitiesNumber))+"'"#修为
         sqlString = sqlString+prefix+"'"+(str(equipmentNumber))+"'"#装瓶
         sqlString = sqlString+prefix+"'"+(str(all_abilities))+"'"#总修为
@@ -424,6 +428,17 @@ class Html:
             # print(name, '--', type, '--', jiahuNumber, '--', lianhuNumber)
         #####end 处理钻钱------------------------------------------------------------
 
+        ####start处理元魂珠
+        tableContents =  bs4Html.find(id = 'tableYHZ').find_all('div', 'TableContents')
+        yuanHunPrice = 0.00
+        for tableContent in tableContents:
+            liList = tableContent.find('ul', 'DataListStyle').find_all('li', 'li1')
+            if 10 in liList:
+                hunXiuwei = liList[10].get_text()
+                #计算元魂珠总价
+                yuanHunPrice = yuanHunPrice + function.account_jiahu(hunXiuwei)
+        ####end处理元魂珠
+
         ####start 处理孩子
         tableContents =  bs4Html.find(id = 'tableCHILD').find_all('div', 'TableContents')
         dianPrice = 0.00
@@ -431,7 +446,6 @@ class Html:
         for tableContent in tableContents:
             childs = tableContent.find_all('div', 'TableContents_2')
             for child in childs:
-                print(child)
                 ul = child.find_all('ul', 'DataListStyle')[1]
                 #获取加护值
                 li2 = ul.find_all('li', 'li2')
@@ -478,7 +492,8 @@ class Html:
             "zuanPrice": round(zuanPrice, 2),
             'dianPrice': round(dianPrice, 2),
             'tianshuPrice': round(tianshuPrice, 2),
-            'allPrice': round(zuanPrice+dianPrice+tianshuPrice, 2)
+            'yuanhunPrice': round(yuanHunPrice, 2),
+            'allPrice': round(zuanPrice+dianPrice+tianshuPrice+yuanHunPrice, 2)
         }
         # print(returnData)
         print(time.time())
@@ -487,10 +502,10 @@ class Html:
         # self.WriteFile('222.txt', equipments)
 
 #开始使用方法
-# html = Html('http://bang.tx3.163.com/bang/ranks?order_key=xiuwei&school=&sector=79%E7%BA%A7%E4%B8%93%E5%8C%BA&server=%E9%A3%9E%E9%B8%BF%E8%B8%8F%E9%9B%AA&count=20')
+html = Html('http://bang.tx3.163.com/bang/ranks?order_key=xiuwei&school=&sector=79%E7%BA%A7%E4%B8%93%E5%8C%BA&server=%E9%A3%9E%E9%B8%BF%E8%B8%8F%E9%9B%AA&count=20')
 # # html.main()
 # html.getList()
-# html.evalueate({'bang_id': '21_10885'})
+html.evalueate({'bang_id': '21_10885'})
 #半度回眸
 # http://bang.tx3.163.com/bang/role/21_10885
 #靖戈

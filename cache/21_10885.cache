@@ -6,7 +6,7 @@
 		<meta name="keywords" content="天下3英雄榜,天下3,英雄榜,天下3官网">
 		<meta name="description" content="英雄榜是《天下3》游戏信息查询工具，定时从游戏服务器提取数据，通过网页呈现给用户。英雄榜所有数据来源于真实游戏服务器，展示《天下3》游戏中的全部角色装备信息、角色技能、属性排名等，是权威的官方数据。">
 		<link rel="Shortcut Icon" type="image/ico" href="http://bang.tx3.163.com/favicon.ico">
-		<link rel="stylesheet" href="https://tx3.res.netease.com/pc/qt/20151231153005/css/comv4.css?v=20200828101007">
+		<link rel="stylesheet" href="https://tx3.res.netease.com/pc/qt/20151231153005/css/comv4.css">
 
 		
 <style>
@@ -282,7 +282,7 @@ padding-top: 5px;
 	<a href="javascript:void(0);" class="pTabItems">轩辕英魂</a>
 	<span>数据更新时间：
 		
-		2020-08-31 10:04
+		2020-08-31 14:38
 		
 	</span>
 	</p>
@@ -348,7 +348,7 @@ padding-top: 5px;
 			<span class="eq_type">帽子</span>
 			
 			<span class="eq_ding_opened"></span>
-			<div class="tx3TextBlock" name="equip_desc" style="background-color: transparent; line-height: 120%;"><span class="green">可炼化</span><span class="white"></span><br><span class="green">可重铸</span><span class="white"></span><br><span class="white">耐久度：301/343     品相：</span><span style="color: rgb(255, 255, 255);">崭新  </span><br><span class="white">物理防御：660</span><br><span class="white">法术防御：132</span><br><span class="white">使用门派：天机 </span><br><span class="white">必要等级：</span><span class="green"></span><span style="color: rgb(255, 255, 0);">天魂 </span><span class="green">壹天壹境界</span><br><span class="white">贵重等级：93</span><br><span class="red">禁交易 </span><span class="red">禁萃取 </span><br><span style="color: rgb(0, 170, 238);">生命值+791</span><br><span style="color: rgb(187, 68, 187);">知彼：受到其他玩家的伤害抵抗力提升41</span><br><span style="color: rgb(255, 136, 0);">·白刃：挥砍重击上升57</span><br><span style="color: rgb(255, 136, 0);">·崩击：钝击重击上升55</span><br><span style="color: rgb(0, 170, 238);">·命中+119</span><br><span style="color: rgb(187, 68, 187);">·人祸：对其他玩家的伤害加成力提升21</span><br><span style="color: rgb(255, 153, 102);">烽戍(8/8)</span><br><span style="color: rgb(255, 153, 102);">　　</span><span style="color: rgb(255, 153, 102);">盔 </span><span style="color: rgb(255, 153, 102);">肩铠 </span><span style="color: rgb(255, 153, 102);">铠 </span><span style="color: rgb(255, 153, 102);">腿甲 </span><span style="color: rgb(255, 153, 102);">摆 </span><span style="color: rgb(255, 153, 102);">腕甲 </span><span style="color: rgb(255, 153, 102);">带 </span><span style="color: rgb(255, 153, 102);">靴 </span><br><span style="color: rgb(255, 153, 102);">　　</span><span style="color: rgb(0, 255, 255);">特技属性：咒术净化+20(最大值20)</span><br><span class="green">天魄等级 LV.8</span><br><span style="color: rgb(126, 206, 244);">·风系重击+3[+11]</span><br><span style="color: rgb(126, 206, 244);">·回避+7[+18]</span><br><span style="color: rgb(126, 206, 244);">·知彼+4[+13]</span><br><span style="color: rgb(126, 206, 244);">·破甲：物理破防+16[+47]</span><br><span class="green">天魄组合特效</span><br><span style="color: rgb(126, 206, 244);">(</span><span style="color: rgb(126, 206, 244);">65</span><span style="color: rgb(126, 206, 244);">/64)</span><span style="color: rgb(126, 206, 244);">天魄·破甲:使用特定技能后，进入"天魄·破甲"状态，攻击忽视对方7%的物理防御力。状态持续35秒，冷却时间120秒。</span><br><span style="color: rgb(126, 206, 244);">(</span><span style="color: rgb(126, 206, 244);">65</span><span style="color: rgb(126, 206, 244);">/64)</span><span style="color: rgb(126, 206, 244);">全系技能威力+2.5%</span><br><span style="color: rgb(138, 0, 255);">白刃：挥砍重击上升12</span><br><div class="jhz-box"><span class="jiaHuZhi">加护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div><span class="green">力+56</span><br><span class="green">白刃：挥砍重击上升37</span><br><span class="green">追电：移动速度加成力上升58</span><br><span class="green">最大物理攻击力:+37</span><br><span style="color: rgb(255, 227, 38);">龙飞阵：技力值消耗减少5%</span><br><div class="lhz-box"><span class="jiaHuZhi">炼护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div></div>
+			<div class="tx3TextBlock" name="equip_desc" style="background-color: transparent; line-height: 120%;"><span class="green">可炼化</span><span class="white"></span><br><span class="green">可重铸</span><span class="white"></span><br><span class="white">耐久度：289/343     品相：</span><span style="color: rgb(255, 255, 255);">崭新  </span><br><span class="white">物理防御：660</span><br><span class="white">法术防御：132</span><br><span class="white">使用门派：天机 </span><br><span class="white">必要等级：</span><span class="green"></span><span style="color: rgb(255, 255, 0);">天魂 </span><span class="green">壹天壹境界</span><br><span class="white">贵重等级：93</span><br><span class="red">禁交易 </span><span class="red">禁萃取 </span><br><span style="color: rgb(0, 170, 238);">生命值+791</span><br><span style="color: rgb(187, 68, 187);">知彼：受到其他玩家的伤害抵抗力提升41</span><br><span style="color: rgb(255, 136, 0);">·白刃：挥砍重击上升57</span><br><span style="color: rgb(255, 136, 0);">·崩击：钝击重击上升55</span><br><span style="color: rgb(0, 170, 238);">·命中+119</span><br><span style="color: rgb(187, 68, 187);">·人祸：对其他玩家的伤害加成力提升21</span><br><span style="color: rgb(255, 153, 102);">烽戍(8/8)</span><br><span style="color: rgb(255, 153, 102);">　　</span><span style="color: rgb(255, 153, 102);">盔 </span><span style="color: rgb(255, 153, 102);">肩铠 </span><span style="color: rgb(255, 153, 102);">铠 </span><span style="color: rgb(255, 153, 102);">腿甲 </span><span style="color: rgb(255, 153, 102);">摆 </span><span style="color: rgb(255, 153, 102);">腕甲 </span><span style="color: rgb(255, 153, 102);">带 </span><span style="color: rgb(255, 153, 102);">靴 </span><br><span style="color: rgb(255, 153, 102);">　　</span><span style="color: rgb(0, 255, 255);">特技属性：咒术净化+20(最大值20)</span><br><span class="green">天魄等级 LV.8</span><br><span style="color: rgb(126, 206, 244);">·风系重击+3[+11]</span><br><span style="color: rgb(126, 206, 244);">·回避+7[+18]</span><br><span style="color: rgb(126, 206, 244);">·知彼+4[+13]</span><br><span style="color: rgb(126, 206, 244);">·破甲：物理破防+16[+47]</span><br><span class="green">天魄组合特效</span><br><span style="color: rgb(126, 206, 244);">(</span><span style="color: rgb(126, 206, 244);">65</span><span style="color: rgb(126, 206, 244);">/64)</span><span style="color: rgb(126, 206, 244);">天魄·破甲:使用特定技能后，进入"天魄·破甲"状态，攻击忽视对方7%的物理防御力。状态持续35秒，冷却时间120秒。</span><br><span style="color: rgb(126, 206, 244);">(</span><span style="color: rgb(126, 206, 244);">65</span><span style="color: rgb(126, 206, 244);">/64)</span><span style="color: rgb(126, 206, 244);">全系技能威力+2.5%</span><br><span style="color: rgb(138, 0, 255);">白刃：挥砍重击上升12</span><br><div class="jhz-box"><span class="jiaHuZhi">加护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div><span class="green">力+56</span><br><span class="green">白刃：挥砍重击上升37</span><br><span class="green">追电：移动速度加成力上升58</span><br><span class="green">最大物理攻击力:+37</span><br><span style="color: rgb(255, 227, 38);">龙飞阵：技力值消耗减少5%</span><br><div class="lhz-box"><span class="jiaHuZhi">炼护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div></div>
 		</div>
 	</div>
 </div>
@@ -481,14 +481,14 @@ padding-top: 5px;
 									
 										<div id="equip_father_21" class="equ_display_father">
 											
-<img src="http://res.tx3.cbg.163.com/images/new_wing/41636.gif" class="iImg">
-<a class="elvl elvl_6" href="javascript:void(0);"></a>
+<img src="http://res.tx3.cbg.163.com/images/new_wing/41634.gif" class="iImg">
+<a class="elvl elvl_5" href="javascript:void(0);"></a>
 <div id="equip_detail_21" class="detail_wrap_block">
 	<div class="dBox_tc_equip">
 		<div>
-			<h3 style="color:#FFFF00">真·睥睨寰宇</h3>
+			<h3 style="color:#FFFF00">真·震铄古今</h3>
 			<span class="eq_type">通溟</span>
-			<div class="tx3TextBlock" name="equip_desc" style="background-color: transparent; line-height: 120%;"><span class="white">生命值</span><span style="color: rgb(0, 170, 238);">+8100</span><span class="white">,</span><br><span class="white">破阵</span><span style="color: rgb(0, 170, 238);">+100</span><span class="white">,主属性</span><span style="color: rgb(0, 170, 238);">+210</span><span class="white">,</span><br><span class="white">24米内所有队伍成员主属性</span><span style="color: rgb(0, 170, 238);">+225</span><span class="white">,</span><br><span class="white">24米外所有队伍成员主属性</span><span style="color: rgb(0, 170, 238);">+50</span><span class="white"></span><br><span class="white">左翼：</span><br><span style="color: rgb(0, 170, 238);">力+34</span><br><span style="color: rgb(0, 170, 238);">疾+33</span><br><span style="color: rgb(0, 170, 238);">附加21点毒伤害</span><br><span style="color: rgb(187, 68, 187);">追电：移动速度加成力上升55</span><br><span style="color: rgb(255, 136, 0);">最大物理攻击力:+20</span><br><span class="white">右翼：</span><br><span style="color: rgb(0, 170, 238);">敏+31</span><br><span style="color: rgb(0, 170, 238);">体+37</span><br><span style="color: rgb(255, 136, 0);">白刃：挥砍重击上升18</span><br><span style="color: rgb(187, 68, 187);">追电：移动速度加成力上升55</span><br><span style="color: rgb(187, 68, 187);">扰心：施法打断力上升41</span><br><span class="white">组合属性：</span><br><span style="color: rgb(0, 170, 238);">体+20</span><br><span style="color: rgb(0, 255, 255);">特技属性：护心+3</span><br><span style="color: rgb(255, 136, 0);">法术防御力:+25</span><br></div>
+			<div class="tx3TextBlock" name="equip_desc" style="background-color: transparent; line-height: 120%;"><span class="white">生命值</span><span style="color: rgb(0, 170, 238);">+7200</span><span class="white">,</span><br><span class="white">破阵</span><span style="color: rgb(0, 170, 238);">+70</span><span class="white">,主属性</span><span style="color: rgb(0, 170, 238);">+170</span><span class="white">,</span><br><span class="white">24米内所有队伍成员主属性</span><span style="color: rgb(0, 170, 238);">+190</span><span class="white">,</span><br><span class="white">24米外所有队伍成员主属性</span><span style="color: rgb(0, 170, 238);">+40</span><span class="white"></span><br><span class="white">左翼：</span><br><span style="color: rgb(0, 170, 238);">力+34</span><br><span style="color: rgb(0, 170, 238);">疾+33</span><br><span style="color: rgb(0, 170, 238);">附加21点毒伤害</span><br><span style="color: rgb(187, 68, 187);">追电：移动速度加成力上升55</span><br><span style="color: rgb(255, 136, 0);">最大物理攻击力:+20</span><br><span class="white">右翼：</span><br><span style="color: rgb(0, 170, 238);">敏+31</span><br><span style="color: rgb(0, 170, 238);">体+37</span><br><span style="color: rgb(255, 136, 0);">白刃：挥砍重击上升18</span><br><span style="color: rgb(187, 68, 187);">追电：移动速度加成力上升55</span><br><span style="color: rgb(187, 68, 187);">扰心：施法打断力上升41</span><br><span class="white">组合属性：</span><br><span style="color: rgb(0, 170, 238);">体+20</span><br><span style="color: rgb(0, 255, 255);">特技属性：护心+3</span><br><span style="color: rgb(255, 136, 0);">法术防御力:+25</span><br></div>
 		</div>
 	</div>
 </div>
@@ -514,7 +514,7 @@ padding-top: 5px;
 			<span class="eq_type">衣服</span>
 			
 			<span class="eq_ding_opened"></span>
-			<div class="tx3TextBlock" name="equip_desc" style="background-color: transparent; line-height: 120%;"><span class="green">可炼化</span><span class="white"></span><br><span class="green">可重铸</span><span class="white"></span><br><span class="white">耐久度：298/373     品相：</span><span style="color: rgb(255, 255, 255);">崭新  </span><br><span class="white">物理防御：971</span><br><span class="white">法术防御：198</span><br><span class="white">使用门派：天机 </span><br><span class="white">必要等级：</span><span class="green"></span><span style="color: rgb(255, 255, 0);">天魂 </span><span class="green">壹天壹境界</span><br><span class="white">贵重等级：93</span><br><span class="red">禁交易 </span><span class="red">禁萃取 </span><br><span style="color: rgb(0, 170, 238);">生命值+1189</span><br><span style="color: rgb(187, 68, 187);">知彼：受到其他玩家的伤害抵抗力提升41</span><br><span style="color: rgb(255, 136, 0);">·白刃：挥砍重击上升77</span><br><span style="color: rgb(255, 136, 0);">·崩击：钝击重击上升72</span><br><span style="color: rgb(0, 170, 238);">·命中+155</span><br><span style="color: rgb(187, 68, 187);">·人祸：对其他玩家的伤害加成力提升21</span><br><span style="color: rgb(255, 153, 102);">烽戍(8/8)</span><br><span style="color: rgb(255, 153, 102);">　　</span><span style="color: rgb(255, 153, 102);">盔 </span><span style="color: rgb(255, 153, 102);">肩铠 </span><span style="color: rgb(255, 153, 102);">铠 </span><span style="color: rgb(255, 153, 102);">腿甲 </span><span style="color: rgb(255, 153, 102);">摆 </span><span style="color: rgb(255, 153, 102);">腕甲 </span><span style="color: rgb(255, 153, 102);">带 </span><span style="color: rgb(255, 153, 102);">靴 </span><br><span style="color: rgb(255, 153, 102);">　　</span><span style="color: rgb(0, 255, 255);">特技属性：咒术净化+20(最大值20)</span><br><span class="yellow">天魄等级 LV.9</span><br><span style="color: rgb(126, 206, 244);">·挑灯看剑：最大攻击+4</span><span class="yellow">[+14]</span><br><span style="color: rgb(126, 206, 244);">·知彼+4</span><span class="yellow">[+18]</span><br><span style="color: rgb(126, 206, 244);">·破甲：物理破防+16</span><span class="yellow">[+57]</span><br><span style="color: rgb(126, 206, 244);">·风系化解+6</span><span class="yellow">[+22]</span><br><span class="green">天魄组合特效</span><br><span style="color: rgb(126, 206, 244);">(</span><span style="color: rgb(126, 206, 244);">65</span><span style="color: rgb(126, 206, 244);">/64)</span><span style="color: rgb(126, 206, 244);">天魄·破甲:使用特定技能后，进入"天魄·破甲"状态，攻击忽视对方7%的物理防御力。状态持续35秒，冷却时间120秒。</span><br><span style="color: rgb(126, 206, 244);">(</span><span style="color: rgb(126, 206, 244);">65</span><span style="color: rgb(126, 206, 244);">/64)</span><span style="color: rgb(126, 206, 244);">全系技能威力+2.5%</span><br><span style="color: rgb(138, 0, 255);">崩击：钝击重击上升13</span><br><div class="jhz-box"><span class="jiaHuZhi">加护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div><span class="green">力+54</span><br><span class="green">白刃：挥砍重击上升36</span><br><span class="green">追电：移动速度加成力上升58</span><br><span class="green">最大物理攻击力:+38</span><br><span style="color: rgb(255, 227, 38);">铁马秋风：技力值消耗减少4%</span><br><div class="lhz-box"><span class="jiaHuZhi">炼护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div></div>
+			<div class="tx3TextBlock" name="equip_desc" style="background-color: transparent; line-height: 120%;"><span class="green">可炼化</span><span class="white"></span><br><span class="green">可重铸</span><span class="white"></span><br><span class="white">耐久度：260/373     品相：</span><span style="color: rgb(255, 255, 255);">崭新  </span><br><span class="white">物理防御：971</span><br><span class="white">法术防御：198</span><br><span class="white">使用门派：天机 </span><br><span class="white">必要等级：</span><span class="green"></span><span style="color: rgb(255, 255, 0);">天魂 </span><span class="green">壹天壹境界</span><br><span class="white">贵重等级：93</span><br><span class="red">禁交易 </span><span class="red">禁萃取 </span><br><span style="color: rgb(0, 170, 238);">生命值+1189</span><br><span style="color: rgb(187, 68, 187);">知彼：受到其他玩家的伤害抵抗力提升41</span><br><span style="color: rgb(255, 136, 0);">·白刃：挥砍重击上升77</span><br><span style="color: rgb(255, 136, 0);">·崩击：钝击重击上升72</span><br><span style="color: rgb(0, 170, 238);">·命中+155</span><br><span style="color: rgb(187, 68, 187);">·人祸：对其他玩家的伤害加成力提升21</span><br><span style="color: rgb(255, 153, 102);">烽戍(8/8)</span><br><span style="color: rgb(255, 153, 102);">　　</span><span style="color: rgb(255, 153, 102);">盔 </span><span style="color: rgb(255, 153, 102);">肩铠 </span><span style="color: rgb(255, 153, 102);">铠 </span><span style="color: rgb(255, 153, 102);">腿甲 </span><span style="color: rgb(255, 153, 102);">摆 </span><span style="color: rgb(255, 153, 102);">腕甲 </span><span style="color: rgb(255, 153, 102);">带 </span><span style="color: rgb(255, 153, 102);">靴 </span><br><span style="color: rgb(255, 153, 102);">　　</span><span style="color: rgb(0, 255, 255);">特技属性：咒术净化+20(最大值20)</span><br><span class="yellow">天魄等级 LV.9</span><br><span style="color: rgb(126, 206, 244);">·挑灯看剑：最大攻击+4</span><span class="yellow">[+14]</span><br><span style="color: rgb(126, 206, 244);">·知彼+4</span><span class="yellow">[+18]</span><br><span style="color: rgb(126, 206, 244);">·破甲：物理破防+16</span><span class="yellow">[+57]</span><br><span style="color: rgb(126, 206, 244);">·风系化解+6</span><span class="yellow">[+22]</span><br><span class="green">天魄组合特效</span><br><span style="color: rgb(126, 206, 244);">(</span><span style="color: rgb(126, 206, 244);">65</span><span style="color: rgb(126, 206, 244);">/64)</span><span style="color: rgb(126, 206, 244);">天魄·破甲:使用特定技能后，进入"天魄·破甲"状态，攻击忽视对方7%的物理防御力。状态持续35秒，冷却时间120秒。</span><br><span style="color: rgb(126, 206, 244);">(</span><span style="color: rgb(126, 206, 244);">65</span><span style="color: rgb(126, 206, 244);">/64)</span><span style="color: rgb(126, 206, 244);">全系技能威力+2.5%</span><br><span style="color: rgb(138, 0, 255);">崩击：钝击重击上升13</span><br><div class="jhz-box"><span class="jiaHuZhi">加护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div><span class="green">力+54</span><br><span class="green">白刃：挥砍重击上升36</span><br><span class="green">追电：移动速度加成力上升58</span><br><span class="green">最大物理攻击力:+38</span><br><span style="color: rgb(255, 227, 38);">铁马秋风：技力值消耗减少4%</span><br><div class="lhz-box"><span class="jiaHuZhi">炼护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div></div>
 		</div>
 	</div>
 </div>
@@ -596,7 +596,7 @@ padding-top: 5px;
 			<span class="eq_type">腰带</span>
 			
 			<span class="eq_ding_opened"></span>
-			<div class="tx3TextBlock" name="equip_desc" style="background-color: transparent; line-height: 120%;"><span class="green">可重铸</span><span class="white"></span><br><span class="white">耐久度：270/322     品相：</span><span style="color: rgb(255, 255, 255);">崭新  </span><br><span class="white">物理防御：442</span><br><span class="white">使用门派：天机 </span><br><span class="white">必要等级：</span><span class="green"></span><span style="color: rgb(255, 255, 0);">天魂 </span><span class="green">壹天壹境界</span><br><span class="white">贵重等级：93</span><br><span class="red">禁交易 </span><span class="red">禁萃取 </span><br><span style="color: rgb(0, 170, 238);">生命值+1562</span><br><span style="color: rgb(187, 68, 187);">知彼：受到其他玩家的伤害抵抗力提升41</span><br><span style="color: rgb(255, 136, 0);">·白刃：挥砍重击上升54</span><br><span style="color: rgb(255, 136, 0);">·崩击：钝击重击上升47</span><br><span style="color: rgb(0, 170, 238);">·命中+99</span><br><span style="color: rgb(187, 68, 187);">·人祸：对其他玩家的伤害加成力提升21</span><br><span style="color: rgb(255, 153, 102);">烽戍(8/8)</span><br><span style="color: rgb(255, 153, 102);">　　</span><span style="color: rgb(255, 153, 102);">盔 </span><span style="color: rgb(255, 153, 102);">肩铠 </span><span style="color: rgb(255, 153, 102);">铠 </span><span style="color: rgb(255, 153, 102);">腿甲 </span><span style="color: rgb(255, 153, 102);">摆 </span><span style="color: rgb(255, 153, 102);">腕甲 </span><span style="color: rgb(255, 153, 102);">带 </span><span style="color: rgb(255, 153, 102);">靴 </span><br><span style="color: rgb(255, 153, 102);">　　</span><span style="color: rgb(0, 255, 255);">特技属性：咒术净化+20(最大值20)</span><br><span class="green">天魄等级 LV.8</span><br><span style="color: rgb(126, 206, 244);">·疾影剑：最大攻击+10[+29]</span><br><span style="color: rgb(126, 206, 244);">·知彼+4[+14]</span><br><span style="color: rgb(126, 206, 244);">·破甲：物理破防+16[+47]</span><br><span style="color: rgb(126, 206, 244);">·回避+6[+18]</span><br><span class="green">天魄组合特效</span><br><span style="color: rgb(126, 206, 244);">(</span><span style="color: rgb(126, 206, 244);">65</span><span style="color: rgb(126, 206, 244);">/64)</span><span style="color: rgb(126, 206, 244);">天魄·破甲:使用特定技能后，进入"天魄·破甲"状态，攻击忽视对方7%的物理防御力。状态持续35秒，冷却时间120秒。</span><br><span style="color: rgb(126, 206, 244);">(</span><span style="color: rgb(126, 206, 244);">65</span><span style="color: rgb(126, 206, 244);">/64)</span><span style="color: rgb(126, 206, 244);">全系技能威力+2.5%</span><br><span style="color: rgb(138, 0, 255);">白刃：挥砍重击上升12</span><br><div class="jhz-box"><span class="jiaHuZhi">加护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div></div>
+			<div class="tx3TextBlock" name="equip_desc" style="background-color: transparent; line-height: 120%;"><span class="green">可重铸</span><span class="white"></span><br><span class="white">耐久度：247/322     品相：</span><span style="color: rgb(255, 255, 255);">崭新  </span><br><span class="white">物理防御：442</span><br><span class="white">使用门派：天机 </span><br><span class="white">必要等级：</span><span class="green"></span><span style="color: rgb(255, 255, 0);">天魂 </span><span class="green">壹天壹境界</span><br><span class="white">贵重等级：93</span><br><span class="red">禁交易 </span><span class="red">禁萃取 </span><br><span style="color: rgb(0, 170, 238);">生命值+1562</span><br><span style="color: rgb(187, 68, 187);">知彼：受到其他玩家的伤害抵抗力提升41</span><br><span style="color: rgb(255, 136, 0);">·白刃：挥砍重击上升54</span><br><span style="color: rgb(255, 136, 0);">·崩击：钝击重击上升47</span><br><span style="color: rgb(0, 170, 238);">·命中+99</span><br><span style="color: rgb(187, 68, 187);">·人祸：对其他玩家的伤害加成力提升21</span><br><span style="color: rgb(255, 153, 102);">烽戍(8/8)</span><br><span style="color: rgb(255, 153, 102);">　　</span><span style="color: rgb(255, 153, 102);">盔 </span><span style="color: rgb(255, 153, 102);">肩铠 </span><span style="color: rgb(255, 153, 102);">铠 </span><span style="color: rgb(255, 153, 102);">腿甲 </span><span style="color: rgb(255, 153, 102);">摆 </span><span style="color: rgb(255, 153, 102);">腕甲 </span><span style="color: rgb(255, 153, 102);">带 </span><span style="color: rgb(255, 153, 102);">靴 </span><br><span style="color: rgb(255, 153, 102);">　　</span><span style="color: rgb(0, 255, 255);">特技属性：咒术净化+20(最大值20)</span><br><span class="green">天魄等级 LV.8</span><br><span style="color: rgb(126, 206, 244);">·疾影剑：最大攻击+10[+29]</span><br><span style="color: rgb(126, 206, 244);">·知彼+4[+14]</span><br><span style="color: rgb(126, 206, 244);">·破甲：物理破防+16[+47]</span><br><span style="color: rgb(126, 206, 244);">·回避+6[+18]</span><br><span class="green">天魄组合特效</span><br><span style="color: rgb(126, 206, 244);">(</span><span style="color: rgb(126, 206, 244);">65</span><span style="color: rgb(126, 206, 244);">/64)</span><span style="color: rgb(126, 206, 244);">天魄·破甲:使用特定技能后，进入"天魄·破甲"状态，攻击忽视对方7%的物理防御力。状态持续35秒，冷却时间120秒。</span><br><span style="color: rgb(126, 206, 244);">(</span><span style="color: rgb(126, 206, 244);">65</span><span style="color: rgb(126, 206, 244);">/64)</span><span style="color: rgb(126, 206, 244);">全系技能威力+2.5%</span><br><span style="color: rgb(138, 0, 255);">白刃：挥砍重击上升12</span><br><div class="jhz-box"><span class="jiaHuZhi">加护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div></div>
 		</div>
 	</div>
 </div>
@@ -621,7 +621,7 @@ padding-top: 5px;
 			<span class="eq_type">单刀</span>
 			
 			
-			<div class="tx3TextBlock" name="equip_desc" style="background-color: transparent; line-height: 120%;"><img src="http://res.tx3.netease.com/qt/12/bang/images/baozi/921.gif"><span class="white"></span><img src="http://res.tx3.netease.com/qt/12/bang/images/baozi/921.gif"><span class="white"></span><img src="http://res.tx3.netease.com/qt/12/bang/images/baozi/921.gif"><span class="white"></span><img src="http://res.tx3.netease.com/qt/12/bang/images/baozi/921.gif"><span class="white"></span><img src="http://res.tx3.netease.com/qt/12/bang/images/baozi/921.gif"><span class="white"></span><br><span style="color: rgb(207, 181, 91);">“极北之北，深寒益寒”</span><br><span class="green">可炼化</span><span class="white"></span><br><span class="green">可重铸</span><span class="white"></span><br><span class="white">耐久度：324/364     品相：</span><span style="color: rgb(255, 255, 255);">崭新  </span><br><span style="color: rgb(255, 255, 0);">物理攻击力：702</span><span class="green">(7)</span><span class="white"></span><span style="color: rgb(255, 255, 0);">～1112</span><span class="green">(44)</span><span class="white"></span><br><span style="color: rgb(255, 255, 0);">法术攻击力：411</span><span class="green">(5)</span><span class="white"></span><span style="color: rgb(255, 255, 0);">～651</span><span class="green">(12)</span><span class="white"></span><br><span class="white">攻速：24</span><br><span class="white">使用门派：天机 </span><br><span class="white">必要等级：80</span><br><span class="white">贵重等级：95</span><br><span class="red">禁交易 </span><br><span style="color: rgb(0, 170, 238);">命中+113</span><span class="green">(4)</span><span></span><br><span class="green">2%的几率发动“颤栗”状态</span><br><span style="color: rgb(187, 68, 187);">·人祸：对其他玩家的伤害加成力提升57</span><br><span style="color: rgb(187, 68, 187);">·人祸：对其他玩家的伤害加成力提升57</span><br><span style="color: rgb(187, 68, 187);">·万钧：重击伤害加成力+38</span><br><span style="color: rgb(255, 136, 0);">·白刃：挥砍重击上升64</span><br><span style="color: rgb(0, 255, 255);">·</span><span class="white"></span><span style="color: rgb(187, 68, 187);">知彼：受到其他玩家的伤害抵抗力提升55</span><br><span style="color: rgb(255, 255, 0);">磐石+ 90</span><br><span style="color: rgb(255, 255, 0);">敏+ 47</span><br><span style="color: rgb(2, 220, 220);">门派专属加护特技：踏歌·神威+20</span><br><span style="color: rgb(2, 220, 220);">斗战变: 最高系重击以203%转化为会心，会心按52%的数值比例转化为当前最高系的重击。</span><br><span style="color: rgb(138, 0, 255);">最大物理攻击力:+57</span><br><div class="jhz-box"><span class="jiaHuZhi">加护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div><span class="green">力+57</span><br><span class="green">白刃：挥砍重击上升39</span><br><span class="green">追电：移动速度加成力上升48</span><br><span class="green">最大物理攻击力:+37</span><br><div class="lhz-box"><span class="jiaHuZhi">炼护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div><span class="green">半度回眸乄：</span><br><span style="color: rgb(207, 181, 59);">天机营第一位双护20--回眸 </span><br><span style="color: rgb(136, 136, 136);">2017年3月29日3点15分21秒</span><br></div>
+			<div class="tx3TextBlock" name="equip_desc" style="background-color: transparent; line-height: 120%;"><img src="http://res.tx3.netease.com/qt/12/bang/images/baozi/921.gif"><span class="white"></span><img src="http://res.tx3.netease.com/qt/12/bang/images/baozi/921.gif"><span class="white"></span><img src="http://res.tx3.netease.com/qt/12/bang/images/baozi/921.gif"><span class="white"></span><img src="http://res.tx3.netease.com/qt/12/bang/images/baozi/921.gif"><span class="white"></span><img src="http://res.tx3.netease.com/qt/12/bang/images/baozi/921.gif"><span class="white"></span><br><span style="color: rgb(207, 181, 91);">“极北之北，深寒益寒”</span><br><span class="green">可炼化</span><span class="white"></span><br><span class="green">可重铸</span><span class="white"></span><br><span class="white">耐久度：266/364     品相：</span><span style="color: rgb(255, 255, 255);">崭新  </span><br><span style="color: rgb(255, 255, 0);">物理攻击力：702</span><span class="green">(7)</span><span class="white"></span><span style="color: rgb(255, 255, 0);">～1112</span><span class="green">(44)</span><span class="white"></span><br><span style="color: rgb(255, 255, 0);">法术攻击力：411</span><span class="green">(5)</span><span class="white"></span><span style="color: rgb(255, 255, 0);">～651</span><span class="green">(12)</span><span class="white"></span><br><span class="white">攻速：24</span><br><span class="white">使用门派：天机 </span><br><span class="white">必要等级：80</span><br><span class="white">贵重等级：95</span><br><span class="red">禁交易 </span><br><span style="color: rgb(0, 170, 238);">命中+113</span><span class="green">(4)</span><span></span><br><span class="green">2%的几率发动“颤栗”状态</span><br><span style="color: rgb(187, 68, 187);">·人祸：对其他玩家的伤害加成力提升57</span><br><span style="color: rgb(187, 68, 187);">·人祸：对其他玩家的伤害加成力提升57</span><br><span style="color: rgb(187, 68, 187);">·万钧：重击伤害加成力+38</span><br><span style="color: rgb(255, 136, 0);">·白刃：挥砍重击上升64</span><br><span style="color: rgb(0, 255, 255);">·</span><span class="white"></span><span style="color: rgb(187, 68, 187);">知彼：受到其他玩家的伤害抵抗力提升55</span><br><span style="color: rgb(255, 255, 0);">磐石+ 90</span><br><span style="color: rgb(255, 255, 0);">敏+ 47</span><br><span style="color: rgb(2, 220, 220);">门派专属加护特技：踏歌·神威+20</span><br><span style="color: rgb(2, 220, 220);">斗战变: 最高系重击以203%转化为会心，会心按52%的数值比例转化为当前最高系的重击。</span><br><span style="color: rgb(138, 0, 255);">最大物理攻击力:+57</span><br><div class="jhz-box"><span class="jiaHuZhi">加护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div><span class="green">力+57</span><br><span class="green">白刃：挥砍重击上升39</span><br><span class="green">追电：移动速度加成力上升48</span><br><span class="green">最大物理攻击力:+37</span><br><div class="lhz-box"><span class="jiaHuZhi">炼护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div><span class="green">半度回眸乄：</span><br><span style="color: rgb(207, 181, 59);">天机营第一位双护20--回眸 </span><br><span style="color: rgb(136, 136, 136);">2017年3月29日3点15分21秒</span><br></div>
 		</div>
 	</div>
 </div>
@@ -636,19 +636,19 @@ padding-top: 5px;
 										
 										<div id="equip_father_40" class="equ_display_father">
 											
-<img src="http://res.tx3.cbg.163.com/images/role/equip/170075.jpg" class="iImg">
-<a class="elvl elvl_4" href="javascript:void(0);"></a>
+<img src="http://res.tx3.cbg.163.com/images/role/equip/170041.jpg" class="iImg">
+<a class="elvl elvl_3" href="javascript:void(0);"></a>
 <div id="equip_detail_40" class="detail_wrap_block">
 	<div class="dBox_tc_equip">
 		<div>
 			
-			<h3 style="color:#FFFF00">征蓬出汉塞·战</h3>
+			<h3 style="color:#BB44BB">乾阳</h3>
 			
 			
 			<span class="eq_type">戒指</span>
 			
-			<span class="eq_ding_opened"></span>
-			<div class="tx3TextBlock" name="equip_desc" style="background-color: transparent; line-height: 120%;"><span class="green">可炼化</span><span class="white"></span><br><span class="green">可重铸</span><span class="white"></span><br><span class="white">耐久度：302/342     品相：</span><span style="color: rgb(255, 255, 255);">崭新  </span><br><span class="white">必要等级：78</span><br><span class="white">贵重等级：108</span><br><span class="red">禁交易 </span><br><span style="color: rgb(0, 170, 238);">生命值+1323</span><br><span style="color: rgb(0, 170, 238);">力+58</span><br><span style="color: rgb(0, 170, 238);">体+54</span><br><span style="color: rgb(255, 136, 0);">白刃：挥砍重击上升64</span><br><span style="color: rgb(255, 136, 0);">崩击：钝击重击上升60</span><br><span style="color: rgb(255, 136, 0);">阴伤：穿刺重击上升64</span><br><span style="color: rgb(187, 68, 187);">追电：移动速度加成力上升33</span><br><span style="color: rgb(0, 255, 255);">特技属性：护心+2</span><br><span style="color: rgb(0, 170, 238);">·命中+85</span><br><span style="color: rgb(255, 136, 0);">·最大物理攻击力:+62</span><br><span style="color: rgb(187, 68, 187);">·万钧：重击伤害加成力+31</span><br><span style="color: rgb(138, 0, 255);">崩击：钝击重击上升12</span><br><div class="jhz-box"><span class="jiaHuZhi">加护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div><span class="green">力+64</span><br><span class="green">白刃：挥砍重击上升41</span><br><span class="green">追电：移动速度加成力上升48</span><br><span class="green">最大物理攻击力:+42</span><br><div class="lhz-box"><span class="jiaHuZhi">炼护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div></div>
+			
+			<div class="tx3TextBlock" name="equip_desc" style="background-color: transparent; line-height: 120%;"><span style="color: rgb(255, 153, 255);">戒指中蕴含了乾阳真火的力量。</span><br><span class="green">可炼化</span><span class="white"></span><br><span class="white">耐久度：216/288     品相：</span><span style="color: rgb(255, 255, 255);">崭新  </span><br><span class="white">必要等级：74</span><br><span class="white">贵重等级：86</span><br><span class="red">禁交易 </span><br><span style="color: rgb(0, 170, 238);">命中+53</span><br><span style="color: rgb(0, 170, 238);">生命值+940</span><br><span style="color: rgb(0, 170, 238);">附加33点火伤害</span><br><span style="color: rgb(0, 170, 238);">附加25点风伤害</span><br><span style="color: rgb(255, 136, 0);">爆炎：火系重击上升29</span><br><span style="color: rgb(255, 136, 0);">狂风：风系重击上升33</span><br><span style="color: rgb(255, 255, 0);">乾阳：副本除魔专用特技。释放负面技能后有20%几率释放乾阳火</span><br><div class="jhz-box"><span class="jiaHuZhi">加护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:120px"></span></p><br></div><span class="green">力+48</span><br><span class="green">白刃：挥砍重击上升32</span><br><span class="green">追电：移动速度加成力上升44</span><br><span class="green">最大物理攻击力:+31</span><br><div class="lhz-box"><span class="jiaHuZhi">炼护值:</span><p class="percentBg" style="width:120px"><span class="percentFornt" style="width:120px"></span></p><br></div><span style="color: rgb(215, 100, 32);">对怪物物理伤害增加40点</span><br><span style="color: rgb(215, 100, 32);">对怪物法术伤害增加40点</span><span></span></div>
 		</div>
 	</div>
 </div>
@@ -718,19 +718,19 @@ padding-top: 5px;
 										
 										<div id="equip_father_50" class="equ_display_father">
 											
-<img src="http://res.tx3.cbg.163.com/images/role/equip/170075.jpg" class="iImg">
-<a class="elvl elvl_4" href="javascript:void(0);"></a>
+<img src="http://res.tx3.cbg.163.com/images/role/equip/170032.jpg" class="iImg">
+<a class="elvl elvl_3" href="javascript:void(0);"></a>
 <div id="equip_detail_50" class="detail_wrap_block">
 	<div class="dBox_tc_equip">
 		<div>
 			
-			<h3 style="color:#FFFF00">征蓬出汉塞·战</h3>
+			<h3 style="color:#BB44BB">牡丹怨</h3>
 			
 			
 			<span class="eq_type">戒指</span>
 			
-			<span class="eq_ding_opened"></span>
-			<div class="tx3TextBlock" name="equip_desc" style="background-color: transparent; line-height: 120%;"><span class="green">可炼化</span><span class="white"></span><br><span class="green">可重铸</span><span class="white"></span><br><span class="white">耐久度：287/342     品相：</span><span style="color: rgb(255, 255, 255);">崭新  </span><br><span class="white">必要等级：78</span><br><span class="white">贵重等级：108</span><br><span class="red">禁交易 </span><br><span style="color: rgb(0, 170, 238);">生命值+1343</span><br><span style="color: rgb(0, 170, 238);">力+51</span><br><span style="color: rgb(0, 170, 238);">体+51</span><br><span style="color: rgb(255, 136, 0);">白刃：挥砍重击上升62</span><br><span style="color: rgb(255, 136, 0);">崩击：钝击重击上升65</span><br><span style="color: rgb(255, 136, 0);">阴伤：穿刺重击上升65</span><br><span style="color: rgb(187, 68, 187);">追电：移动速度加成力上升27</span><br><span style="color: rgb(0, 255, 255);">特技属性：护心+2</span><br><span style="color: rgb(0, 170, 238);">·命中+83</span><br><span style="color: rgb(255, 136, 0);">·最大物理攻击力:+62</span><br><span style="color: rgb(187, 68, 187);">·万钧：重击伤害加成力+32</span><br><span style="color: rgb(138, 0, 255);">崩击：钝击重击上升12</span><br><div class="jhz-box"><span class="jiaHuZhi">加护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div><span class="green">力+62</span><br><span class="green">白刃：挥砍重击上升41</span><br><span class="green">追电：移动速度加成力上升49</span><br><span class="green">最大物理攻击力:+41</span><br><div class="lhz-box"><span class="jiaHuZhi">炼护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div></div>
+			
+			<div class="tx3TextBlock" name="equip_desc" style="background-color: transparent; line-height: 120%;"><span style="color: rgb(255, 153, 255);">“如花美眷，似水流年。”——墨文君书。</span><br><span class="green">可炼化</span><span class="white"></span><br><span class="white">耐久度：222/288     品相：</span><span style="color: rgb(255, 255, 255);">崭新  </span><br><span class="white">必要等级：74</span><br><span class="white">贵重等级：86</span><br><span class="red">禁交易 </span><br><span style="color: rgb(0, 170, 238);">命中+50</span><br><span style="color: rgb(0, 170, 238);">生命值+818</span><br><span style="color: rgb(0, 170, 238);">疾+32</span><br><span style="color: rgb(0, 170, 238);">体+29</span><br><span style="color: rgb(255, 136, 0);">猛毒：毒系重击上升33</span><br><span style="color: rgb(255, 136, 0);">阴伤：穿刺重击上升36</span><br><span style="color: rgb(255, 255, 0);">牡丹怨：副本除魔专用特技。释放负面技能后有20%几率释放剧毒，对自身周围的怪物造成持续伤害</span><br><div class="jhz-box"><span class="jiaHuZhi">加护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:120px"></span></p><br></div><span class="green">力+47</span><br><span class="green">白刃：挥砍重击上升31</span><br><span class="green">追电：移动速度加成力上升28</span><br><span class="green">最大物理攻击力:+31</span><br><div class="lhz-box"><span class="jiaHuZhi">炼护值:</span><p class="percentBg" style="width:120px"><span class="percentFornt" style="width:120px"></span></p><br></div><span style="color: rgb(215, 100, 32);">对怪物物理伤害增加40点</span><br><span style="color: rgb(215, 100, 32);">对怪物法术伤害增加40点</span><span></span></div>
 		</div>
 	</div>
 </div>
@@ -760,7 +760,7 @@ padding-top: 5px;
 			<span class="eq_type">裤子</span>
 			
 			<span class="eq_ding_opened"></span>
-			<div class="tx3TextBlock" name="equip_desc" style="background-color: transparent; line-height: 120%;"><span class="green">可炼化</span><span class="white"></span><br><span class="green">可重铸</span><span class="white"></span><br><span class="white">耐久度：283/333     品相：</span><span style="color: rgb(255, 255, 255);">崭新  </span><br><span class="white">物理防御：549</span><br><span class="white">使用门派：天机 </span><br><span class="white">必要等级：</span><span class="green"></span><span style="color: rgb(255, 255, 0);">天魂 </span><span class="green">壹天壹境界</span><br><span class="white">贵重等级：93</span><br><span class="red">禁交易 </span><span class="red">禁萃取 </span><br><span style="color: rgb(0, 170, 238);">生命值+764</span><br><span style="color: rgb(187, 68, 187);">知彼：受到其他玩家的伤害抵抗力提升41</span><br><span style="color: rgb(255, 136, 0);">·白刃：挥砍重击上升59</span><br><span style="color: rgb(255, 136, 0);">·崩击：钝击重击上升57</span><br><span style="color: rgb(0, 170, 238);">·命中+121</span><br><span style="color: rgb(187, 68, 187);">·人祸：对其他玩家的伤害加成力提升21</span><br><span style="color: rgb(255, 153, 102);">烽戍(8/8)</span><br><span style="color: rgb(255, 153, 102);">　　</span><span style="color: rgb(255, 153, 102);">盔 </span><span style="color: rgb(255, 153, 102);">肩铠 </span><span style="color: rgb(255, 153, 102);">铠 </span><span style="color: rgb(255, 153, 102);">腿甲 </span><span style="color: rgb(255, 153, 102);">摆 </span><span style="color: rgb(255, 153, 102);">腕甲 </span><span style="color: rgb(255, 153, 102);">带 </span><span style="color: rgb(255, 153, 102);">靴 </span><br><span style="color: rgb(255, 153, 102);">　　</span><span style="color: rgb(0, 255, 255);">特技属性：咒术净化+20(最大值20)</span><br><span class="green">天魄等级 LV.8</span><br><span style="color: rgb(126, 206, 244);">·水缓行：束手命中力+10[+33]</span><br><span style="color: rgb(126, 206, 244);">·知彼+4[+15]</span><br><span style="color: rgb(126, 206, 244);">·钝击化解+10[+28]</span><br><span style="color: rgb(126, 206, 244);">·破甲：物理破防+15[+40]</span><br><span class="green">天魄组合特效</span><br><span style="color: rgb(126, 206, 244);">(</span><span style="color: rgb(126, 206, 244);">65</span><span style="color: rgb(126, 206, 244);">/64)</span><span style="color: rgb(126, 206, 244);">天魄·破甲:使用特定技能后，进入"天魄·破甲"状态，攻击忽视对方7%的物理防御力。状态持续35秒，冷却时间120秒。</span><br><span style="color: rgb(126, 206, 244);">(</span><span style="color: rgb(126, 206, 244);">65</span><span style="color: rgb(126, 206, 244);">/64)</span><span style="color: rgb(126, 206, 244);">全系技能威力+2.5%</span><br><span style="color: rgb(138, 0, 255);">崩击：钝击重击上升12</span><br><div class="jhz-box"><span class="jiaHuZhi">加护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div><span class="green">力+56</span><br><span class="green">崩击：钝击重击上升38</span><br><span class="green">追电：移动速度加成力上升59</span><br><span class="green">最大物理攻击力:+37</span><br><span style="color: rgb(255, 227, 38);">飞云断：技能威力增加0.5%</span><br><div class="lhz-box"><span class="jiaHuZhi">炼护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div></div>
+			<div class="tx3TextBlock" name="equip_desc" style="background-color: transparent; line-height: 120%;"><span class="green">可炼化</span><span class="white"></span><br><span class="green">可重铸</span><span class="white"></span><br><span class="white">耐久度：257/333     品相：</span><span style="color: rgb(255, 255, 255);">崭新  </span><br><span class="white">物理防御：549</span><br><span class="white">使用门派：天机 </span><br><span class="white">必要等级：</span><span class="green"></span><span style="color: rgb(255, 255, 0);">天魂 </span><span class="green">壹天壹境界</span><br><span class="white">贵重等级：93</span><br><span class="red">禁交易 </span><span class="red">禁萃取 </span><br><span style="color: rgb(0, 170, 238);">生命值+764</span><br><span style="color: rgb(187, 68, 187);">知彼：受到其他玩家的伤害抵抗力提升41</span><br><span style="color: rgb(255, 136, 0);">·白刃：挥砍重击上升59</span><br><span style="color: rgb(255, 136, 0);">·崩击：钝击重击上升57</span><br><span style="color: rgb(0, 170, 238);">·命中+121</span><br><span style="color: rgb(187, 68, 187);">·人祸：对其他玩家的伤害加成力提升21</span><br><span style="color: rgb(255, 153, 102);">烽戍(8/8)</span><br><span style="color: rgb(255, 153, 102);">　　</span><span style="color: rgb(255, 153, 102);">盔 </span><span style="color: rgb(255, 153, 102);">肩铠 </span><span style="color: rgb(255, 153, 102);">铠 </span><span style="color: rgb(255, 153, 102);">腿甲 </span><span style="color: rgb(255, 153, 102);">摆 </span><span style="color: rgb(255, 153, 102);">腕甲 </span><span style="color: rgb(255, 153, 102);">带 </span><span style="color: rgb(255, 153, 102);">靴 </span><br><span style="color: rgb(255, 153, 102);">　　</span><span style="color: rgb(0, 255, 255);">特技属性：咒术净化+20(最大值20)</span><br><span class="green">天魄等级 LV.8</span><br><span style="color: rgb(126, 206, 244);">·水缓行：束手命中力+10[+33]</span><br><span style="color: rgb(126, 206, 244);">·知彼+4[+15]</span><br><span style="color: rgb(126, 206, 244);">·钝击化解+10[+28]</span><br><span style="color: rgb(126, 206, 244);">·破甲：物理破防+15[+40]</span><br><span class="green">天魄组合特效</span><br><span style="color: rgb(126, 206, 244);">(</span><span style="color: rgb(126, 206, 244);">65</span><span style="color: rgb(126, 206, 244);">/64)</span><span style="color: rgb(126, 206, 244);">天魄·破甲:使用特定技能后，进入"天魄·破甲"状态，攻击忽视对方7%的物理防御力。状态持续35秒，冷却时间120秒。</span><br><span style="color: rgb(126, 206, 244);">(</span><span style="color: rgb(126, 206, 244);">65</span><span style="color: rgb(126, 206, 244);">/64)</span><span style="color: rgb(126, 206, 244);">全系技能威力+2.5%</span><br><span style="color: rgb(138, 0, 255);">崩击：钝击重击上升12</span><br><div class="jhz-box"><span class="jiaHuZhi">加护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div><span class="green">力+56</span><br><span class="green">崩击：钝击重击上升38</span><br><span class="green">追电：移动速度加成力上升59</span><br><span class="green">最大物理攻击力:+37</span><br><span style="color: rgb(255, 227, 38);">飞云断：技能威力增加0.5%</span><br><div class="lhz-box"><span class="jiaHuZhi">炼护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div></div>
 		</div>
 	</div>
 </div>
@@ -792,7 +792,7 @@ padding-top: 5px;
 			<span class="eq_type">项链</span>
 			
 			<span class="eq_ding_opened"></span>
-			<div class="tx3TextBlock" name="equip_desc" style="background-color: transparent; line-height: 120%;"><span class="green">可炼化</span><span class="white"></span><br><span class="green">可重铸</span><span class="white"></span><br><span class="white">耐久度：336/378     品相：</span><span style="color: rgb(255, 255, 255);">崭新  </span><br><span class="white">必要等级：79</span><br><span class="white">贵重等级：110</span><br><span class="red">禁交易 </span><span class="red">禁萃取 </span><br><span style="color: rgb(0, 170, 238);">命中+109</span><br><span style="color: rgb(0, 170, 238);">生命值+2431</span><br><span style="color: rgb(255, 136, 0);">白刃：挥砍重击上升60</span><br><span style="color: rgb(255, 136, 0);">崩击：钝击重击上升56</span><br><span style="color: rgb(255, 136, 0);">阴伤：穿刺重击上升60</span><br><span style="color: rgb(187, 68, 187);">追电：移动速度加成力上升32</span><br><span style="color: rgb(0, 255, 255);">特技属性：钝刺防护+7</span><br><span style="color: rgb(0, 255, 255);">加护特技(15)：禹王天威+10</span><br><span style="color: rgb(255, 136, 0);">·阴伤：穿刺重击上升45</span><br><span style="color: rgb(255, 136, 0);">·崩击：钝击重击上升45</span><br><span style="color: rgb(187, 68, 187);">·万钧：重击伤害加成力+31</span><br><span style="color: rgb(255, 255, 0);">·破阵+ 48</span><br><span style="color: rgb(138, 0, 255);">白刃：挥砍重击上升13</span><br><div class="jhz-box"><span class="jiaHuZhi">加护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div><span class="green">力+65</span><br><span class="green">白刃：挥砍重击上升42</span><br><span class="green">追电：移动速度加成力上升46</span><br><span class="green">最大物理攻击力:+41</span><br><div class="lhz-box"><span class="jiaHuZhi">炼护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div></div>
+			<div class="tx3TextBlock" name="equip_desc" style="background-color: transparent; line-height: 120%;"><span class="green">可炼化</span><span class="white"></span><br><span class="green">可重铸</span><span class="white"></span><br><span class="white">耐久度：321/378     品相：</span><span style="color: rgb(255, 255, 255);">崭新  </span><br><span class="white">必要等级：79</span><br><span class="white">贵重等级：110</span><br><span class="red">禁交易 </span><span class="red">禁萃取 </span><br><span style="color: rgb(0, 170, 238);">命中+109</span><br><span style="color: rgb(0, 170, 238);">生命值+2431</span><br><span style="color: rgb(255, 136, 0);">白刃：挥砍重击上升60</span><br><span style="color: rgb(255, 136, 0);">崩击：钝击重击上升56</span><br><span style="color: rgb(255, 136, 0);">阴伤：穿刺重击上升60</span><br><span style="color: rgb(187, 68, 187);">追电：移动速度加成力上升32</span><br><span style="color: rgb(0, 255, 255);">特技属性：钝刺防护+7</span><br><span style="color: rgb(0, 255, 255);">加护特技(15)：禹王天威+10</span><br><span style="color: rgb(255, 136, 0);">·阴伤：穿刺重击上升45</span><br><span style="color: rgb(255, 136, 0);">·崩击：钝击重击上升45</span><br><span style="color: rgb(187, 68, 187);">·万钧：重击伤害加成力+31</span><br><span style="color: rgb(255, 255, 0);">·破阵+ 48</span><br><span style="color: rgb(138, 0, 255);">白刃：挥砍重击上升13</span><br><div class="jhz-box"><span class="jiaHuZhi">加护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div><span class="green">力+65</span><br><span class="green">白刃：挥砍重击上升42</span><br><span class="green">追电：移动速度加成力上升46</span><br><span class="green">最大物理攻击力:+41</span><br><div class="lhz-box"><span class="jiaHuZhi">炼护值:</span><p class="percentBg" style="width:160px"><span class="percentFornt" style="width:160px"></span></p><br></div></div>
 		</div>
 	</div>
 </div>
@@ -880,10 +880,10 @@ padding-top: 5px;
 							
 						</div>
 						<ul class="ulList_3">
-							<li><span class="ulList_3_k">装备评价:</span><span class="ulList_3_v">165505</span></li>
-							<li><span class="ulList_3_k">全服排名:</span><span class="ulList_3_v">3</span></li>
-							<li><span class="ulList_3_k">本服排名:</span><span class="ulList_3_v">1</span></li>
-							<li><span class="ulList_3_k">门派排名:</span><span class="ulList_3_v">1</span></li>
+							<li><span class="ulList_3_k">装备评价:</span><span class="ulList_3_v">162869</span></li>
+							<li><span class="ulList_3_k">全服排名:</span><span class="ulList_3_v">7</span></li>
+							<li><span class="ulList_3_k">本服排名:</span><span class="ulList_3_v">4</span></li>
+							<li><span class="ulList_3_k">门派排名:</span><span class="ulList_3_v">2</span></li>
 						</ul>
 					</div>
 					</div>
@@ -895,21 +895,21 @@ padding-top: 5px;
 						<div class="dEquips_1">
 							<ul class="ulList_4">
 							  	<li class="li_1_k">命</li>
-								<li class="li_1">58302</li>
+								<li class="li_1">56145</li>
 								<li class="li_1_k marginBottom">技</li>
 								<li class="li_1 marginBottom">5736</li>
 								
 								<li class="li_2_k">力</li>
-								<li class="li_2">3917</li>
+								<li class="li_2">3774</li>
 								
 								<li class="li_2_k">体</li>
-								<li class="li_2">478</li>
+								<li class="li_2">402</li>
 								
 								<li class="li_2_k">敏</li>
 								<li class="li_2">819</li>
 								
 								<li class="li_2_k">疾</li>
-								<li class="li_2">317</li>
+								<li class="li_2">349</li>
 								
 								<li class="li_2_k">魂</li>
 								<li class="li_2">47</li>
@@ -921,34 +921,34 @@ padding-top: 5px;
 							<ul class="ulList_5 ulList_h">
 								<li class="caption">攻击属性</li>
 								<li><span>攻力</span>
-									3047-5903
+									2990-5663
 								</li>
 								<li><span>命中</span>
-									3097
+									3032
 								</li>
 								<li><span>法力</span>
 									773-1234
 								</li>
 								<li><span>重击</span>
-									1993
+									1848
 								</li>
 								<li><span>会心一击</span>
 									601
 								</li>
 								<li><span>附加伤害</span>
-									37
+									95
 								</li>
 							</ul>
 							<ul class="ulList_6 ulList_h">
 								<li class="caption">防御属性</li>
 								<li><span>防御</span>
-									7403
+									7327
 								</li>
 								<li><span>回避</span>
-									687
+									735
 								</li>
 								<li><span>法防</span>
-									2794
+									2787
 								</li>
 								<li><span>神明</span>
 									70
@@ -964,10 +964,10 @@ padding-top: 5px;
 							<ul class="ulList_5">
 								<li class="caption">抗性与特殊属性</li>
 								<li><span>身法</span>
-									158
+									174
 								</li>
 								<li><span>坚韧</span>
-									239
+									201
 								</li>
 								<li><span>定力</span>
 									251
@@ -979,7 +979,7 @@ padding-top: 5px;
 									140
 								</li>
 								<li><span>万钧</span>
-									817
+									755
 								</li>
 								<li><span>铁壁</span>
 									122
@@ -988,7 +988,7 @@ padding-top: 5px;
 							<ul class="ulList_6">
 								<li class="caption">高级属性</li>
 								<li><span>追电</span>
-									503
+									489
 								</li>
 								<li><span>骤雨</span>
 									24
@@ -2070,7 +2070,7 @@ padding-top: 5px;
 								<li class="li1_k">等级：</li>
 								<li class="li1">80</li>
 								<li class="li1_k">经验：</li>
-								<li class="li1">458444135</li>
+								<li class="li1">481266250</li>
 								<li class="li1_k">能量等级：</li>
 								<li class="li1">80</li>
 								<li class="li1_k">魂魄：</li>
@@ -4508,11 +4508,11 @@ padding-top: 5px;
                         </div>
                         <ul class="DataListStyle">
                             <li class="li_k1">溟禅炼道：</li>
-                            <li class="li1">2527</li>
+                            <li class="li1">2407</li>
                             <li class="li_k1">当前炼护总数：</li>
-                            <li class="li1">300</li>
+                            <li class="li1">290</li>
                             <li class="li_k1">炼护转化溟炼值：</li>
-                            <li class="li1">2160</li>
+                            <li class="li1">2040</li>
                             <li class="li_k1">觉醒度：</li>
                             <li class="li1" style="margin-bottom:18px;">17</li>
 
@@ -6118,7 +6118,7 @@ padding-top: 5px;
 				-->
 						<div id="bannews" class="img-list adbase-ctn" style="background: rgba(0, 0, 0, 0) url(&quot;http://res.nie.netease.com/comm/js/nie/util/img/error.png&quot;) no-repeat scroll center center; display: none;"></div>
 
-                <div class="fSwitchPic"><a href="https://m.tb.cn/h.VvdHetN?sm=8ee8bf" title="小秋千" target="_blank" style="z-index: 2; opacity: 1;"><img src="https://fz.fp.ps.netease.com/file/5f3cacd896dee4cc5c9e159cqkDUDfyX02"></a><a href="http://tx3.163.com/2020/yanbing/" title="全民竞技赛" target="_blank" style="z-index: 1; opacity: 0.122359;"><img src="https://fz.fp.ps.netease.com/file/5f2143606f0494627d06c100VEGgfCls02"></a><a href="http://tx3.163.com/2020/sbsz/" title="苏博时装" target="_blank" style="z-index: 1; opacity: 0.122359;"><img src="https://fz.fp.ps.netease.com/file/5f190961a7f25294f58e8834Dx79jKFc02"></a><a href="https://tx.163.com/tongrenshequ/activity_detail.html?id=5f16a318730e202bb1a8e21a" title="“洞天福地" 大荒家园设计征集大赛"="" target="_blank" style="z-index: 1; opacity: 0.122359;"><img src="https://fz.fp.ps.netease.com/file/5f17b4ac7f9d2a68cc98763bdwq2F5xK02"></a></div>
+                <div class="fSwitchPic"><a href="https://m.tb.cn/h.VvdHetN?sm=8ee8bf" title="小秋千" target="_blank" style="z-index: 2; opacity: 1;"><img src="https://fz.fp.ps.netease.com/file/5f3cacd896dee4cc5c9e159cqkDUDfyX02"></a><a href="http://tx3.163.com/2020/yanbing/" title="全民竞技赛" target="_blank" style="z-index: 1; opacity: 0.00154133;"><img src="https://fz.fp.ps.netease.com/file/5f2143606f0494627d06c100VEGgfCls02"></a><a href="http://tx3.163.com/2020/sbsz/" title="苏博时装" target="_blank" style="z-index: 1; opacity: 0.00154133;"><img src="https://fz.fp.ps.netease.com/file/5f190961a7f25294f58e8834Dx79jKFc02"></a><a href="https://tx.163.com/tongrenshequ/activity_detail.html?id=5f16a318730e202bb1a8e21a" title="“洞天福地" 大荒家园设计征集大赛"="" target="_blank" style="z-index: 1; opacity: 0.00154133;"><img src="https://fz.fp.ps.netease.com/file/5f17b4ac7f9d2a68cc98763bdwq2F5xK02"></a></div>
                 <div class="fSwitchNav"><a class="current"></a><a></a><a></a><a></a></div>
                 </section>
             </div>
@@ -6176,11 +6176,11 @@ padding-top: 5px;
         </div>
 
 
-		<script charset="gb2312" src="http://res.nie.netease.com/comm/js/jquery(mixNIE).last.js?v=20200828101007"></script>
+		<script charset="gb2312" src="http://res.nie.netease.com/comm/js/jquery(mixNIE).last.js"></script>
 
         <script type="text/javascript" src="/js/servers.js"></script>
-        <!-- script type="text/javascript" src="http://res.tx3.netease.com/qt/2015/bangv1/neiye/js/comv2.js?v=20200828101007"></script-->
-		<script type="text/javascript" src="http://res.tx3.netease.com/pc/qt/20151231153005/js/app/comv2_807873e.js?v=20200828101007"></script>
+        <!-- script type="text/javascript" src="http://res.tx3.netease.com/qt/2015/bangv1/neiye/js/comv2.js"></script-->
+		<script type="text/javascript" src="http://res.tx3.netease.com/pc/qt/20151231153005/js/app/comv2_807873e.js"></script>
         <script type="text/javascript" src="/js/search.js"></script>
         <script type="text/javascript" src="/js/utils.js"></script>
 		<script type="text/javascript">

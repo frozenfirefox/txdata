@@ -74,3 +74,13 @@ def account_book(number, four = 4000, three = 300, two = 100, one = 50):
         price = 0
     return price
 
+#元魂珠价格计算
+#700
+#600
+#500
+#400
+#300
+def account_yuanhun(number, rate = 0.8):
+    return 3000*(number**7)/(750**7)*rate
+
+
