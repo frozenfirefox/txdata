@@ -114,6 +114,11 @@ class Html:
         with open(img_file_name, 'a+', encoding='utf-8') as f:
             f.write(content+'\r\n')
 
+    #读取文件
+    def ReadFile(self, name):
+        with open(name, 'r', encoding='UTF-8') as f:
+            return f.read()
+
     #main方法
     def main(self):
         content = requests.get(self.url).text
@@ -293,24 +298,53 @@ class Html:
 
     #做属性等估价
     def evalueate(self, data):
+        print(time.time())
         url = 'http://bang.tx3.163.com/bang/role/'
         url = url + str(data['bang_id'])
-
-
+        #linux
+        # driver_path = r'/usr/bin/geckodriver'
+        #windows
         driver_path = r'D:\Program Files\firefox\geckodriver.exe'
-        driver_path = r'/usr/bin/geckodriver'
-        # 设置chrome为无界面浏览器
-        options = Options()
-        options.add_argument('--headless')
-        driver = webdriver.Firefox(executable_path=driver_path, options=options)
-        driver.get(url)
-
-        # self.WriteFile('333.bang', driver.page_source)
-        content = driver.page_source
-
-        driver.quit()
-        ####start 获取数据
+        #获取到榜id
         bang_id = url.split('/')[-1]
+        #文件路径
+        path = '../cache/'+bang_id+'.cache'
+
+        if os.path.exists(path) and ((os.path.getctime(path) + 60*60) >time.time()):
+            content = self.ReadFile('../cache/'+bang_id+'.cache')
+        else:
+            # 设置chrome为无界面浏览器
+            options = Options()
+            options.add_argument('--headless')
+            #优化性能方面
+            firefox_profile = webdriver.FirefoxProfile()
+            firefox_profile.set_preference('browser.migration.version', 9001)  # 部分需要加上这个
+            firefox_profile.set_preference('permissions.default.image', 2)  # 某些firefox只需要这个
+            firefox_profile.set_preference('dom.ipc.plugins.enabled.libflashplayer.so', 'false')#禁用flash
+            firefox_profile.set_preference('javascript.enabled', 'false')
+            # 禁用浏览器缓存
+            firefox_profile.set_preference("network.http.use-cache", False)
+            firefox_profile.set_preference("browser.cache.memory.enable", False)
+            firefox_profile.set_preference("browser.cache.disk.enable", False)
+            firefox_profile.set_preference("browser.sessionhistory.max_total_viewers", 3)
+            firefox_profile.set_preference("network.dns.disableIPv6", True)
+            firefox_profile.set_preference("Content.notify.interval", 750000)
+            firefox_profile.set_preference("content.notify.backoffcount", 3)
+            # 有的网站支持   有的不支持
+            firefox_profile.set_preference("network.http.pipelining", True)
+            firefox_profile.set_preference("network.http.proxy.pipelining", True)
+            firefox_profile.set_preference("network.http.pipelining.maxrequests", 32)
+
+            driver = webdriver.Firefox(executable_path=driver_path, options=options, firefox_profile=firefox_profile)
+            driver.get(url)
+            # print(os.path.getctime(), time.time())
+            if os.path.exists(path):
+                os.remove(path)
+            self.WriteFile('../cache/'+bang_id+'.cache', driver.page_source, 'cache')
+            content = driver.page_source
+            driver.quit()
+        
+        ####start 获取数据
         # content = requests.get(url).text
         bs4Html = BeautifulSoup(content, "lxml")
         equipments = bs4Html.find_all('div', 'detail_wrap_block')
@@ -391,51 +425,52 @@ class Html:
         #####end 处理钻钱------------------------------------------------------------
 
         ####start 处理孩子
-        tableContents =  bs4Html.find(id="tableCHILD").find('div', 'TableContents')
-        childs = tableContents.find_all('div', 'TableContents_2')
+        tableContents =  bs4Html.find(id = 'tableCHILD').find_all('div', 'TableContents')
         dianPrice = 0.00
-        for child in childs:
-            ul = child.find_all('ul', 'DataListStyle')[1]
-            #获取加护值
-            li2 = ul.find_all('li', 'li2')
-            childZihi = int(li2[1].get_text())
-            childJiahu = int(li2[4].get_text())
-            #开始计算孩子
-            childJihuList = function.account_jiahu(childJiahu)
-            #计算孩子钻钱
-            for childJia in childJihuList:
-                zuanPrice = zuanPrice + function.account_cash(childJia)
-
-        childDianhuaList = tableContents.find_all('div', 'TableContents_1')
-        ######处理孩子的炼护
-        for duanhua in childDianhuaList:
-            dianhuaData = duanhua.find_all('div', 'equip_pic')
-            for intro in dianhuaData:
-                introInfo = intro.attrs['intro']
-                dian = re.findall(r'点化：(.+?)#r#R', introInfo)
-                dianNumber = 0
-                if len(dian) > 0:
-                    dianNumberList = dian[0].split("#r#c")
-                    del dianNumberList[0]
-                    dianNumber = len(dianNumberList)
-                    dianPrice = dianPrice + function.account_dian(dianNumber)
-                    print(dianNumber)
-        ######处理天书
-
         tianshuPrice = 0.00
-        childTianshuList = tableContents.find_all('ul', 'tianshu-img-list')
-        for tianshuC in childTianshuList:
-            liList = tianshuC.find_all('li')
-            for li in liList:
-                tianshu = re.findall(r'尚书令等级(.+?)$', li.attrs['intro'])
-                tianshuNumber = 0
-                if len(tianshu):
-                    tianshuNumberList = tianshu[0].split("#r#c")
-                    del tianshuNumberList[0]
-                    tianshuNumber = len(tianshuNumberList)
-                    tianshuPrice = tianshuPrice + function.account_book(tianshuNumber)
-                    # print(tianshuNumberList,  tianshuNumber)
-        ####end 处理孩子
+        for tableContent in tableContents:
+            childs = tableContent.find_all('div', 'TableContents_2')
+            for child in childs:
+                print(child)
+                ul = child.find_all('ul', 'DataListStyle')[1]
+                #获取加护值
+                li2 = ul.find_all('li', 'li2')
+                childZihi = int(li2[1].get_text())
+                childJiahu = int(li2[4].get_text())
+                #开始计算孩子
+                childJihuList = function.account_jiahu(childJiahu)
+                #计算孩子钻钱
+                for childJia in childJihuList:
+                    zuanPrice = zuanPrice + function.account_cash(childJia)
+
+            childDianhuaList = tableContent.find_all('div', 'TableContents_1')
+            ######处理孩子的炼护
+            for duanhua in childDianhuaList:
+                dianhuaData = duanhua.find_all('div', 'equip_pic')
+                for intro in dianhuaData:
+                    introInfo = intro.attrs['intro']
+                    dian = re.findall(r'点化：(.+?)#r#R', introInfo)
+                    dianNumber = 0
+                    if len(dian) > 0:
+                        dianNumberList = dian[0].split("#r#c")
+                        del dianNumberList[0]
+                        dianNumber = len(dianNumberList)
+                        dianPrice = dianPrice + function.account_dian(dianNumber)
+                        # print(dianNumber)
+            ######处理天书           
+            childTianshuList = tableContent.find_all('ul', 'tianshu-img-list')
+            for tianshuC in childTianshuList:
+                liList = tianshuC.find_all('li')
+                for li in liList:
+                    tianshu = re.findall(r'尚书令等级(.+?)$', li.attrs['intro'])
+                    tianshuNumber = 0
+                    if len(tianshu):
+                        tianshuNumberList = tianshu[0].split("#r#c")
+                        del tianshuNumberList[0]
+                        tianshuNumber = len(tianshuNumberList)
+                        tianshuPrice = tianshuPrice + function.account_book(tianshuNumber)
+                        # print(tianshuNumberList,  tianshuNumber)
+            ####end 处理孩子
 
         #print('钻钱：', '--', zuanPrice)
         returnData = {
@@ -446,14 +481,16 @@ class Html:
             'allPrice': round(zuanPrice+dianPrice+tianshuPrice, 2)
         }
         # print(returnData)
+        print(time.time())
+        print(returnData)
         return returnData
         # self.WriteFile('222.txt', equipments)
 
 #开始使用方法
-# html = Html('http://bang.tx3.163.com/bang/ranks?order_key=xiuwei&school=&sector=79%E7%BA%A7%E4%B8%93%E5%8C%BA&server=%E9%A3%9E%E9%B8%BF%E8%B8%8F%E9%9B%AA&count=20')
+html = Html('http://bang.tx3.163.com/bang/ranks?order_key=xiuwei&school=&sector=79%E7%BA%A7%E4%B8%93%E5%8C%BA&server=%E9%A3%9E%E9%B8%BF%E8%B8%8F%E9%9B%AA&count=20')
 # # html.main()
 # html.getList()
-# html.evalueate('http://bang.tx3.163.com/bang/role/30_11318203')
+html.evalueate({'bang_id': '21_10885'})
 #半度回眸
 # http://bang.tx3.163.com/bang/role/21_10885
 #靖戈

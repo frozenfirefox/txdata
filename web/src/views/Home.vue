@@ -204,6 +204,10 @@
           <p class="time">2020-08-29</p>
           <p class="content">更新添加，部分角色估价系统，估值入口：加入我们>>账号估值</p>
         </TimelineItem>
+        <TimelineItem>
+          <p class="time">2020-08-31</p>
+          <p class="content">更新修复估值，计算多个孩子的程序bug，并且对于估价的程序性能做了质的的提升，从而使估价更加顺畅</p>
+        </TimelineItem>
       </Timeline>
     </Modal>
     <!--估价-->
