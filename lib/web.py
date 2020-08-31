@@ -487,10 +487,10 @@ class Html:
         # self.WriteFile('222.txt', equipments)
 
 #开始使用方法
-html = Html('http://bang.tx3.163.com/bang/ranks?order_key=xiuwei&school=&sector=79%E7%BA%A7%E4%B8%93%E5%8C%BA&server=%E9%A3%9E%E9%B8%BF%E8%B8%8F%E9%9B%AA&count=20')
+# html = Html('http://bang.tx3.163.com/bang/ranks?order_key=xiuwei&school=&sector=79%E7%BA%A7%E4%B8%93%E5%8C%BA&server=%E9%A3%9E%E9%B8%BF%E8%B8%8F%E9%9B%AA&count=20')
 # # html.main()
 # html.getList()
-html.evalueate({'bang_id': '21_10885'})
+# html.evalueate({'bang_id': '21_10885'})
 #半度回眸
 # http://bang.tx3.163.com/bang/role/21_10885
 #靖戈
