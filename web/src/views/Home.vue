@@ -327,6 +327,50 @@
     <Drawer title="日活统计"  width="100" placement="left" :closable="true" v-model="modalLive">
       <div class="bar" id="chart1" style="width: 400px ;height: 600px"></div>
     </Drawer>
+
+<!--    开箱抽屉-->
+    <Drawer title="开箱子（过手瘾）"  width="100" placement="left" :closable="true" v-model="modalBox">
+      <Select v-model="optionValue" style="width:200px">
+        <Option v-for="item in modeList" :value="item.value" :key="item.value">{{ item.name }}</Option>
+      </Select>
+      <divider/>
+      <div>
+        <p>开箱子只是模拟，大家切勿当真</p>
+        <divider/>
+        <Row type="flex" class-name="row-height-24" justify="start" class="code-row-bg">
+          <Col span="12" class-name="row-col-border">
+            <Tooltip max-width="200" placement="right" transfer>
+              <Button>月下伊人礼盒</Button>
+              <div slot="content">
+                <p>开启到鸿蒙玉时可选择翻倍兑换成【禁】天域声望·200</p>
+                <p>打开月下伊人必得：鹊桥相会（右键点击法术防御力+10，状态持续180秒）</p>
+                <p class="black-red">且有机会获得：</p>
+                <p>宗门秘法·日、厚土、【禁】大禹之恩·2/天域声望·2礼盒（二选一）、【封】炼化之印·5/天域声望·5礼盒（二选一）、牵牛花、太阴星光匣。</p>
+                <p class="black-red">更有机会获得：</p>
+                <p>炼化之印（100）、尚书令、【禁】鸿蒙玉/天域声望·200礼盒（二选一）、星晖、七夕礼包半价券、军饷券·1000、军饷券·10000、六道轮回锤、【八十】白羊座·伤、乾坤诀等道具。</p>
+                <p class="black-red">还有机会获得：</p>
+                <p>庄周梦蝶礼盒、迷蝶香宝匣、陆尘·星贯长虹、星贯映辉礼盒、秋水流光（装件）、泡弟（饰件）、星河流转宝匣等道具。</p>
+                <p>必要等级：30</p>
+                <p>贵重等级：30</p>
+                <p>禁交易</p>
+              </div>
+            </Tooltip>
+          </Col>
+          <Col span="3"></Col>
+          <Col span="3"><Button size="small" type="primary" @click="openGift">开启</Button></Col>
+          <Col span="3"><Button size="small" type="warning">暂停</Button></Col>
+          <Col span="3"><Button size="small" type="error">清除</Button></Col>
+        </Row>
+        <divider/>
+        <Row type="flex" class-name="row-height-24" justify="start" class="code-row-bg" v-for="item in giftsGet">
+          <Col span="3" class-name="row-col-border" v-for="inner in item">
+            <Badge :count="inner.count" type="primary">
+              <a href="#" class="demo-badge">{{inner.name}}</a>
+            </Badge>
+          </Col>
+        </Row>
+      </div>
+    </Drawer>
   </div>
 </template>
 
@@ -426,6 +470,120 @@ export default {
         ]
       },
       modalLive: false,
+      modalBox: true,
+      modeList: [
+        {
+          name: '温柔模式',
+          rate: 0.8,
+          value: 0,
+        },
+        {
+          name: '期望模式',
+          rate: 0.5,
+          value: 1,
+        },
+        {
+          name: '韭菜模式',
+          rate: 0.2,
+          value: 2,
+        },
+      ],
+      optionValue: 0,
+      giftList: [
+        {
+          name: '宗门秘法·日',
+          value: 0
+        },
+        {
+          name: '厚土',
+          value: 1
+        },
+        {
+          name: '【禁】大禹之恩·2/天域声望·2礼盒（二选一）',
+          value: 2
+        },
+        {
+          name: '【封】炼化之印·5/天域声望·5礼盒（二选一）',
+          value: 3
+        },
+        {
+          name: '牵牛花',
+          value: 4
+        },
+        {
+          name: '太阴星光匣',
+          value: 5
+        },
+        {
+          name: '炼化之印（100）',
+          value: 6
+        },
+        {
+          name: '尚书令',
+          value: 7
+        },
+        {
+          name: '【禁】鸿蒙玉/天域声望·200礼盒（二选一）',
+          value: 8
+        },
+        {
+          name: '星晖',
+          value: 9
+        },
+        {
+          name: '七夕礼包半价券',
+          value: 10
+        },
+        {
+          name: '【八十】白羊座·伤',
+          value: 11
+        },
+        {
+          name: '六道轮回锤',
+          value: 12
+        },
+        {
+          name: '乾坤诀',
+          value: 13
+        },
+        {
+          name: '庄周梦蝶礼盒',
+          value: 14
+        },
+        {
+          name: '军饷券·1000',
+          value: 15
+        },
+        {
+          name: '迷蝶香宝匣',
+          value: 16
+        },
+        {
+          name: '陆尘·星贯长虹',
+          value: 17
+        },
+        {
+          name: '星贯映辉礼盒',
+          value: 18
+        },
+        {
+          name: '秋水流光（装件）',
+          value: 19
+        },
+        {
+          name: '泡弟（饰件）',
+          value: 20
+        },
+        {
+          name: '星河流转宝匣',
+          value: 21
+        },
+        {
+          name: '军饷券·10000',
+          value: 22
+        },
+      ],
+      giftsGet: []
     }
   },
   mounted() {
@@ -616,6 +774,67 @@ export default {
       console.log(this.liveOption)
       const chart1 = this.$echarts.init(document.getElementById("chart1"))
       chart1.setOption(vue.liveOption);
+    },
+    openGift () {
+      //开始开箱子,构造随机开箱子
+      const length = this.giftList.length;
+      //构造权重随机列表
+      const weightArr = []
+      for (let i  in this.giftList){
+        let number = Math.pow((length - this.giftList[i].value), 3)
+        while(number>0){
+          weightArr.push(this.giftList[i].value)
+          number--
+        }
+      }
+      //打乱数组下表
+      weightArr.sort(function (a, b ) {
+        return Math.random() > 0.5 ? -1 : 1;
+      })
+
+      let giftsNumber = 200
+      let giftsGet = []
+      while (giftsNumber > 0){
+        const key = this.randomKey(weightArr);
+        giftsGet.push(this.giftList[key]);
+        giftsNumber--;
+      }
+
+      //整理一下数组吧
+      this.giftsGet = []
+      //代表没有
+      let flag = 1
+      for(let j in giftsGet){
+        flag = 1
+        for(let p in this.giftsGet){
+          if(this.giftsGet[p].value == giftsGet[j].value){
+            this.giftsGet[p].count += 1
+            flag = 0
+          }
+        }
+        if(flag == 1){
+          //那就是要重新插入了
+          giftsGet[j].count = 1
+          this.giftsGet.push(giftsGet[j])
+        }
+      }
+
+      const middle = this.giftsGet
+      let newArr = []
+      for(let q in middle){
+        let xiabiao = parseInt(q/8)
+        if(newArr[xiabiao] == undefined){
+          newArr[xiabiao] = []
+        }
+        newArr[xiabiao].push(middle[q])
+      }
+
+      this.giftsGet = JSON.parse(JSON.stringify(newArr))
+    },
+    randomKey(weightArr){
+      const rand = Math.floor( Math.random() * weightArr.length )
+      const middle = weightArr.slice(rand, rand +　1)
+      return middle[0]
     }
   }
 }
@@ -656,5 +875,26 @@ export default {
   .line-height-20{
     line-height: 40px;
   }
-
+  /*开始设计开箱子模式*/
+  .row-height-24{
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+  }
+  .row-col-border{
+    border: 1px solid #42b983;
+  }
+  .demo-badge{
+    width: 100%;
+    height: 24px;
+    background: #eee;
+    border-radius: 6px;
+    display: inline-block;
+  }
+  .red{
+    color: red;
+  }
+  .black-red{
+    color: darkorange;
+  }
 </style>
