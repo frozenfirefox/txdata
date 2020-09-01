@@ -208,6 +208,10 @@
           <p class="time">2020-08-31</p>
           <p class="content">更新修复估值，计算多个孩子的程序bug，并且对于估价的程序性能做了质的的提升，从而使估价更加顺畅</p>
         </TimelineItem>
+        <TimelineItem>
+          <p class="time">2020-09-01</p>
+          <p class="content">更新1.估价新增元魂珠、灵兽的估价 2.新增日活统计</p>
+        </TimelineItem>
       </Timeline>
     </Modal>
     <!--估价-->
