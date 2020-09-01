@@ -82,7 +82,7 @@
           </Dropdown>
         </Col>
         <Col span="6">
-          <Button type="success" style="width: 100%" @click="$Message.info('敬请期待')">日活统计</Button>
+          <Button type="success" style="width: 100%" @click="liveShow">日活统计</Button>
         </Col>
         <Col span="6">
           <Dropdown trigger="click" @on-click="toSource" style="width: 100%">
@@ -263,6 +263,30 @@
         </Row>
         <Row class-name="line-height-20 font-18">
           <Col span="12" class-name="text-right">
+            马灵化估价：
+          </Col>
+          <Col span="12" class-name="text-left">
+            {{valueData.qiyaoPrice}}
+          </Col>
+        </Row>
+        <Row class-name="line-height-20 font-18">
+          <Col span="12" class-name="text-right">
+            乾元丹估价：
+          </Col>
+          <Col span="12" class-name="text-left">
+            {{valueData.qianyuanPrice}}
+          </Col>
+        </Row>
+        <Row class-name="line-height-20 font-18">
+          <Col span="12" class-name="text-right">
+            元魂珠估价：
+          </Col>
+          <Col span="12" class-name="text-left">
+            {{valueData.yuanhunPrice}}
+          </Col>
+        </Row>
+        <Row class-name="line-height-20 font-18">
+          <Col span="12" class-name="text-right">
             加护和炼护估价：
           </Col>
           <Col span="12" class-name="text-left">
@@ -295,10 +319,15 @@
         </Row>
       </template>
     </Modal>
+<!--    抽屉日活-->
+    <Drawer title="日活统计"  width="100" placement="left" :closable="true" v-model="modalLive">
+      <div class="bar" id="chart1" style="width: 400px ;height: 600px"></div>
+    </Drawer>
   </div>
 </template>
 
 <script>
+import 'echarts/lib/chart/bar'
 export default {
   name: 'Home',
   data () {
@@ -358,12 +387,48 @@ export default {
       bang_link: '',
       valueData: '',
       loading: false,
+      liveOption: {
+        tooltip: {
+          trigger: 'item',
+          formatter: '{a} <br/>{b}: {c} ({d}%)'
+        },
+        legend: {
+          orient: 'vertical',
+          left: 10,
+          data: []
+        },
+        series: [
+          {
+            name: '',
+            type: 'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: false,
+            label: {
+              show: false,
+              position: 'center'
+            },
+            emphasis: {
+              label: {
+                show: true,
+                fontSize: '30',
+                fontWeight: 'bold'
+              }
+            },
+            labelLine: {
+              show: false
+            },
+            data: []
+          }
+        ]
+      },
+      modalLive: false,
     }
   },
   mounted() {
     this.contentScroll = window.screen.height - 20
-    console.log(this.contentScroll)
+    // console.log(this.contentScroll)
     this.getList()
+    this.liveInit()
   },
   methods: {
     getList (page) {
@@ -373,7 +438,7 @@ export default {
       if(parseInt(page) > 0){
         params.page = page;
       }
-    console.log(params)
+      console.log(params)
       var vue = this;
       const url = this.$api_host+'getList.py'
       this.$axios.get(url, {
@@ -477,7 +542,6 @@ export default {
       }
     },
     toValue () {
-      console.log(222)
       //去估价
       if(!this.bang_link){
         return this.$Message.warning('请输入估计角色英雄榜')
@@ -485,7 +549,7 @@ export default {
       //获取bang_id
       const arrList = this.bang_link.split('/')
       const bang_id = arrList[5]
-      var regu =/\d{2}_\d{1,10}$/;
+      var regu =/\d{1,2}_\d{1,10}$/;
       var re = new RegExp(regu);
       var result = re.test(bang_id)
       if(result !== true){
@@ -497,8 +561,10 @@ export default {
       const params = {
         bang_id: bang_id
       }
-
+      //重置
+      this.valueData = []
       this.loading = true
+      console.log(this.loading)
       this.$axios.get(url, {
         params: params,
         paramsSerializer: function(params) {
@@ -515,6 +581,37 @@ export default {
       }).catch(function(error){
         vue.$Message.error('网络走丢了');
       });
+    },
+    liveInit () {
+      const vue = this
+      const url = this.$api_host+'getLiveList.py'
+      this.$axios.get(url).then(function(response){
+        if(response.status == 200){
+          vue.callBackLive(response.data)
+          // console.log(vue.valueData, 222)
+        }else{
+          vue.$Message.warning('出错误了');
+        }
+      });
+    },
+    callBackLive (data) {
+      const legendData = []
+      const seriesData = []
+      //生成echarts
+      for(let i in data.liveList){
+
+        legendData.push(data.liveList[i][2])
+        seriesData.push({name: data.liveList[i][2], value: data.liveList[i][15]})
+      }
+      this.liveOption.legend.data = legendData
+      this.liveOption.series[0].data = seriesData
+    },
+    liveShow () {
+      this.modalLive = true
+      const vue = this
+      console.log(this.liveOption)
+      const chart1 = this.$echarts.init(document.getElementById("chart1"))
+      chart1.setOption(vue.liveOption);
     }
   }
 }

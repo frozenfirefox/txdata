@@ -81,6 +81,28 @@ def account_book(number, four = 4000, three = 300, two = 100, one = 50):
 #400
 #300
 def account_yuanhun(number, rate = 0.8):
-    return 3000*(number**7)/(750**7)*rate
+    return 3000*(number**3)/(120000**3)*rate
+
+#马灵化 七曜
+def account_qiyao(number, rate = 0.8, single = 10):
+    return 10*number
+
+#乾元丹
+#4点化 800
+#3点化 100
+#2点化 20
+#1点化 5
+def account_qianyuan(number, rate = 0.8, four = 800, three = 100, two = 20, one = 5):
+    if number == 4:
+        price = four
+    elif number == 3:
+        price = three
+    elif number == 2:
+        price = two
+    elif number == 1:
+        price = one
+    else:
+        price = 0
+    return price
 
 

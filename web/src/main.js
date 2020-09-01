@@ -6,6 +6,7 @@ import ViewUI from 'view-design'
 import 'view-design/dist/styles/iview.css'
 import qs from "qs"
 import axios from "axios"
+import echarts from 'echarts'
 
 Vue.use(ViewUI);
 
@@ -20,7 +21,8 @@ Vue.prototype.$tx_host = 'http://bang.tx3.163.com/bang/role/'
 // axios.defaults.retryDelay = 10000; // 设置超时时间
 Vue.prototype.$axios = axios
 Vue.prototype.$qs = qs
-
+//echart
+Vue.prototype.$echarts = echarts
 new Vue({
   router,
   store,

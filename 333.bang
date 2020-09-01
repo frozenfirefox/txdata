@@ -4765,52 +4765,44 @@ padding-top: 5px;
 									<div class="StarTable StarTable6 HBStarBgActive"></div>
 									
 									</li>
-								
-
-								
 							</ul>
 							
-				  <!-- 四个碎片 start -->
-        	<div class="lingshou-box">
-		
-			
-					
-        	    	<a href="javascript:;" class="lingshou-item">
-        	    	    <img src="http://res.tx3.cbg.163.com/images/holybeast/fourbook/03/03shen-02a.png" alt="乾元丹·神藏">
-					
-        	    	    <div class="lingshou-desc StarTable" tooltip_title="#c1D9BCE乾元丹·神藏" tooltip_intro="#c1D9BCE #r #r#r#W#Y乾元丹#G之神藏。#r灵兽进入天魂境界或者开启镇星星点后将开启乾元系统，右键点击道具可自动将道具装备到灵兽乾元系统的#Y神藏#G部位。#r#W1、可使用#Y鸿蒙玉#W重铸乾元丹的属性或提升其属性条数，加入道具#R蒙尘#W可进行可保留重铸。#r2、使用鸿蒙玉重铸乾元丹属性的同时，也将重铸乾元丹的图文属性，根据灵兽图文属性的颜色和数量可以激活不同的图文特效。#r3、可使用#Y乾元之气#W提升乾元丹的等级。#r4、注意：乾元丹在装备到灵兽乾元系统或者使用乾元之气提升其等级后将变为禁交易。#r#W必要等级：30#r#W贵重等级：80#r#r#R禁交易 #r#r #r#G乾元之气等级 LV.8#r#c00AAEE力+18[+14]#r#c00AAEE回避+13[+9]#r#cBB44BB铁壁：重击伤害减伤力+26[+26]#r#cBB44BB灵兽力资质+2[+6]#r#r #r#G图文属性#r#cFF8800灵御：通灵防御+24#r">
-        	    	    </div>
-        	    	</a>
-					
-        	    	<a href="javascript:;" class="lingshou-item">
-        	    	    <img src="http://res.tx3.cbg.163.com/images/holybeast/fourbook/03/03shen-02b.png" alt="乾元丹·巨阙">
-					
-        	    	    <div class="lingshou-desc StarTable" tooltip_title="#c1D9BCE乾元丹·巨阙" tooltip_intro="#cD76420 #r #r#r#W#Y乾元丹#G之巨阙。#r灵兽进入天魂境界或者开启镇星星点后将开启乾元系统，右键点击道具可自动将道具装备到灵兽乾元系统的#Y巨阙#G部位。#r#W1、可使用#Y鸿蒙玉#W重铸乾元丹的属性或提升其属性条数，加入道具#R蒙尘#W可进行可保留重铸。#r2、使用鸿蒙玉重铸乾元丹属性的同时，也将重铸乾元丹的图文属性，根据灵兽图文属性的颜色和数量可以激活不同的图文特效。#r3、可使用#Y乾元之气#W提升乾元丹的等级。#r4、注意：乾元丹在装备到灵兽乾元系统或者使用乾元之气提升其等级后将变为禁交易。#r#W必要等级：30#r#W贵重等级：80#r#r#R禁交易 #r#r #r#G乾元之气等级 LV.8#r#c00AAEE力+17[+14]#r#c00AAEE回避+13[+9]#r#cBB44BB铁壁：重击伤害减伤力+26[+26]#r#cBB44BB灵兽力资质+2[+6]#r#r #r#G图文属性#r#cFF8800灵破：通灵伤害+24#r">
-        	    	    </div>
-        	    	</a>
-					
-        	    	<a href="javascript:;" class="lingshou-item">
-        	    	    <img src="http://res.tx3.cbg.163.com/images/holybeast/fourbook/03/03shen-04c.png" alt="乾元丹·气海">
-					
-        	    	    <div class="lingshou-desc StarTable" tooltip_title="#c1D9BCE乾元丹·气海" tooltip_intro="#cBB44BB #r #r#r#W#Y乾元丹#G之气海。#r灵兽进入天魂境界或者开启镇星星点后将开启乾元系统，右键点击道具可自动将道具装备到灵兽乾元系统的#Y气海#G部位。#r#W1、可使用#Y鸿蒙玉#W重铸乾元丹的属性或提升其属性条数，加入道具#R蒙尘#W可进行可保留重铸。#r2、使用鸿蒙玉重铸乾元丹属性的同时，也将重铸乾元丹的图文属性，根据灵兽图文属性的颜色和数量可以激活不同的图文特效。#r3、可使用#Y乾元之气#W提升乾元丹的等级。#r4、注意：乾元丹在装备到灵兽乾元系统或者使用乾元之气提升其等级后将变为禁交易。#r#W必要等级：30#r#W贵重等级：80#r#r#R禁交易 #r#r #r#G乾元之气等级 LV.8#r#c00AAEE敏+20[+20]#r#cFF8800最大法术攻击力:+13[+9]#r#cBB44BB铁壁：重击伤害减伤力+24[+25]#r#cBB44BB灵兽力资质+2[+6]#r#r #r#G图文属性#r#cFFFF00灵壁：通灵伤害减伤力+18#r">
-        	    	    </div>
-        	    	</a>
-					
-        	    	<a href="javascript:;" class="lingshou-item">
-        	    	    <img src="http://res.tx3.cbg.163.com/images/holybeast/fourbook/03/03shen-03d.png" alt="乾元丹·关元">
-					
-        	    	    <div class="lingshou-desc StarTable" tooltip_title="#c1D9BCE乾元丹·关元" tooltip_intro="#cFFFF00 #r #r#r#W#Y乾元丹#G之关元。#r灵兽进入天魂境界或者开启镇星星点后将开启乾元系统，右键点击道具可自动将道具装备到灵兽乾元系统的#Y关元#G部位。#r#W1、可使用#Y鸿蒙玉#W重铸乾元丹的属性或提升其属性条数，加入道具#R蒙尘#W可进行可保留重铸。#r2、使用鸿蒙玉重铸乾元丹属性的同时，也将重铸乾元丹的图文属性，根据灵兽图文属性的颜色和数量可以激活不同的图文特效。#r3、可使用#Y乾元之气#W提升乾元丹的等级。#r4、注意：乾元丹在装备到灵兽乾元系统或者使用乾元之气提升其等级后将变为禁交易。#r#W必要等级：30#r#W贵重等级：80#r#r#R禁交易 #r#r #r#G乾元之气等级 LV.8#r#c00AAEE力+16[+14]#r#c00AAEE命中+15[+15]#r#cBB44BB铁壁：重击伤害减伤力+24[+25]#r#cBB44BB灵兽力资质+2[+6]#r#r #r#G图文属性#r#cBB44BB灵钧：通灵伤害加成力+12#r">
-        	    	    </div>
-        	    	</a>
-					
+			  				<!-- 四个碎片 start -->
+				        	<div class="lingshou-box">
+			        	    	<a href="javascript:;" class="lingshou-item">
+			        	    	    <img src="http://res.tx3.cbg.163.com/images/holybeast/fourbook/03/03shen-02a.png" alt="乾元丹·神藏">
+								
+			        	    	    <div class="lingshou-desc StarTable" tooltip_title="#c1D9BCE乾元丹·神藏" tooltip_intro="#c1D9BCE #r #r#r#W#Y乾元丹#G之神藏。#r灵兽进入天魂境界或者开启镇星星点后将开启乾元系统，右键点击道具可自动将道具装备到灵兽乾元系统的#Y神藏#G部位。#r#W1、可使用#Y鸿蒙玉#W重铸乾元丹的属性或提升其属性条数，加入道具#R蒙尘#W可进行可保留重铸。#r2、使用鸿蒙玉重铸乾元丹属性的同时，也将重铸乾元丹的图文属性，根据灵兽图文属性的颜色和数量可以激活不同的图文特效。#r3、可使用#Y乾元之气#W提升乾元丹的等级。#r4、注意：乾元丹在装备到灵兽乾元系统或者使用乾元之气提升其等级后将变为禁交易。#r#W必要等级：30#r#W贵重等级：80#r#r#R禁交易 #r#r #r#G乾元之气等级 LV.8#r#c00AAEE力+18[+14]#r#c00AAEE回避+13[+9]#r#cBB44BB铁壁：重击伤害减伤力+26[+26]#r#cBB44BB灵兽力资质+2[+6]#r#r #r#G图文属性#r#cFF8800灵御：通灵防御+24#r">
+			        	    	    </div>
+			        	    	</a>
+								
+			        	    	<a href="javascript:;" class="lingshou-item">
+			        	    	    <img src="http://res.tx3.cbg.163.com/images/holybeast/fourbook/03/03shen-02b.png" alt="乾元丹·巨阙">
+								
+			        	    	    <div class="lingshou-desc StarTable" tooltip_title="#c1D9BCE乾元丹·巨阙" tooltip_intro="#cD76420 #r #r#r#W#Y乾元丹#G之巨阙。#r灵兽进入天魂境界或者开启镇星星点后将开启乾元系统，右键点击道具可自动将道具装备到灵兽乾元系统的#Y巨阙#G部位。#r#W1、可使用#Y鸿蒙玉#W重铸乾元丹的属性或提升其属性条数，加入道具#R蒙尘#W可进行可保留重铸。#r2、使用鸿蒙玉重铸乾元丹属性的同时，也将重铸乾元丹的图文属性，根据灵兽图文属性的颜色和数量可以激活不同的图文特效。#r3、可使用#Y乾元之气#W提升乾元丹的等级。#r4、注意：乾元丹在装备到灵兽乾元系统或者使用乾元之气提升其等级后将变为禁交易。#r#W必要等级：30#r#W贵重等级：80#r#r#R禁交易 #r#r #r#G乾元之气等级 LV.8#r#c00AAEE力+17[+14]#r#c00AAEE回避+13[+9]#r#cBB44BB铁壁：重击伤害减伤力+26[+26]#r#cBB44BB灵兽力资质+2[+6]#r#r #r#G图文属性#r#cFF8800灵破：通灵伤害+24#r">
+			        	    	    </div>
+			        	    	</a>
+								
+			        	    	<a href="javascript:;" class="lingshou-item">
+			        	    	    <img src="http://res.tx3.cbg.163.com/images/holybeast/fourbook/03/03shen-04c.png" alt="乾元丹·气海">
+								
+			        	    	    <div class="lingshou-desc StarTable" tooltip_title="#c1D9BCE乾元丹·气海" tooltip_intro="#cBB44BB #r #r#r#W#Y乾元丹#G之气海。#r灵兽进入天魂境界或者开启镇星星点后将开启乾元系统，右键点击道具可自动将道具装备到灵兽乾元系统的#Y气海#G部位。#r#W1、可使用#Y鸿蒙玉#W重铸乾元丹的属性或提升其属性条数，加入道具#R蒙尘#W可进行可保留重铸。#r2、使用鸿蒙玉重铸乾元丹属性的同时，也将重铸乾元丹的图文属性，根据灵兽图文属性的颜色和数量可以激活不同的图文特效。#r3、可使用#Y乾元之气#W提升乾元丹的等级。#r4、注意：乾元丹在装备到灵兽乾元系统或者使用乾元之气提升其等级后将变为禁交易。#r#W必要等级：30#r#W贵重等级：80#r#r#R禁交易 #r#r #r#G乾元之气等级 LV.8#r#c00AAEE敏+20[+20]#r#cFF8800最大法术攻击力:+13[+9]#r#cBB44BB铁壁：重击伤害减伤力+24[+25]#r#cBB44BB灵兽力资质+2[+6]#r#r #r#G图文属性#r#cFFFF00灵壁：通灵伤害减伤力+18#r">
+			        	    	    </div>
+			        	    	</a>
+								
+			        	    	<a href="javascript:;" class="lingshou-item">
+			        	    	    <img src="http://res.tx3.cbg.163.com/images/holybeast/fourbook/03/03shen-03d.png" alt="乾元丹·关元">
+								
+			        	    	    <div class="lingshou-desc StarTable" tooltip_title="#c1D9BCE乾元丹·关元" tooltip_intro="#cFFFF00 #r #r#r#W#Y乾元丹#G之关元。#r灵兽进入天魂境界或者开启镇星星点后将开启乾元系统，右键点击道具可自动将道具装备到灵兽乾元系统的#Y关元#G部位。#r#W1、可使用#Y鸿蒙玉#W重铸乾元丹的属性或提升其属性条数，加入道具#R蒙尘#W可进行可保留重铸。#r2、使用鸿蒙玉重铸乾元丹属性的同时，也将重铸乾元丹的图文属性，根据灵兽图文属性的颜色和数量可以激活不同的图文特效。#r3、可使用#Y乾元之气#W提升乾元丹的等级。#r4、注意：乾元丹在装备到灵兽乾元系统或者使用乾元之气提升其等级后将变为禁交易。#r#W必要等级：30#r#W贵重等级：80#r#r#R禁交易 #r#r #r#G乾元之气等级 LV.8#r#c00AAEE力+16[+14]#r#c00AAEE命中+15[+15]#r#cBB44BB铁壁：重击伤害减伤力+24[+25]#r#cBB44BB灵兽力资质+2[+6]#r#r #r#G图文属性#r#cBB44BB灵钧：通灵伤害加成力+12#r">
+			        	    	    </div>
+			        	    	</a>
+									
 
-        	    <img src="http://res.tx3.cbg.163.com/images/holybeast/fourbook/03/03shen-00.png" class="lingshou-img-map">
-        	    <!-- 注意修改usemap的id -->
-        	    <img src="http://res.tx3.cbg.163.com/images/holybeast/fourbook/03/03shen-01.png" class="lingshou-img-map" usemap="#lingshou_map_03">
-        	<!-- 四个碎片 end -->
-			
-		
-        	</div>
+				        	    <img src="http://res.tx3.cbg.163.com/images/holybeast/fourbook/03/03shen-00.png" class="lingshou-img-map">
+				        	    <!-- 注意修改usemap的id -->
+				        	    <img src="http://res.tx3.cbg.163.com/images/holybeast/fourbook/03/03shen-01.png" class="lingshou-img-map" usemap="#lingshou_map_03">
+				        		<!-- 四个碎片 end -->
+				        	</div>
 						</div>
 					</div>
 					
@@ -4878,56 +4870,47 @@ padding-top: 5px;
 						<div class="TableContent TableContents_3">
 							<p class="setctionTitle">七曜星盘</p>
 							<ul class="StarTables">
+								<li>
+								<div class="StarTable StarTable0 HBStarBg4" tooltip_title="#c1D9BCE太阳" tooltip_intro=" #r #r#W贵重等级：41#r#W星点类别：#cFFCC00[元]#W#r激活条件:该灵兽星点有#c006633[毒] #W#c8968CD[风] #W#cFFCC00[元] #W#r#W#c555555轸·殇涙(初)#r　#c00AAEE魂+11#r　#c00AAEE生命值+99#r　#c00AAEE体+9#r#r">
+								</div>
 								
+								</li>
+							
+								<li>
+								<div class="StarTable StarTable1 HBStarBg0" tooltip_title="#c1D9BCE太阴" tooltip_intro=" #r #r#W贵重等级：46#r#W星点类别：#cCC0000[火]#W#r激活条件:该灵兽星点有#c8968CD[风] #W#c8968CD[风] #W#cFFCC00[元] #W#r#W#c555555参·啸捷(中)#r　#c00AAEE力+15#r　#c00AAEE疾+24#r　#c00AAEE生命值+143#r#r#c555555参·凌波(中)#r　#c00AAEE敏+22#r　#c00AAEE力+21#r　#c00AAEE生命值+166#r#r">
+								</div>
 								
-
+								</li>
+							
+								<li>
+								<div class="StarTable StarTable2 HBStarBg0" tooltip_title="#c1D9BCE晨星" tooltip_intro=" #r #r#W贵重等级：46#r#W星点类别：#cCC0000[火]#W#r激活条件:该灵兽星点有#cFFCC00[元] #W#c6699CC[水] #W#cCC0000[火] #W#r#W#c00ffff微·星陨(初)#r　#c00AAEE念+13#r　#c00AAEE生命值+72#r　#c00AAEE体+9#r#r">
+								</div>
 								
-									<li>
-									<div class="StarTable StarTable0 HBStarBg4" tooltip_title="#c1D9BCE太阳" tooltip_intro=" #r #r#W贵重等级：41#r#W星点类别：#cFFCC00[元]#W#r激活条件:该灵兽星点有#c006633[毒] #W#c8968CD[风] #W#cFFCC00[元] #W#r#W#c555555轸·殇涙(初)#r　#c00AAEE魂+11#r　#c00AAEE生命值+99#r　#c00AAEE体+9#r#r">
-									</div>
-									
-									</li>
+								<div class="StarTable StarTable2 HBStarBgActive"></div>
 								
-									<li>
-									<div class="StarTable StarTable1 HBStarBg0" tooltip_title="#c1D9BCE太阴" tooltip_intro=" #r #r#W贵重等级：46#r#W星点类别：#cCC0000[火]#W#r激活条件:该灵兽星点有#c8968CD[风] #W#c8968CD[风] #W#cFFCC00[元] #W#r#W#c555555参·啸捷(中)#r　#c00AAEE力+15#r　#c00AAEE疾+24#r　#c00AAEE生命值+143#r#r#c555555参·凌波(中)#r　#c00AAEE敏+22#r　#c00AAEE力+21#r　#c00AAEE生命值+166#r#r">
-									</div>
-									
-									</li>
+								</li>
+							
+								<li>
+								<div class="StarTable StarTable3 HBStarBg1" tooltip_title="#c1D9BCE太白" tooltip_intro=" #r #r#W贵重等级：70#r#W星点类别：#c6699CC[水]#W#r激活条件:该灵兽星点有#cCC0000[火] #W#c8968CD[风] #W#cCC0000[火] #W#r#W#c555555参·抗鼎(究)#r　#c00AAEE力+45#r　#c00AAEE生命值+453#r　#c00AAEE体+55#r#r">
+								</div>
 								
-									<li>
-									<div class="StarTable StarTable2 HBStarBg0" tooltip_title="#c1D9BCE晨星" tooltip_intro=" #r #r#W贵重等级：46#r#W星点类别：#cCC0000[火]#W#r激活条件:该灵兽星点有#cFFCC00[元] #W#c6699CC[水] #W#cCC0000[火] #W#r#W#c00ffff微·星陨(初)#r　#c00AAEE念+13#r　#c00AAEE生命值+72#r　#c00AAEE体+9#r#r">
-									</div>
-									
-									<div class="StarTable StarTable2 HBStarBgActive"></div>
-									
-									</li>
+								</li>
+							
+								<li>
+								<div class="StarTable StarTable4 HBStarBg0" tooltip_title="#c1D9BCE荧惑" tooltip_intro=" #r #r#W贵重等级：46#r#W星点类别：#cCC0000[火]#W#r激活条件:该灵兽星点有#cFFCC00[元] #W#cFFCC00[元] #W#c006633[毒] #W#r#W#c555555商·晦朔(初)#r　#c00AAEE敏+10#r　#c00AAEE疾+10#r　#c00AAEE生命值+97#r#r">
+								</div>
 								
-									<li>
-									<div class="StarTable StarTable3 HBStarBg1" tooltip_title="#c1D9BCE太白" tooltip_intro=" #r #r#W贵重等级：70#r#W星点类别：#c6699CC[水]#W#r激活条件:该灵兽星点有#cCC0000[火] #W#c8968CD[风] #W#cCC0000[火] #W#r#W#c555555参·抗鼎(究)#r　#c00AAEE力+45#r　#c00AAEE生命值+453#r　#c00AAEE体+55#r#r">
-									</div>
-									
-									</li>
+								</li>
+							
+								<li>
+								<div class="StarTable StarTable5 HBStarBg4" tooltip_title="#c1D9BCE岁星" tooltip_intro=" #r #r#W贵重等级：41#r#W星点类别：#cFFCC00[元]#W#r激活条件:该灵兽星点有#c6699CC[水] #W#c6699CC[水] #W#cCC0000[火] #W#r#W#c555555轸·脱兔(中)#r　#c00AAEE敏+25#r　#c00AAEE魂+22#r　#c00AAEE生命值+167#r#r">
+								</div>
 								
-									<li>
-									<div class="StarTable StarTable4 HBStarBg0" tooltip_title="#c1D9BCE荧惑" tooltip_intro=" #r #r#W贵重等级：46#r#W星点类别：#cCC0000[火]#W#r激活条件:该灵兽星点有#cFFCC00[元] #W#cFFCC00[元] #W#c006633[毒] #W#r#W#c555555商·晦朔(初)#r　#c00AAEE敏+10#r　#c00AAEE疾+10#r　#c00AAEE生命值+97#r#r">
-									</div>
-									
-									</li>
-								
-									<li>
-									<div class="StarTable StarTable5 HBStarBg4" tooltip_title="#c1D9BCE岁星" tooltip_intro=" #r #r#W贵重等级：41#r#W星点类别：#cFFCC00[元]#W#r激活条件:该灵兽星点有#c6699CC[水] #W#c6699CC[水] #W#cCC0000[火] #W#r#W#c555555轸·脱兔(中)#r　#c00AAEE敏+25#r　#c00AAEE魂+22#r　#c00AAEE生命值+167#r#r">
-									</div>
-									
-									</li>
-								
-
-								
-								
+								</li>
 								<li>
 								<div class="StarTable StarTable6 HBStarBgUnreached" tooltip_title="#W镇星" tooltip_intro="#R90级开启此星点。">
 								</div>
 								</li>
-								
 							</ul>
 							
 				  <!-- 四个碎片 start -->
@@ -9462,7 +9445,8 @@ padding-top: 5px;
 </script>
 
 	
-</body></html>
+</body></html>
+
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>
@@ -15671,4 +15655,5 @@ padding-top: 5px;
 </script>
 
 	
-</body></html>
+</body></html>
+

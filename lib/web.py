@@ -264,8 +264,11 @@ class Html:
         return return_list(result, count, page, pageSize)
 
     #统计日活跃用户，去除死用户
-    #def getLiveList(self, data):
-        # liveList = self.mydb.select(TableConst.INFO_REPEAT_NAME(), where = '', fields = '*', page = 1, pageSize = 100, order = 'id desc')
+    def getLiveList(self, data):
+        liveList = self.mydb.select(TableConst.InfoRepeatName(), where = '', fields = '*, count(id) as active', page = 1, pageSize = 10, order = 'count(id) desc', having = '', group = 'bang_id')
+        return {
+            'liveList': liveList
+        }
 
     #如果已经查询到存在的data
     def dealRepeat(self, data, sql_value):
@@ -376,7 +379,7 @@ class Html:
         sqlString = sqlString+prefix+"'"+(roleInfo[4].get_text().split('\xa0')[1])+"'"#服务器
         sqlString = sqlString+prefix+"'"+(roleInfo[0].get_text().replace('等级', ''))+"'"#等级
         sqlString = sqlString+prefix+"'"+(roleInfo[3].get_text())+"'"#职业
-        if 2 in roleInfo[4].get_text().split('\xa0'):
+        if len(roleInfo[4].get_text().split('\xa0')) >= 2:
             shili = roleInfo[4].get_text().split('\xa0')[2]
         else:
             shili = ''
@@ -433,11 +436,34 @@ class Html:
         yuanHunPrice = 0.00
         for tableContent in tableContents:
             liList = tableContent.find('ul', 'DataListStyle').find_all('li', 'li1')
-            if 10 in liList:
+            if (len(liList) - 1) >= 10:
                 hunXiuwei = liList[10].get_text()
+                # print('元魂珠：'+hunXiuwei+':价格'+str(function.account_yuanhun(int(hunXiuwei))))
                 #计算元魂珠总价
-                yuanHunPrice = yuanHunPrice + function.account_jiahu(hunXiuwei)
+                yuanHunPrice = yuanHunPrice + function.account_yuanhun(int(hunXiuwei))
         ####end处理元魂珠
+
+        ####start处理马灵化
+        qiyaoPrice = 0.00
+        qianyuanPrice = 0.00
+        tableContents =  bs4Html.find(id = "tableLS").find_all('div', 'TableContents')
+        for tableContent in tableContents:
+            tableContent_3 = tableContent.find('div', 'TableContents_3')
+            #七曜,所有七曜
+            qiyaos = tableContent_3.find('ul', 'StarTables').find_all('div', 'StarTable')
+            for qiyao in qiyaos:
+                if 'tooltip_intro' in qiyao.attrs.keys():
+                    qiyaoInfo = qiyao.attrs['tooltip_intro']
+                    qiyaoString = re.findall(r'　#c(.+?)#r', qiyaoInfo)
+                    qiyaoPrice = qiyaoPrice + function.account_qiyao(len(qiyaoString))
+            #乾元丹
+            qianyuans = tableContent_3.find('div', 'lingshou-box').find_all('div', 'StarTable')
+            for qianyuan in qianyuans:
+                if 'tooltip_intro' in qianyuan.attrs.keys():
+                    qianyuanInfo = qianyuan.attrs['tooltip_intro']
+                    qianyuanString = re.findall(r'#r#c(.+?)#r#r #r#G', qianyuanInfo)[0].split('#r#c')
+                    qianyuanPrice = qianyuanPrice + function.account_qianyuan(len(qianyuanString))
+        ####end处理马灵化
 
         ####start 处理孩子
         tableContents =  bs4Html.find(id = 'tableCHILD').find_all('div', 'TableContents')
@@ -493,7 +519,9 @@ class Html:
             'dianPrice': round(dianPrice, 2),
             'tianshuPrice': round(tianshuPrice, 2),
             'yuanhunPrice': round(yuanHunPrice, 2),
-            'allPrice': round(zuanPrice+dianPrice+tianshuPrice+yuanHunPrice, 2)
+            'qiyaoPrice': round(qiyaoPrice, 2),
+            'qianyuanPrice': round(qianyuanPrice, 2),
+            'allPrice': round(zuanPrice+dianPrice+tianshuPrice+yuanHunPrice+qiyaoPrice+qianyuanPrice, 2)
         }
         # print(returnData)
         print(time.time())
@@ -502,10 +530,10 @@ class Html:
         # self.WriteFile('222.txt', equipments)
 
 #开始使用方法
-html = Html('http://bang.tx3.163.com/bang/ranks?order_key=xiuwei&school=&sector=79%E7%BA%A7%E4%B8%93%E5%8C%BA&server=%E9%A3%9E%E9%B8%BF%E8%B8%8F%E9%9B%AA&count=20')
+# html = Html('http://bang.tx3.163.com/bang/ranks?order_key=xiuwei&school=&sector=79%E7%BA%A7%E4%B8%93%E5%8C%BA&server=%E9%A3%9E%E9%B8%BF%E8%B8%8F%E9%9B%AA&count=20')
 # # html.main()
 # html.getList()
-html.evalueate({'bang_id': '21_10885'})
+# html.evalueate({'bang_id': '21_10885'})
 #半度回眸
 # http://bang.tx3.163.com/bang/role/21_10885
 #靖戈
@@ -515,6 +543,7 @@ html.evalueate({'bang_id': '21_10885'})
 #http://bang.tx3.163.com/bang/role/38_5860
 #创建数据库
 
+# html.getLiveList([])
 # price13 = function.account_cash(13)
 # price14 = function.account_cash(14)
 # price15 = function.account_cash(15)

@@ -1,4 +1,6 @@
 .vscode/
 .git/
-./cache
-./lib/tx.db
+cache
+lib/tx.db
+geckodriver.log
+ghostdriver.log

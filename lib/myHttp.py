@@ -39,11 +39,12 @@ class Resquest(BaseHTTPRequestHandler):
         self.path = unquote(self.path)
         path = self.path.replace('/', '').split('?')
         self.action = path[0]
-        paramsData = path[1].split('&')
-        for item in paramsData:
-            params = item.split('=')       
-            self.input[params[0]] = params[1]
-        print(self.input)
+        if (len(path) > 1):
+            paramsData = path[1].split('&')
+            for item in paramsData:
+                params = item.split('=')       
+                self.input[params[0]] = params[1]
+            # print(self.input)
 
     #######以下方法是路由
     def getlist(self, input):
@@ -51,7 +52,7 @@ class Resquest(BaseHTTPRequestHandler):
         return htmlObj.getList(input)
 
     #######日活
-    def getLiveList(self, input):
+    def getlivelist(self, input):
         htmlObj = web.Html('http://bang.tx3.163.com/bang/ranks?order_key=xiuwei&school=&sector=79%E7%BA%A7%E4%B8%93%E5%8C%BA&server=%E9%A3%9E%E9%B8%BF%E8%B8%8F%E9%9B%AA&count=20')
         return htmlObj.getLiveList(input)
 
