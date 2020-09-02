@@ -867,6 +867,7 @@ export default {
       if(this.giftDisabled == true){
         this.$Message.warning('您正在开箱过程中，请完成后再尝试');
       }
+      this.giftsGet = []
       this.openNumber = 200
     }
   }
