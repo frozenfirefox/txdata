@@ -341,7 +341,7 @@
       <div>
         <p>开箱子只是模拟，大家切勿当真</p>
         <divider/>
-        <Row type="flex" class-name="row-height-24" justify="start" class="code-row-bg">
+        <Row type="flex" class-name="row-height-60" justify="start" class="code-row-bg">
           <Col span="12" class-name="row-col-border">
             <Tooltip max-width="200" placement="right" transfer>
               <Button>月下伊人礼盒</Button>
@@ -364,13 +364,12 @@
           <Col span="3"><Button size="small" type="primary" @click="openGift">开启</Button></Col>
 <!--          <Col span="3"><Button size="small" type="warning">暂停</Button></Col>-->
           <Col span="3"><Button size="small" type="error" @click="clearOpen">清除</Button></Col>
-
         </Row>
         <divider/>
-        <Row type="flex" class-name="row-height-24" justify="start" class="code-row-bg" v-for="item in giftsGet">
+        <Row type="flex" class-name="row-height-60" justify="start" align="bottom" class="code-row-bg" v-for="item in giftsGet">
           <Col span="3" class-name="row-col-border" v-for="inner in item">
-            <Badge :count="inner.count" type="primary">
-              <a href="#" class="demo-badge">{{inner.name}}</a>
+            <Badge :count="inner.count" type="primary" style="height: 60px">
+              <a href="#" class="demo-badge" :title="inner.name"><Icon size="58" :type="inner.icon" /></a>
             </Badge>
           </Col>
         </Row>
@@ -497,99 +496,123 @@ export default {
       giftList: [
         {
           name: '回灵丹',
-          value: 0
+          value: 0,
+          icon: 'ios-baseball-outline',
         },
         {
           name: '宗门秘法·日',
-          value: 1
+          value: 1,
+          icon: 'md-aperture',
         },
         {
           name: '厚土',
-          value: 2
+          value: 2,
+          icon: 'ios-square',
         },
         {
           name: '【禁】大禹之恩·2/天域声望·2礼盒（二选一）',
-          value: 3
+          value: 3,
+          icon: 'md-beer',
         },
         {
           name: '【封】炼化之印·5/天域声望·5礼盒（二选一）',
-          value: 4
+          value: 4,
+          icon: 'ios-medkit',
         },
         {
           name: '七夕礼包半价券',
-          value: 5
+          value: 5,
+          icon: 'ios-heart',
         },
         {
           name: '牵牛花',
-          value: 6
+          value: 6,
+          icon: 'ios-nuclear',
         },
         {
           name: '炼化之印（100）',
-          value: 7
+          value: 7,
+          icon: 'ios-egg',
         },
         {
           name: '尚书令',
-          value: 8
+          value: 8,
+          icon: 'ios-book',
         },
         {
           name: '星晖',
-          value: 9
+          value: 9,
+          icon: 'ios-magnet',
         },
         {
           name: '太阴星光匣',
-          value: 10
+          value: 10,
+          icon: 'md-ionic',
         },
         {
           name: '【禁】鸿蒙玉/天域声望·200礼盒（二选一）',
-          value: 21
+          value: 21,
+          icon: 'md-ionitron',
         },
         {
           name: '迷蝶香宝匣',
-          value: 22
+          value: 22,
+          icon: 'logo-hackernews',
         },
         {
           name: '【八十】白羊座·伤',
-          value: 23
+          value: 23,
+          icon: 'logo-freebsd-devil',
         },
         {
           name: '六道轮回锤',
-          value: 24
+          value: 24,
+          icon: 'ios-hammer',
         },
         {
           name: '乾坤诀',
-          value: 25
+          value: 25,
+          icon: 'ios-clipboard',
         },
         {
           name: '星河流转宝匣',
-          value: 26
+          value: 26,
+          icon: 'md-browsers',
         },
         {
           name: '庄周梦蝶礼盒',
-          value: 27
+          value: 27,
+          icon: 'ios-body',
         },
         {
           name: '陆尘·星贯长虹',
-          value: 28
+          value: 28,
+          icon: 'md-star',
         },
         {
           name: '星贯映辉礼盒',
-          value: 29
+          value: 29,
+          icon: 'ios-train',
         },
         {
           name: '秋水流光（装件）',
-          value: 30
+          value: 30,
+          icon: 'md-transgender',
         },
         {
           name: '泡弟（饰件）',
-          value: 31
+          value: 31,
+          icon: 'ios-umbrella',
         },
         {
           name: '军饷券·1000',
-          value: 32
+          value: 32,
+          icon: 'logo-yahoo',
         },
         {
           name: '军饷券·10000',
-          value: 33
+          value: 33,
+          icon: 'logo-yen',
         },
       ],
       giftsGet: [],
@@ -838,6 +861,8 @@ export default {
       let flag = 1
       for(let j in giftsGet){
         flag = 1
+        if(giftsGet[j] == undefined)
+          continue
         for(let p in this.giftsGet){
           if(this.giftsGet[p].value == giftsGet[j].value){
             this.giftsGet[p].count += 1
@@ -910,17 +935,19 @@ export default {
     line-height: 40px;
   }
   /*开始设计开箱子模式*/
-  .row-height-24{
-    height: 24px;
-    line-height: 24px;
+  .row-height-60{
+    height: 60px;
+    line-height: 60px;
     text-align: center;
   }
   .row-col-border{
     border: 1px solid #42b983;
+    border-radius: 5px 5px 5px 5px;
+    height: 60px;
   }
   .demo-badge{
     width: 100%;
-    height: 24px;
+    height: 60px;
     background: #eee;
     border-radius: 6px;
     display: inline-block;
