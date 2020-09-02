@@ -216,6 +216,10 @@
           <p class="time">2020-09-02</p>
           <p class="content">更新新增模拟天下三开箱子，娱乐为主，开箱入口：加入我们>>开箱模拟</p>
         </TimelineItem>
+        <TimelineItem>
+          <p class="time">2020-09-02</p>
+          <p class="content">更新新增投币按钮，投币入口：加入我们>>点赞投币</p>
+        </TimelineItem>
       </Timeline>
     </Modal>
     <!--估价-->
@@ -375,6 +379,27 @@
         </Row>
       </div>
     </Drawer>
+<!--点赞投币-->
+    <Modal v-model="modalCharge"
+           title="点赞投币">
+      <Row>
+        <Col span="24">
+          <p class="font-18 red">tip:郑重提示。如果此次充电对您的生活造成了影响，请即刻关掉这个充电页面。</p>
+        </Col>
+      </Row>
+      <divider/>
+      <Row>
+        <Col span="24">
+          <img src="../assets/img/weixin.jpg" width="100%"/>
+        </Col>
+      </Row>
+      <divider/>
+      <Row>
+        <Col span="24">
+          <img src="../assets/img/zhifubao.jpg" width="100%"/>
+        </Col>
+      </Row>
+    </Modal>
   </div>
 </template>
 
@@ -618,6 +643,7 @@ export default {
       giftsGet: [],
       openNumber: 200,
       giftDisabled: false,
+      modalCharge: false
     }
   },
   mounted() {
@@ -727,8 +753,10 @@ export default {
       switch (parseInt(name)) {
         case 5:
         case 4:
-        case 3:
           this.$Message.info('敬请期待')
+          break;
+        case 3:
+          this.modalCharge = true
           break;
         case 2:
           this.modalBox = true

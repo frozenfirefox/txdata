@@ -1,4 +1,5 @@
 from web import Html
+from TableConst import TableConst
 
 #开始执行数据入库等
 
@@ -35,5 +36,6 @@ web = Html(url, sectorList, serverList)
 #初始化表
 # web.initTable()
 
+# web.createTable(TableConst.SellName(), TableConst.SellTable())
 #开始处理跑数据
 web.main()

@@ -188,6 +188,13 @@ class Html:
                     print(value)
                     self.mydb.insert(TableConst.ServerName(), 'pid, name', value)
 
+    #添加数据表
+    def createTable(self, tableName, tableSql):
+        # self.mydb.truncTable(tableName)
+        print(tableSql)
+        result = self.mydb.createTable(tableSql)
+        print('tableName:'+tableName, '--生成成功', result)
+
     #获取列表数据
     def getList(self, data):
         print(data)
