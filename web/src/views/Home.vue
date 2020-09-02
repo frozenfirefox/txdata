@@ -92,7 +92,7 @@
             </Button>
             <DropdownMenu slot="list">
               <DropdownItem name="1">账号估值</DropdownItem>
-              <DropdownItem name="2">开心消消乐</DropdownItem>
+              <DropdownItem name="2">开箱模拟</DropdownItem>
               <DropdownItem name="3">点赞投币</DropdownItem>
               <DropdownItem name="4">为她充电</DropdownItem>
               <DropdownItem name="5">加入我们</DropdownItem>
@@ -211,6 +211,10 @@
         <TimelineItem>
           <p class="time">2020-09-01</p>
           <p class="content">更新1.估价新增元魂珠、灵兽的估价 2.新增日活统计</p>
+        </TimelineItem>
+        <TimelineItem>
+          <p class="time">2020-09-02</p>
+          <p class="content">更新新增模拟天下三开箱子，娱乐为主，开箱入口：加入我们>>开箱模拟</p>
         </TimelineItem>
       </Timeline>
     </Modal>
@@ -356,10 +360,11 @@
               </div>
             </Tooltip>
           </Col>
-          <Col span="3"></Col>
+          <Col span="3"><span>数量：</span><input :disabled="giftDisabled" v-model="openNumber" placeholder="请输入开启数量"/></Col>
           <Col span="3"><Button size="small" type="primary" @click="openGift">开启</Button></Col>
-          <Col span="3"><Button size="small" type="warning">暂停</Button></Col>
-          <Col span="3"><Button size="small" type="error">清除</Button></Col>
+<!--          <Col span="3"><Button size="small" type="warning">暂停</Button></Col>-->
+          <Col span="3"><Button size="small" type="error" @click="clearOpen">清除</Button></Col>
+
         </Row>
         <divider/>
         <Row type="flex" class-name="row-height-24" justify="start" class="code-row-bg" v-for="item in giftsGet">
@@ -470,60 +475,60 @@ export default {
         ]
       },
       modalLive: false,
-      modalBox: true,
+      modalBox: false,
       modeList: [
         {
           name: '温柔模式',
           rate: 0.8,
-          value: 0,
+          value: 1,
         },
         {
           name: '期望模式',
           rate: 0.5,
-          value: 1,
+          value: 2,
         },
         {
           name: '韭菜模式',
           rate: 0.2,
-          value: 2,
+          value: 3,
         },
       ],
-      optionValue: 0,
+      optionValue: 1,
       giftList: [
         {
-          name: '宗门秘法·日',
+          name: '回灵丹',
           value: 0
         },
         {
-          name: '厚土',
+          name: '宗门秘法·日',
           value: 1
         },
         {
-          name: '【禁】大禹之恩·2/天域声望·2礼盒（二选一）',
+          name: '厚土',
           value: 2
         },
         {
-          name: '【封】炼化之印·5/天域声望·5礼盒（二选一）',
+          name: '【禁】大禹之恩·2/天域声望·2礼盒（二选一）',
           value: 3
         },
         {
-          name: '牵牛花',
+          name: '【封】炼化之印·5/天域声望·5礼盒（二选一）',
           value: 4
         },
         {
-          name: '太阴星光匣',
+          name: '七夕礼包半价券',
           value: 5
         },
         {
-          name: '炼化之印（100）',
+          name: '牵牛花',
           value: 6
         },
         {
-          name: '尚书令',
+          name: '炼化之印（100）',
           value: 7
         },
         {
-          name: '【禁】鸿蒙玉/天域声望·200礼盒（二选一）',
+          name: '尚书令',
           value: 8
         },
         {
@@ -531,59 +536,65 @@ export default {
           value: 9
         },
         {
-          name: '七夕礼包半价券',
+          name: '太阴星光匣',
           value: 10
         },
         {
-          name: '【八十】白羊座·伤',
-          value: 11
-        },
-        {
-          name: '六道轮回锤',
-          value: 12
-        },
-        {
-          name: '乾坤诀',
-          value: 13
-        },
-        {
-          name: '庄周梦蝶礼盒',
-          value: 14
-        },
-        {
-          name: '军饷券·1000',
-          value: 15
-        },
-        {
-          name: '迷蝶香宝匣',
-          value: 16
-        },
-        {
-          name: '陆尘·星贯长虹',
-          value: 17
-        },
-        {
-          name: '星贯映辉礼盒',
-          value: 18
-        },
-        {
-          name: '秋水流光（装件）',
-          value: 19
-        },
-        {
-          name: '泡弟（饰件）',
-          value: 20
-        },
-        {
-          name: '星河流转宝匣',
+          name: '【禁】鸿蒙玉/天域声望·200礼盒（二选一）',
           value: 21
         },
         {
-          name: '军饷券·10000',
+          name: '迷蝶香宝匣',
           value: 22
         },
+        {
+          name: '【八十】白羊座·伤',
+          value: 23
+        },
+        {
+          name: '六道轮回锤',
+          value: 24
+        },
+        {
+          name: '乾坤诀',
+          value: 25
+        },
+        {
+          name: '星河流转宝匣',
+          value: 26
+        },
+        {
+          name: '庄周梦蝶礼盒',
+          value: 27
+        },
+        {
+          name: '陆尘·星贯长虹',
+          value: 28
+        },
+        {
+          name: '星贯映辉礼盒',
+          value: 29
+        },
+        {
+          name: '秋水流光（装件）',
+          value: 30
+        },
+        {
+          name: '泡弟（饰件）',
+          value: 31
+        },
+        {
+          name: '军饷券·1000',
+          value: 32
+        },
+        {
+          name: '军饷券·10000',
+          value: 33
+        },
       ],
-      giftsGet: []
+      giftsGet: [],
+      openNumber: 200,
+      giftDisabled: false,
     }
   },
   mounted() {
@@ -694,8 +705,10 @@ export default {
         case 5:
         case 4:
         case 3:
-        case 2:
           this.$Message.info('敬请期待')
+          break;
+        case 2:
+          this.modalBox = true
           break;
         default:
           this.modalValue = true
@@ -775,31 +788,50 @@ export default {
       const chart1 = this.$echarts.init(document.getElementById("chart1"))
       chart1.setOption(vue.liveOption);
     },
-    openGift () {
+    async openGift () {
       //开始开箱子,构造随机开箱子
       const length = this.giftList.length;
       //构造权重随机列表
       const weightArr = []
+      let bei = this.optionValue
+      console.log(bei, 555)
       for (let i  in this.giftList){
-        let number = Math.pow((length - this.giftList[i].value), 3)
+        let number = Math.pow((length - this.giftList[i].value), bei)
         while(number>0){
           weightArr.push(this.giftList[i].value)
           number--
         }
       }
+      console.log(weightArr.length)
       //打乱数组下表
       weightArr.sort(function (a, b ) {
         return Math.random() > 0.5 ? -1 : 1;
       })
 
-      let giftsNumber = 200
       let giftsGet = []
-      while (giftsNumber > 0){
+      while (this.openNumber > 0){
         const key = this.randomKey(weightArr);
         giftsGet.push(this.giftList[key]);
-        giftsNumber--;
+        this.openNumber--;
+        this.dealOpenedGifts(giftsGet)
+        await this.sleep(1000)
       }
-
+      this.giftDisabled = false
+    },
+    randomKey(weightArr){
+      const rand = Math.floor( Math.random() * weightArr.length )
+      const middle = weightArr.slice(rand, rand +　1)
+      return middle[0]
+    },
+    sleep(millisecond) {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve()
+        }, millisecond)
+      })
+    },
+    dealOpenedGifts (giftsGet){
+      this.giftDisabled = true
       //整理一下数组吧
       this.giftsGet = []
       //代表没有
@@ -831,10 +863,11 @@ export default {
 
       this.giftsGet = JSON.parse(JSON.stringify(newArr))
     },
-    randomKey(weightArr){
-      const rand = Math.floor( Math.random() * weightArr.length )
-      const middle = weightArr.slice(rand, rand +　1)
-      return middle[0]
+    clearOpen () {
+      if(this.giftDisabled == true){
+        this.$Message.warning('您正在开箱过程中，请完成后再尝试');
+      }
+      this.openNumber = 200
     }
   }
 }
