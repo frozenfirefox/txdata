@@ -220,6 +220,10 @@
           <p class="time">2020-09-02</p>
           <p class="content">更新新增投币按钮，投币入口：加入我们>>点赞投币</p>
         </TimelineItem>
+        <TimelineItem>
+          <p class="time">2020-09-03</p>
+          <p class="content">更新新增模拟砸钻，砸钻入口：加入我们>>砸钻模拟</p>
+        </TimelineItem>
       </Timeline>
     </Modal>
     <!--估价-->
