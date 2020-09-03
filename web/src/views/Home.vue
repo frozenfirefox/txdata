@@ -94,8 +94,8 @@
               <DropdownItem name="1">账号估值</DropdownItem>
               <DropdownItem name="2">开箱模拟</DropdownItem>
               <DropdownItem name="3">点赞投币</DropdownItem>
-              <DropdownItem name="4">为她充电</DropdownItem>
-              <DropdownItem name="5">加入我们</DropdownItem>
+              <DropdownItem name="4">砸钻模拟</DropdownItem>
+              <DropdownItem name="5">为她充电</DropdownItem>
             </DropdownMenu>
           </Dropdown>
         </Col>
@@ -400,6 +400,49 @@
         </Col>
       </Row>
     </Modal>
+<!--    砸钻系列-->
+    <Modal v-model="modalJiahu"
+           fullscreen title="砸钻体验器(切勿当真，第一版设计是比较难的希望挑战下自己)">
+      <div class="tianxiabg">
+        <Row type="flex" justify="start" class="code-row-bg">
+          <Col span="8" class="shop">
+            <span class="ri-buy" @click="addZuan(0)"></span>
+            <span class="yue-buy" @click="addZuan(1)"></span>
+            <span class="lei-buy" @click="addZuan(2)"></span>
+            <span class="hong-buy" @click="addZuan(3)"></span>
+          </Col>
+          <Col span="8" class="arm">
+            <p class="jiahubg">
+              <span class="jiahuPer" :style="'width: '+jiahuValue+'px'"></span>
+            </p>
+          </Col>
+          <Col span="8" class="bag">
+            <span class="ri-zuan" @click="addJiahu(0)">
+              <p class="xiabiao">{{zuanList[0].num}}</p>
+            </span>
+            <span class="yue-zuan" @click="addJiahu(1)">
+              <p class="xiabiao">{{zuanList[1].num}}</p>
+            </span>
+            <span class="lei-zuan" @click="addJiahu(2)">
+              <p class="xiabiao">{{zuanList[2].num}}</p>
+            </span>
+            <span class="hong-zuan" @click="addJiahu(3)">
+              <p class="xiabiao">{{zuanList[3].num}}</p>
+            </span>
+
+            <span class="used-money">
+              {{countUsed}}
+            </span>
+            <span class="yuan-money">
+              {{countYuan}}
+            </span>
+            <span class="all-money">
+              {{zuanMoney.allMoney}}
+            </span>
+          </Col>
+        </Row>
+      </div>
+    </Modal>
   </div>
 </template>
 
@@ -643,7 +686,39 @@ export default {
       giftsGet: [],
       openNumber: 200,
       giftDisabled: false,
-      modalCharge: false
+      modalCharge: false,
+      modalJiahu: false,
+      zuanList: [
+        {
+          name: '日钻',
+          num: 0,
+          price: 2,
+          section: [1,2,3,4,5,6],
+        },
+        {
+          name: '月钻',
+          num: 0,
+          price: 20,
+          section: [4,5,6,7,8,9,10,11],
+        },
+        {
+          name: '雷钻',
+          num: 0,
+          price: 200,
+          section: [9,10,11,12,13,14,15,16],
+        },
+        {
+          name: '红钻',
+          num: 0,
+          price: 3300,
+          section: [14,15,16,17,18,19,20],
+        }
+      ],
+      jiahuValue: 0,
+      zuanMoney: {
+        moneyInit: 5000000,
+        allMoney: 5000000,
+      }
     }
   },
   mounted() {
@@ -651,6 +726,19 @@ export default {
     // console.log(this.contentScroll)
     this.getList()
     this.liveInit()
+  },
+  computed: {
+    countUsed () {
+      let hadMoney = this.zuanList[0].num*2 + this.zuanList[1].num*20 + this.zuanList[2].num*200 + this.zuanList[3].num*3300
+      let usedMoney = this.zuanMoney.moneyInit - this.zuanMoney.allMoney
+      // console.log(hadMoney, usedMoney, this.zuanMoney.allMoney, usedMoney)
+      return (usedMoney - hadMoney)
+    },
+    countYuan () {
+      let hadMoney = this.zuanList[0].num*2 + this.zuanList[1].num*20 + this.zuanList[2].num*200 + this.zuanList[3].num*3300
+      let usedMoney = this.zuanMoney.moneyInit - this.zuanMoney.allMoney
+      return ((usedMoney - hadMoney)/10).toFixed(2)
+    }
   },
   methods: {
     getList (page) {
@@ -752,8 +840,10 @@ export default {
       console.log(name)
       switch (parseInt(name)) {
         case 5:
-        case 4:
           this.$Message.info('敬请期待')
+          break;
+        case 4:
+          this.modalJiahu = true
           break;
         case 3:
           this.modalCharge = true
@@ -922,7 +1012,71 @@ export default {
       }
       this.giftsGet = []
       this.openNumber = 200
-    }
+    },
+    addZuan (type) {
+      if(this.zuanMoney.allMoney < this.zuanList[type].price){
+        this.$Message.warning('糟糕了，您的钱已经不够用了');
+        return false;
+      }
+      this.zuanList[type].num++
+      this.zuanMoney.allMoney -= this.zuanList[type].price
+    },
+    addJiahu (type) {
+      let forward = parseInt(this.jiahuValue/8) + 1;
+      if(this.zuanList >= 160){
+        this.$Message.warning('您已经达到人生巅峰了，请开启新的征程吧')
+        return false
+      }
+      if(this.zuanList[type].section.indexOf(forward) < 0){
+        this.$Message.warning('请选择合适的加护溟钻')
+        return false
+      }
+
+      if(this.zuanList[type].num <= 0){
+        this.$Message.warning('请购买加护溟钻')
+        return false
+      }
+
+      //开始加护
+      let bei = 2
+      let length = Math.max(...this.zuanList[type].section) + 1
+      let weightArr = []
+      for (let i  in this.zuanList[type].section){
+        let number = Math.pow((length - this.zuanList[type].section[i]), bei)
+        while(number>0){
+          weightArr.push(this.zuanList[type].section[i])
+          number--
+        }
+      }
+      //打乱数组下表
+      weightArr.sort(function (a, b ) {
+        return Math.random() > 0.5 ? -1 : 1;
+      })
+
+      let key = this.randomKey(weightArr)
+      let flag = 1
+      switch (type) {
+        case 3:
+          flag = 18
+          break;
+        case 2:
+          flag = 13
+          break;
+        case 1:
+          flag = 8
+          break;
+        default:
+          flag = 3
+          break;
+      }
+      if(weightArr[key] >= parseInt(this.jiahuValue/8) || parseInt(this.jiahuValue/8) < flag){
+        this.jiahuValue += 8
+      }else{
+        this.jiahuValue > 8?this.jiahuValue -= 8:this.jiahuValue = 8
+      }
+      //加护
+      this.zuanList[type].num--
+    },
   }
 }
 </script>
@@ -981,9 +1135,131 @@ export default {
     display: inline-block;
   }
   .red{
-    color: red;
+    color: #ff0000;
   }
   .black-red{
-    color: darkorange;
+    color: #ff8c00;
+  }
+  .tianxiabg{
+    background: url("../assets/img/mainbg.jpg");
+  }
+  .shop{
+    position: relative;
+    background: url("../assets/img/jiahu/shop.jpg") no-repeat center;
+    height: 465px;
+  }
+  .bag{
+    background: url("../assets/img/jiahu/bag.jpg") no-repeat center;
+    height: 465px;
+  }
+  .arm{
+    background: url("../assets/img/jiahu/arm.png") no-repeat center;
+    height: 465px;
+  }
+  .ri-buy{
+    position: absolute;
+    left: calc(50% - 98px);
+    top: 116px;
+    width: 63px;
+    height: 33px;
+  }
+  .yue-buy{
+    position: absolute;
+    left: calc(50% - 98px);
+    top: 216px;
+    width: 63px;
+    height: 33px;
+  }
+  .lei-buy{
+    position: absolute;
+    left: calc(50% - 98px);
+    top: 316px;
+    width: 63px;
+    height: 33px;
+  }
+  .hong-buy{
+    position: absolute;
+    left: calc(50% - 98px);
+    top: 418px;
+    width: 63px;
+    height: 33px;
+  }
+  .ri-zuan{
+    position: absolute;
+    left: calc(50% - 12px);
+    top: 64px;
+    width: 32px;
+    height: 32px;
+  }
+  .yue-zuan{
+    position: absolute;
+    left: calc(50% - 12px);
+    top: 106px;
+    width: 32px;
+    height: 32px;
+  }
+  .lei-zuan{
+    position: absolute;
+    left: calc(50% - 12px);
+    top: 147px;
+    width: 32px;
+    height: 32px;
+  }
+  .hong-zuan{
+    position: absolute;
+    left: calc(50% - 12px);
+    top: 188px;
+    width: 32px;
+    height: 32px;
+  }
+  .xiabiao{
+    position: relative;
+    top: 18px;
+    left: 18px;
+    font-size: 12px;
+    color: #eeeeee;
+  }
+  .jiahubg{
+    position: absolute;
+    left: calc(50% - 80px);
+    background: url("../assets/img/jiahu/jiahu.jpg") no-repeat;
+    top: 348px;
+    width: 160px;
+    height: 12px;
+  }
+  .jiahuPer{
+    background: url("../assets/img/jiahu/jiahu.jpg") no-repeat left -12px;
+    height: 12px;
+    display: block;
+  }
+  .all-money{
+    position: absolute;
+    left: calc(50% - 120px);
+    top: 422px;
+    width: 60px;
+    height: 32px;
+    line-height: 32px;
+    color: #fa990c;
+    font-weight: bold;
+  }
+  .used-money{
+    position: absolute;
+    left: calc(50% - 70px);
+    top: 392px;
+    width: 60px;
+    height: 32px;
+    line-height: 32px;
+    color: #fa990c;
+    font-weight: bold;
+  }
+  .yuan-money{
+    position: absolute;
+    left: calc(50% + 55px);
+    top: 392px;
+    width: 60px;
+    height: 32px;
+    line-height: 32px;
+    color: #fa990c;
+    font-weight: bold;
   }
 </style>
