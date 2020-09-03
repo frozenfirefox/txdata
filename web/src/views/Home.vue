@@ -407,13 +407,21 @@
 <!--    砸钻系列-->
     <Modal v-model="modalJiahu"
            fullscreen title="砸钻体验器(切勿当真，第一版设计是比较难的希望挑战下自己)">
+      <Select v-model="zuanValue" style="width:200px">
+        <Option v-for="item in modeList" :value="item.value" :key="item.value">{{ item.name }}</Option>
+      </Select>
+      <divider/>
       <div class="tianxiabg">
         <Row type="flex" justify="start" class="code-row-bg">
           <Col span="8" class="shop">
             <span class="ri-buy" @click="addZuan(0)"></span>
+            <span class="zu-ri-buy" @click="addZuanZu(0)"><Button type="primary" size="small">+20</Button></span>
             <span class="yue-buy" @click="addZuan(1)"></span>
+            <span class="zu-yue-buy" @click="addZuanZu(1)"><Button type="primary" size="small">+20</Button></span>
             <span class="lei-buy" @click="addZuan(2)"></span>
+            <span class="zu-lei-buy" @click="addZuanZu(2)"><Button type="primary" size="small">+20</Button></span>
             <span class="hong-buy" @click="addZuan(3)"></span>
+            <span class="zu-hong-buy" @click="addZuanZu(3)"><Button type="primary" size="small">+20</Button></span>
           </Col>
           <Col span="8" class="arm">
             <p class="jiahubg">
@@ -722,7 +730,8 @@ export default {
       zuanMoney: {
         moneyInit: 5000000,
         allMoney: 5000000,
-      }
+      },
+      zuanValue: 1
     }
   },
   mounted() {
@@ -1025,6 +1034,14 @@ export default {
       this.zuanList[type].num++
       this.zuanMoney.allMoney -= this.zuanList[type].price
     },
+    addZuanZu (type) {
+      if(this.zuanMoney.allMoney < this.zuanList[type].price*20){
+        this.$Message.warning('糟糕了，您的钱已经不够用了');
+        return false;
+      }
+      this.zuanList[type].num += 20
+      this.zuanMoney.allMoney -= this.zuanList[type].price*20
+    },
     addJiahu (type) {
       let forward = parseInt(this.jiahuValue/8) + 1;
       if(this.zuanList >= 160){
@@ -1042,8 +1059,9 @@ export default {
       }
 
       //开始加护
-      let bei = 2
-      let length = Math.max(...this.zuanList[type].section) + 1
+      let bei = this.zuanValue
+      console.log(bei)
+      let length = Math.max(...this.zuanList[type].section) + Math.abs(bei - 4)
       let weightArr = []
       for (let i  in this.zuanList[type].section){
         let number = Math.pow((length - this.zuanList[type].section[i]), bei)
@@ -1052,6 +1070,7 @@ export default {
           number--
         }
       }
+      // console.log(weightArr)
       //打乱数组下表
       weightArr.sort(function (a, b ) {
         return Math.random() > 0.5 ? -1 : 1;
@@ -1075,6 +1094,9 @@ export default {
       }
       if(weightArr[key] >= parseInt(this.jiahuValue/8) || parseInt(this.jiahuValue/8) < flag){
         this.jiahuValue += 8
+        if(this.jiahuValue == 160){
+          this.$Message.success("太厉害了少侠，您已经达到人生巅峰了，惊世骇俗，装备加护到了20钻，请开启新的征程吧!")
+        }
       }else{
         this.jiahuValue > 8?this.jiahuValue -= 8:this.jiahuValue = 8
       }
@@ -1167,10 +1189,24 @@ export default {
     width: 63px;
     height: 33px;
   }
+  .zu-ri-buy{
+    position: absolute;
+    left: calc(50% - 25px);
+    top: 118px;
+    width: 63px;
+    height: 33px;
+  }
   .yue-buy{
     position: absolute;
     left: calc(50% - 98px);
     top: 216px;
+    width: 63px;
+    height: 33px;
+  }
+  .zu-yue-buy{
+    position: absolute;
+    left: calc(50% - 25px);
+    top: 221px;
     width: 63px;
     height: 33px;
   }
@@ -1181,10 +1217,24 @@ export default {
     width: 63px;
     height: 33px;
   }
+  .zu-lei-buy{
+    position: absolute;
+    left: calc(50% - 25px);
+    top: 324px;
+    width: 63px;
+    height: 33px;
+  }
   .hong-buy{
     position: absolute;
     left: calc(50% - 98px);
-    top: 418px;
+    top: 426px;
+    width: 63px;
+    height: 33px;
+  }
+  .zu-hong-buy{
+    position: absolute;
+    left: calc(50% - 25px);
+    top: 426px;
     width: 63px;
     height: 33px;
   }
@@ -1266,4 +1316,5 @@ export default {
     color: #fa990c;
     font-weight: bold;
   }
+
 </style>
