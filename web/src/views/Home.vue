@@ -95,7 +95,8 @@
               <DropdownItem name="2">开箱模拟</DropdownItem>
               <DropdownItem name="3">点赞投币</DropdownItem>
               <DropdownItem name="4">砸钻模拟</DropdownItem>
-              <DropdownItem name="5">为她充电</DropdownItem>
+              <DropdownItem name="5">炼化模拟</DropdownItem>
+              <DropdownItem name="6">为她充电</DropdownItem>
             </DropdownMenu>
           </Dropdown>
         </Col>
@@ -455,6 +456,31 @@
         </Row>
       </div>
     </Modal>
+<!--    炼化模拟-->
+    <Modal v-model="modalLianhua"
+           fullscreen title="炼化模拟(切勿当真，第一版设计是比较难的希望挑战下自己)">
+      <Select v-model="zuanValue" style="width:200px">
+        <Option v-for="item in modeList" :value="item.value" :key="item.value">{{ item.name }}</Option>
+      </Select>
+      <divider/>
+      <div class="tianxiabg">
+        <Row type="flex" justify="start" class="code-row-bg">
+          <Col span="12" class="shop-lian">
+            <span class="shop-lian-yin-20"></span>
+            <span class="shop-lian-yin-100"></span>
+            <span class="ri-buy" @click="addZuan(0)"></span>
+            <span class="zu-ri-buy" @click="addZuanZu(0)"><Button type="primary" size="small">+20</Button></span>
+            <span class="yue-buy" @click="addZuan(1)"></span>
+            <span class="zu-yue-buy" @click="addZuanZu(1)"><Button type="primary" size="small">+20</Button></span>
+          </Col>
+          <Col span="12" class="bag-lian">
+            <p class="jiahubg">
+              <span class="jiahuPer" :style="'width: '+jiahuValue+'px'"></span>
+            </p>
+          </Col>
+        </Row>
+      </div>
+    </Modal>
   </div>
 </template>
 
@@ -731,7 +757,9 @@ export default {
         moneyInit: 5000000,
         allMoney: 5000000,
       },
-      zuanValue: 1
+      zuanValue: 1,
+      //开始炼化
+      modalLianhua: false,
     }
   },
   mounted() {
@@ -852,8 +880,12 @@ export default {
     toSource (name) {
       console.log(name)
       switch (parseInt(name)) {
-        case 5:
+        case 6:
           this.$Message.info('敬请期待')
+          break;
+        case 5:
+          //炼化模拟
+          this.modalLianhua = true
           break;
         case 4:
           this.modalJiahu = true
@@ -1316,5 +1348,31 @@ export default {
     color: #fa990c;
     font-weight: bold;
   }
-
+  /*开始设计炼化模拟*/
+  .shop-lian{
+    position: relative;
+    background: url("../assets/img/lianhua/shop.jpg") no-repeat center;
+    height: 465px;
+  }
+  .shop-lian-yin-20{
+    position: absolute;
+    left: calc(50% - 90px);
+    top: 70px;
+    width: 30px;
+    height: 31px;
+    background: url("../assets/img/lianhua/20-yin.png") no-repeat center;
+  }
+  .shop-lian-yin-100{
+    position: absolute;
+    left: calc(50% - 91px);
+    top: 170px;
+    width: 30px;
+    height: 30px;
+    background: url("../assets/img/lianhua/100-yin.png") no-repeat center;
+  }
+  .bag-lian{
+    position: relative;
+    background: url("../assets/img/lianhua/lian_bg.jpg") no-repeat center;
+    height: 528px;
+  }
 </style>
