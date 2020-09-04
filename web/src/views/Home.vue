@@ -224,6 +224,10 @@
           <p class="time">2020-09-03</p>
           <p class="content">更新新增模拟砸钻，砸钻入口：加入我们>>砸钻模拟</p>
         </TimelineItem>
+        <TimelineItem>
+          <p class="time">2020-09-04</p>
+          <p class="content">更新模拟砸钻添加加护成功音效</p>
+        </TimelineItem>
       </Timeline>
     </Modal>
     <!--估价-->
@@ -455,6 +459,7 @@
         </Row>
       </div>
     </Modal>
+    <audio :src="mp3Suc" id="video" ref="video"></audio>
   </div>
 </template>
 
@@ -731,7 +736,8 @@ export default {
         moneyInit: 5000000,
         allMoney: 5000000,
       },
-      zuanValue: 1
+      zuanValue: 1,
+      mp3Suc: ''
     }
   },
   mounted() {
@@ -850,7 +856,7 @@ export default {
       this.getList()
     },
     toSource (name) {
-      console.log(name)
+      this.mp3Suc = require('../assets/voice/zuan_suc.mp3')
       switch (parseInt(name)) {
         case 5:
           this.$Message.info('敬请期待')
@@ -1043,6 +1049,7 @@ export default {
       this.zuanMoney.allMoney -= this.zuanList[type].price*20
     },
     addJiahu (type) {
+
       let forward = parseInt(this.jiahuValue/8) + 1;
       if(this.zuanList >= 160){
         this.$Message.warning('您已经达到人生巅峰了，请开启新的征程吧')
@@ -1094,6 +1101,7 @@ export default {
       }
       if(weightArr[key] >= parseInt(this.jiahuValue/8) || parseInt(this.jiahuValue/8) < flag){
         this.jiahuValue += 8
+        this.$refs.video.play()
         if(this.jiahuValue == 160){
           this.$Message.success("太厉害了少侠，您已经达到人生巅峰了，惊世骇俗，装备加护到了20钻，请开启新的征程吧!")
         }
