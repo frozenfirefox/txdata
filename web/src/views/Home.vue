@@ -235,110 +235,112 @@
     <Modal v-model="modalValue"
            fullscreen
            title="估价系统">
-      <Row>
-        <Col span="24">
-          <Input search v-model="bang_link" @on-search="toValue" enter-button="去估价" placeholder="请复制英雄榜链接" />
-        </Col>
-      </Row>
-      <divider/>
-      <template v-if="valueData ==  ''">
-        <Spin fix v-if="loading">
-          <Icon type="ios-loading" size=18 class="demo-spin-icon-load"></Icon>
-          <div>疯狂运算中</div>
-        </Spin>
-        <div class="text-center" style="line-height: 700px;font-size: 50px">
-              对这片土地爱得深沉
-        </div>
-      </template>
-      <template v-if="valueData.length !=  ''">
-        <Row class-name="line-height-20">
-          <Col span="24" class-name="font-25 text-center">
-            估价详情
+      <div class="home">
+        <Row>
+          <Col span="24">
+            <Input search v-model="bang_link" @on-search="toValue" enter-button="去估价" placeholder="请复制英雄榜链接" />
           </Col>
         </Row>
+        <divider/>
+        <template v-if="valueData ==  ''">
+          <Spin fix v-if="loading">
+            <Icon type="ios-loading" size=18 class="demo-spin-icon-load"></Icon>
+            <div>疯狂运算中</div>
+          </Spin>
+          <div class="text-center" style="line-height: 700px;font-size: 50px">
+                对这片土地爱得深沉
+          </div>
+        </template>
+        <template v-if="valueData.length !=  ''">
+          <Row class-name="line-height-20">
+            <Col span="24" class-name="font-25 text-center">
+              估价详情
+            </Col>
+          </Row>
 
-        <Row class-name="line-height-20 text-center font-18">
-          <Col span="12" class-name="text-right">
-            角色名称：
-          </Col>
-          <Col span="12" class-name="text-left">
-            {{valueData.info.name}}
-          </Col>
-        </Row>
-        <Row class-name="line-height-20 font-18">
-          <Col span="12" class-name="text-right">
-            大区服务器势力：
-          </Col>
-          <Col span="12" class-name="text-left">
-            {{valueData.info.section}}
-          </Col>
-        </Row>
+          <Row class-name="line-height-20 text-center font-18">
+            <Col span="12" class-name="text-right">
+              角色名称：
+            </Col>
+            <Col span="12" class-name="text-left">
+              {{valueData.info.name}}
+            </Col>
+          </Row>
+          <Row class-name="line-height-20 font-18">
+            <Col span="12" class-name="text-right">
+              大区服务器势力：
+            </Col>
+            <Col span="12" class-name="text-left">
+              {{valueData.info.section}}
+            </Col>
+          </Row>
 
-        <Row class-name="line-height-20 font-18">
-          <Col span="12" class-name="text-right">
-            职业：
-          </Col>
-          <Col span="12" class-name="text-left">
-            {{valueData.info.zhiye}}
-          </Col>
-        </Row>
-        <Row class-name="line-height-20 font-18">
-          <Col span="12" class-name="text-right">
-            马灵化估价：
-          </Col>
-          <Col span="12" class-name="text-left">
-            {{valueData.qiyaoPrice}}
-          </Col>
-        </Row>
-        <Row class-name="line-height-20 font-18">
-          <Col span="12" class-name="text-right">
-            乾元丹估价：
-          </Col>
-          <Col span="12" class-name="text-left">
-            {{valueData.qianyuanPrice}}
-          </Col>
-        </Row>
-        <Row class-name="line-height-20 font-18">
-          <Col span="12" class-name="text-right">
-            元魂珠估价：
-          </Col>
-          <Col span="12" class-name="text-left">
-            {{valueData.yuanhunPrice}}
-          </Col>
-        </Row>
-        <Row class-name="line-height-20 font-18">
-          <Col span="12" class-name="text-right">
-            加护和炼护估价：
-          </Col>
-          <Col span="12" class-name="text-left">
-            {{valueData.zuanPrice}}
-          </Col>
-        </Row>
-        <Row class-name="line-height-20 font-18">
-          <Col span="12" class-name="text-right">
-            点化估价：
-          </Col>
-          <Col span="12" class-name="text-left">
-            {{valueData.dianPrice}}
-          </Col>
-        </Row>
-        <Row class-name="line-height-20 font-18">
-          <Col span="12" class-name="text-right">
-            天书估价：
-          </Col>
-          <Col span="12" class-name="text-left">
-            {{valueData.tianshuPrice}}
-          </Col>
-        </Row>
-        <Row class-name="line-height-20 font-18">
-          <Col span="12" class-name="text-right">
-            总价值（供参考）：
-          </Col>
-          <Col span="12" class-name="text-left">
-            {{valueData.allPrice}}
-          </Col>
-        </Row>
-      </template>
+          <Row class-name="line-height-20 font-18">
+            <Col span="12" class-name="text-right">
+              职业：
+            </Col>
+            <Col span="12" class-name="text-left">
+              {{valueData.info.zhiye}}
+            </Col>
+          </Row>
+          <Row class-name="line-height-20 font-18">
+            <Col span="12" class-name="text-right">
+              马灵化估价：
+            </Col>
+            <Col span="12" class-name="text-left">
+              {{valueData.qiyaoPrice}}
+            </Col>
+          </Row>
+          <Row class-name="line-height-20 font-18">
+            <Col span="12" class-name="text-right">
+              乾元丹估价：
+            </Col>
+            <Col span="12" class-name="text-left">
+              {{valueData.qianyuanPrice}}
+            </Col>
+          </Row>
+          <Row class-name="line-height-20 font-18">
+            <Col span="12" class-name="text-right">
+              元魂珠估价：
+            </Col>
+            <Col span="12" class-name="text-left">
+              {{valueData.yuanhunPrice}}
+            </Col>
+          </Row>
+          <Row class-name="line-height-20 font-18">
+            <Col span="12" class-name="text-right">
+              加护和炼护估价：
+            </Col>
+            <Col span="12" class-name="text-left">
+              {{valueData.zuanPrice}}
+            </Col>
+          </Row>
+          <Row class-name="line-height-20 font-18">
+            <Col span="12" class-name="text-right">
+              点化估价：
+            </Col>
+            <Col span="12" class-name="text-left">
+              {{valueData.dianPrice}}
+            </Col>
+          </Row>
+          <Row class-name="line-height-20 font-18">
+            <Col span="12" class-name="text-right">
+              天书估价：
+            </Col>
+            <Col span="12" class-name="text-left">
+              {{valueData.tianshuPrice}}
+            </Col>
+          </Row>
+          <Row class-name="line-height-20 font-18">
+            <Col span="12" class-name="text-right">
+              总价值（供参考）：
+            </Col>
+            <Col span="12" class-name="text-left">
+              {{valueData.allPrice}}
+            </Col>
+          </Row>
+        </template>
+      </div>
     </Modal>
 <!--    抽屉日活-->
     <Drawer title="日活统计"  width="100" placement="left" :closable="true" v-model="modalLive">
@@ -346,7 +348,7 @@
     </Drawer>
 
 <!--    开箱抽屉-->
-    <Drawer title="开箱子（过手瘾）"  width="100" placement="left" :closable="true" v-model="modalBox">
+    <Drawer title="开箱子（过手瘾）"  width="100" placement="left" :closable="true" v-model="modalBox"  class-name="home">
       <Select v-model="optionValue" style="width:200px">
         <Option v-for="item in modeList" :value="item.value" :key="item.value">{{ item.name }}</Option>
       </Select>
@@ -473,15 +475,34 @@
           <Col span="12" class="shop-lian">
             <span class="shop-lian-yin-20"></span>
             <span class="shop-lian-yin-100"></span>
-            <span class="ri-buy" @click="addZuan(0)"></span>
-            <span class="zu-ri-buy" @click="addZuanZu(0)"><Button type="primary" size="small">+20</Button></span>
-            <span class="yue-buy" @click="addZuan(1)"></span>
-            <span class="zu-yue-buy" @click="addZuanZu(1)"><Button type="primary" size="small">+20</Button></span>
+            <span class="ri-buy" @click="addLian(0)"></span>
+            <span class="zu-ri-buy" @click="addLianZu(0)"><Button type="primary" size="small">+20</Button></span>
+            <span class="yue-buy" @click="addLian(1)"></span>
+            <span class="zu-yue-buy" @click="addLianZu(1)"><Button type="primary" size="small">+20</Button></span>
           </Col>
           <Col span="12" class="bag-lian">
-            <p class="jiahubg">
-              <span class="jiahuPer" :style="'width: '+jiahuValue+'px'"></span>
-            </p>
+            <p class="xiaohao-lian">500</p>
+            <p class="yongyou-lian">{{countLianHad}}</p>
+            <p class="xiaohao-all">剩余元宝：{{lianMoney.allMoney}}</p>
+            <p class="xiaohao-yuan">实际消耗元宝：{{countLianUsed}}</p>
+            <p class="xiaohao-ren">实际消耗人民币：{{countLianYuan}}</p>
+            <p class="start-lian" @click="lianHua"></p>
+            <p class="start-lian-bao-left" @click="lianBao(0)"><Button type="primary">保留旧属性</Button></p>
+            <p class="start-lian-bao-right" @click="lianBao(1)"><Button type="info">保留新属性</Button></p>
+            <span class="start-lian-old">
+              <p>{{lianOld.one}}</p>
+              <p>{{lianOld.two}}</p>
+              <p>{{lianOld.three}}</p>
+              <p>{{lianOld.four}}</p>
+              <p>{{lianOld.five}}</p>
+            </span>
+            <span class="start-lian-new">
+              <p>{{lianNew.one}}</p>
+              <p>{{lianNew.two}}</p>
+              <p>{{lianNew.three}}</p>
+              <p>{{lianNew.four}}</p>
+              <p>{{lianNew.five}}</p>
+            </span>
           </Col>
         </Row>
       </div>
@@ -766,6 +787,36 @@ export default {
       mp3Suc: '',
       //开始炼化
       modalLianhua: false,
+      lianList: [
+        {
+          name: '炼化之印·20',
+          num: 0,
+          price: 20,
+        },
+        {
+          name: '炼化之印·100',
+          num: 0,
+          price: 100,
+        }
+      ],
+      lianMoney: {
+        moneyInit: 5000000,
+        allMoney: 5000000,
+      },
+      lianOld: {
+        one: '敏+30',
+        two: '不动：化解力上升80',
+        three: '追电',
+        four: '',
+        five: '',
+      },
+      lianNew: {
+        one: '力+60',
+        two: '附伤100',
+        three: '',
+        four: '',
+        five: '',
+      }
     }
   },
   mounted() {
@@ -785,6 +836,20 @@ export default {
       let hadMoney = this.zuanList[0].num*2 + this.zuanList[1].num*20 + this.zuanList[2].num*200 + this.zuanList[3].num*3300
       let usedMoney = this.zuanMoney.moneyInit - this.zuanMoney.allMoney
       return ((usedMoney - hadMoney)/10).toFixed(2)
+    },
+    countLianUsed () {
+      let hadMoney = this.lianList[0].num*20 + this.lianList[1].num*100
+      let usedMoney = this.lianMoney.moneyInit - this.lianMoney.allMoney
+      // console.log(hadMoney, usedMoney, this.lianMoney.allMoney, usedMoney)
+      return (usedMoney - hadMoney)
+    },
+    countLianYuan () {
+      let hadMoney = this.lianList[0].num*20 + this.lianList[1].num*100
+      let usedMoney = this.lianMoney.moneyInit - this.lianMoney.allMoney
+      return ((usedMoney - hadMoney)/10).toFixed(2)
+    },
+    countLianHad () {
+      return (this.lianList[0].num*20 + this.lianList[1].num*100)
     }
   },
   methods: {
@@ -1143,10 +1208,42 @@ export default {
       //加护
       this.zuanList[type].num--
     },
+    addLian (type){
+      if(this.lianMoney.allMoney < this.lianList[type].price){
+        this.$Message.warning('糟糕了，您的钱已经不够用了');
+        return false;
+      }
+      this.lianList[type].num++
+      this.lianMoney.allMoney -= this.lianList[type].price
+    },
+    addLianZu (type) {
+      if(this.lianMoney.allMoney < this.lianList[type].price*20){
+        this.$Message.warning('糟糕了，您的钱已经不够用了');
+        return false;
+      }
+      this.lianList[type].num += 20
+      this.lianMoney.allMoney -= this.lianList[type].price*20
+    },
+    lianHua (){
+      this.$refs.video.play()
+    },
+    lianBao (type){
+      if(type == 1){
+        this.lianOld = JSON.parse(JSON.stringify(this.lianNew))
+      }
+      this.lianNew.one = ''
+      this.lianNew.two = ''
+      this.lianNew.three = ''
+      this.lianNew.four = ''
+      this.lianNew.five = ''
+    }
   }
 }
 </script>
 <style scoped>
+  .home{
+    background: url("../assets/img/mainbg.jpg") repeat-y center;
+  }
   .li{
     line-height: 25px;
     list-style: none;
@@ -1382,5 +1479,85 @@ export default {
     position: relative;
     background: url("../assets/img/lianhua/lian_bg.jpg") no-repeat center;
     height: 528px;
+  }
+  .yongyou-lian{
+    position: absolute;
+    left: calc(50% - 10px);
+    top: 315px;
+    width: 160px;
+    height: 16px;
+    line-height: 16px;
+    color: aliceblue;
+  }
+  .xiaohao-lian{
+    position: absolute;
+    left: calc(50% - 10px);
+    top: 285px;
+    width: 160px;
+    height: 16px;
+    line-height: 16px;
+    color: aliceblue;
+  }
+  .xiaohao-all{
+    position: absolute;
+    left: calc(50% - 300px);
+    top: 60px;
+    width: 160px;
+    height: 16px;
+    line-height: 16px;
+    color: darkorange;
+  }
+  .xiaohao-yuan{
+    position: absolute;
+    left: calc(50% - 300px);
+    top: 90px;
+    width: 160px;
+    height: 16px;
+    line-height: 16px;
+    color: darkorange;
+  }
+  .xiaohao-ren{
+    position: absolute;
+    left: calc(50% - 300px);
+    top: 120px;
+    width: 160px;
+    height: 16px;
+    line-height: 16px;
+    color: darkorange;
+  }
+  .start-lian{
+    position: absolute;
+    left: calc(50% - 57px);
+    top: 476px;
+    width: 126px;
+    height: 35px;
+  }
+  .start-lian-bao-left{
+    position: absolute;
+    left: calc(50% - 265px);
+    top: 476px;
+    width: 126px;
+    height: 35px;
+  }
+  .start-lian-bao-right{
+    position: absolute;
+    left: calc(50% + 151px);
+    top: 476px;
+    width: 126px;
+    height: 35px;
+  }
+  .start-lian-old{
+    position: absolute;
+    left: calc(50% - 265px);
+    top: 276px;
+    width: 126px;
+    height: 35px;
+  }
+  .start-lian-new{
+    position: absolute;
+    left: calc(50% + 151px);
+    top: 276px;
+    width: 126px;
+    height: 35px;
   }
 </style>
