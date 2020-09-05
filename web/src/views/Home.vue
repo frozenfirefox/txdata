@@ -230,8 +230,8 @@
           <p class="content">更新模拟砸钻添加加护成功音效</p>
         </TimelineItem>
         <TimelineItem>
-          <p class="time red">2020-09-04</p>
-          <p class="content red">更新模拟炼化简易版</p>
+          <p class="time red">2020-09-05</p>
+          <p class="content red">更新模拟炼化简易版， 炼化入口：加入我们>>砸钻模拟</p>
         </TimelineItem>
       </Timeline>
     </Modal>
@@ -487,7 +487,7 @@
           </Col>
           <Col span="12" class="bag-lian">
             <p class="xiaohao-lian">{{lianXiaohao}}</p>
-            <p class="yongyou-lian">{{countLianHad}}</p>
+            <p class="yongyou-lian">{{lianHadSheng}}</p>
             <p class="xiaohao-all">剩余元宝：{{lianMoney.allMoney}}</p>
             <p class="xiaohao-yuan">实际消耗元宝：{{countLianUsed}}</p>
             <p class="xiaohao-ren">实际消耗人民币：{{countLianYuan}}</p>
@@ -499,14 +499,14 @@
               <p class="p-16">{{lianOld.two}}</p>
               <p class="p-16">{{lianOld.three}}</p>
               <p class="p-16">{{lianOld.four}}</p>
-              <p class="p-16">{{lianOld.five}}</p>
+              <p class="p-16 jinse">{{lianOld.five}}</p>
             </span>
             <span class="start-lian-new">
               <p class="p-16">{{lianNew.one}}</p>
               <p class="p-16">{{lianNew.two}}</p>
               <p class="p-16">{{lianNew.three}}</p>
               <p class="p-16">{{lianNew.four}}</p>
-              <p class="p-16">{{lianNew.five}}</p>
+              <p class="p-16 jinse">{{lianNew.five}}</p>
             </span>
             <span class="start-lian-arm">
               <Tooltip placement="bottom-end">
@@ -1078,7 +1078,8 @@ export default {
         {name: '疾 +', section: [10, 35]},
         {name: '念 +', section: [10, 35]}
       ],
-      lianXiaohao: 150
+      lianXiaohao: 150,
+      lianHadSheng: 0,
     }
   },
   mounted() {
@@ -1110,9 +1111,6 @@ export default {
       let usedMoney = this.lianMoney.moneyInit - this.lianMoney.allMoney
       return ((usedMoney - hadMoney)/10).toFixed(2)
     },
-    countLianHad () {
-      return (this.lianList[0].num*20 + this.lianList[1].num*100)
-    }
   },
   methods: {
     getList (page) {
@@ -1478,6 +1476,7 @@ export default {
       }
       this.lianList[type].num++
       this.lianMoney.allMoney -= this.lianList[type].price
+      this.lianHadSheng += this.lianList[type].price
     },
     addLianZu (type) {
       if(this.lianMoney.allMoney < this.lianList[type].price*20){
@@ -1486,11 +1485,12 @@ export default {
       }
       this.lianList[type].num += 20
       this.lianMoney.allMoney -= this.lianList[type].price*20
+      this.lianHadSheng += this.lianList[type].price*20
     },
     //核心公式计算炼化
     lianHua (){
       let xiaohao = this.lianXiaohao
-      let had = this.countLianHad
+      let had = this.lianHadSheng
       // console.log(xiaohao, had)
       if(xiaohao > had){
         this.$Message.warning('糟糕了，您炼化声望消耗殆尽，请购买');
@@ -1501,6 +1501,7 @@ export default {
         this.$Message.warning('请先选择保留新炼化属性或者旧炼化属性')
         return false
       }
+      this.lianHadSheng -= this.lianXiaohao
       //开始组装五条
       let tiaoshu = this.rangeInt(1, 5)
       for(let i = 1; i<=tiaoshu; i++ ){
@@ -1942,5 +1943,8 @@ export default {
     width: 274px;
     height: 415px;
     background: url("../assets/img/lianhua/arm.png");
+  }
+  .jinse{
+    color: #ffe326;
   }
 </style>
