@@ -229,6 +229,10 @@
           <p class="time">2020-09-04</p>
           <p class="content">更新模拟砸钻添加加护成功音效</p>
         </TimelineItem>
+        <TimelineItem>
+          <p class="time red">2020-09-04</p>
+          <p class="content red">更新模拟炼化简易版</p>
+        </TimelineItem>
       </Timeline>
     </Modal>
     <!--估价-->
@@ -466,9 +470,10 @@
 <!--    炼化模拟-->
     <Modal v-model="modalLianhua"
            fullscreen title="炼化模拟(切勿当真，第一版设计是比较难的希望挑战下自己)">
-      <Select v-model="zuanValue" style="width:200px">
-        <Option v-for="item in modeList" :value="item.value" :key="item.value">{{ item.name }}</Option>
-      </Select>
+      <!--<Select v-model="zuanValue" style="width:200px">-->
+        <!--<Option v-for="item in modeList" :value="item.value" :key="item.value">{{ item.name }}</Option>-->
+      <!--</Select>-->
+      <p>新增炼化模拟，大锁持续添加中</p>
       <divider/>
       <div class="tianxiabg">
         <Row type="flex" justify="start" class="code-row-bg">
@@ -481,7 +486,7 @@
             <span class="zu-yue-buy" @click="addLianZu(1)"><Button type="primary" size="small">+20</Button></span>
           </Col>
           <Col span="12" class="bag-lian">
-            <p class="xiaohao-lian">500</p>
+            <p class="xiaohao-lian">{{lianXiaohao}}</p>
             <p class="yongyou-lian">{{countLianHad}}</p>
             <p class="xiaohao-all">剩余元宝：{{lianMoney.allMoney}}</p>
             <p class="xiaohao-yuan">实际消耗元宝：{{countLianUsed}}</p>
@@ -490,18 +495,26 @@
             <p class="start-lian-bao-left" @click="lianBao(0)"><Button type="primary">保留旧属性</Button></p>
             <p class="start-lian-bao-right" @click="lianBao(1)"><Button type="info">保留新属性</Button></p>
             <span class="start-lian-old">
-              <p>{{lianOld.one}}</p>
-              <p>{{lianOld.two}}</p>
-              <p>{{lianOld.three}}</p>
-              <p>{{lianOld.four}}</p>
-              <p>{{lianOld.five}}</p>
+              <p class="p-16">{{lianOld.one}}</p>
+              <p class="p-16">{{lianOld.two}}</p>
+              <p class="p-16">{{lianOld.three}}</p>
+              <p class="p-16">{{lianOld.four}}</p>
+              <p class="p-16">{{lianOld.five}}</p>
             </span>
             <span class="start-lian-new">
-              <p>{{lianNew.one}}</p>
-              <p>{{lianNew.two}}</p>
-              <p>{{lianNew.three}}</p>
-              <p>{{lianNew.four}}</p>
-              <p>{{lianNew.five}}</p>
+              <p class="p-16">{{lianNew.one}}</p>
+              <p class="p-16">{{lianNew.two}}</p>
+              <p class="p-16">{{lianNew.three}}</p>
+              <p class="p-16">{{lianNew.four}}</p>
+              <p class="p-16">{{lianNew.five}}</p>
+            </span>
+            <span class="start-lian-arm">
+              <Tooltip placement="bottom-end">
+              <Button class=""></Button>
+              <div slot="content">
+                <p class="start-lian-arm-pic"></p>
+              </div>
+            </Tooltip>
             </span>
           </Col>
         </Row>
@@ -804,19 +817,268 @@ export default {
         allMoney: 5000000,
       },
       lianOld: {
-        one: '敏+30',
-        two: '不动：化解力上升80',
-        three: '追电',
+        one: '',
+        two: '',
+        three: '',
         four: '',
         five: '',
       },
       lianNew: {
-        one: '力+60',
-        two: '附伤100',
+        one: '',
+        two: '',
         three: '',
         four: '',
         five: '',
-      }
+      },
+      fiveOriginList: [
+        {name: '回环剑', type:  1},
+        {name: '断魂剑', type:  1},
+        {name: '饮血剑', type:  1},
+        {name: '残影剑', type:  1},
+        {name: '疾影剑', type:  1},
+        {name: '狂影剑', type:  1},
+        {name: '失明卷', type:  1},
+        {name: '强攻卷', type:  2},
+        {name: '化血卷', type:  2},
+        {name: '暗器卷', type:  1},
+        {name: '解体卷', type:  1},
+        {name: '影杀卷', type:  1},
+        {name: '影遁', type:  2},
+        {name: '地行', type:  2},
+        {name: '疾闪', type:  2},
+        {name: '缠身', type:  2},
+        {name: '催命', type:  2},
+        {name: '百影', type:  1},
+        {name: '山河震', type:  2},
+        {name: '鬼神震', type:  1},
+        {name: '金玉震', type:  1},
+        {name: '天地震', type:  1},
+        {name: '飞星震', type:  1},
+        {name: '仙魔震', type:  1},
+        {name: '暴怒', type:  2},
+        {name: '长生', type:  2},
+        {name: '断吼', type:  2},
+        {name: '暴走', type:  2},
+        {name: '破胆', type:  2},
+        {name: '钢身', type:  2},
+        {name: '疾', type:  1},
+        {name: '破', type:  1},
+        {name: '截', type:  1},
+        {name: '伤', type:  1},
+        {name: '狂', type:  2},
+        {name: '开', type:  1},
+        {name: '火炎珠', type:  1},
+        {name: '火吟法', type:  2},
+        {name: '火三昧', type:  1},
+        {name: '火地眩', type:  1},
+        {name: '火炎凤', type:  1},
+        {name: '火天罚', type:  1},
+        {name: '水凝身', type:  1},
+        {name: '水吟法', type:  2},
+        {name: '水缓行', type:  1},
+        {name: '水入梦', type:  2},
+        {name: '水乱弹', type:  1},
+        {name: '水狂法', type:  1},
+        {name: '风雷触', type:  1},
+        {name: '风吟法', type:  2},
+        {name: '风卷云', type:  1},
+        {name: '风腾云', type:  2},
+        {name: '风刃散', type:  1},
+        {name: '风七雷', type:  1},
+        {name: '错骨', type:  1},
+        {name: '止行', type:  1},
+        {name: '失心', type:  1},
+        {name: '放血', type:  1},
+        {name: '润脉', type:  2},
+        {name: '调气', type:  2},
+        {name: '妙手回春', type:  2},
+        {name: '心清神明', type:  2},
+        {name: '固本培元', type:  2},
+        {name: '逆转丹行', type:  2},
+        {name: '七星唤魂', type:  2},
+        {name: '八门化伤', type:  2},
+        {name: '九心海棠', type:  1},
+        {name: '鬼哭藤', type:  1},
+        {name: '赤孔雀胆', type:  1},
+        {name: '醉梦仙花', type:  1},
+        {name: '断肠腐骨草', type:  1},
+        {name: '墨罂粟', type:  1},
+        {name: '三阳真火诀', type:  1},
+        {name: '六合寒水诀', type:  1},
+        {name: '五方浩风诀', type:  1},
+        {name: '八荒地煞诀', type:  2},
+        {name: '七曜人寰诀', type:  1},
+        {name: '九玄天元诀', type:  1},
+        {name: '炫炎', type:  1},
+        {name: '听雨', type:  2},
+        {name: '流风', type:  1},
+        {name: '归元', type:  1},
+        {name: '幻心', type:  2},
+        {name: '兵解', type:  2},
+        {name: '道生火', type:  1},
+        {name: '上善若水', type:  2},
+        {name: '有归于无', type:  1},
+        {name: '曲则全', type:  2},
+        {name: '身自在', type:  2},
+        {name: '观其妙', type:  1},
+        {name: '玄龟真言', type:  2},
+        {name: '白虎真言', type:  2},
+        {name: '青麒真言', type:  2},
+        {name: '丹鹤真言', type:  2},
+        {name: '炎凤真言', type:  2},
+        {name: '邪影真言', type:  2},
+        {name: '回生真诀', type:  2},
+        {name: '神速真诀', type:  2},
+        {name: '缚足真诀', type:  1},
+        {name: '郁风真诀', type:  1},
+        {name: '重生真诀', type:  2},
+        {name: '心魔真诀', type:  2},
+        {name: '退鬼符', type:  1},
+        {name: '斩妖诀', type:  1},
+        {name: '定身咒', type:  1},
+        {name: '观心咒', type:  1},
+        {name: '破技符', type:  1},
+        {name: '符惊鬼神', type:  1},
+        {name: '繁星碎', type:  1},
+        {name: '铁歌行', type:  2},
+        {name: '流光鸣', type:  1},
+        {name: '飞云断', type:  1},
+        {name: '金戈吟', type:  1},
+        {name: '山河壮', type:  2},
+        {name: '黄云堆雪', type:  1},
+        {name: '挑灯看剑', type:  1},
+        {name: '铁马秋风', type:  1},
+        {name: '狼烟夜举', type:  2},
+        {name: '关山梦断', type:  1},
+        {name: '暴虎冯河', type:  1},
+        {name: '地载阵', type:  2},
+        {name: '蛇蟠阵', type:  2},
+        {name: '虎翼阵', type:  2},
+        {name: '鸟翔阵', type:  2},
+        {name: '云垂阵', type:  2},
+        {name: '龙飞阵', type:  2},
+        {name: '风驰篇', type:  2},
+        {name: '发劲篇', type:  2},
+        {name: '驯鹰篇', type:  2},
+        {name: '疾行篇', type:  2},
+        {name: '弓术篇', type:  2},
+        {name: '凝神篇', type:  2},
+        {name: '冻霜寒陷阱', type:  1},
+        {name: '冻霜寒陷阱', type:  1},
+        {name: '绿蛛丝陷阱', type:  1},
+        {name: '噬魔草陷阱', type:  1},
+        {name: '赤蝎粉陷阱', type:  1},
+        {name: '火油桐陷阱', type:  1},
+        {name: '藤葛', type:  1},
+        {name: '梨花', type:  1},
+        {name: '芭蕉', type:  1},
+        {name: '倦鸟', type:  1},
+        {name: '火蜥', type:  2},
+        {name: '夜狼', type:  1},
+        {name: '新梢满林', type:  2},
+        {name: '独坐幽篁', type:  2},
+        {name: '琼节高吹', type:  2},
+        {name: '风玉敲秋', type:  2},
+        {name: '繁荫郁郁', type:  2},
+        {name: '残阴余韵', type:  2},
+        {name: '阎罗司刑', type:  1},
+        {name: '孟婆斟汤', type:  2},
+        {name: '府君勾魂', type:  1},
+        {name: '钟馗怒撼', type:  1},
+        {name: '秦广贯月', type:  1},
+        {name: '玉碎九渊', type:  1},
+        {name: '夙影浣火', type:  1},
+        {name: '夜明战歌', type:  2},
+        {name: '怀光饲命', type:  1},
+        {name: '困兽刑牢', type:  1},
+        {name: '幻雾迷踪', type:  2},
+        {name: '望舒降世', type:  1},
+        {name: '龙刃蚀心', type:  1},
+        {name: '龙战于野', type:  1},
+        {name: '游龙摆尾', type:  1},
+        {name: '怒龙之袭', type:  1},
+        {name: '沧海龙吟', type:  1},
+        {name: '龙息涤魂', type:  2},
+        {name: '九命灵心', type:  2},
+        {name: '绿野流沼', type:  1},
+        {name: '灵歌锁心', type:  1},
+        {name: '碎荧流袂', type:  2},
+        {name: '蝶舞幻离', type:  1},
+        {name: '寒水磷光', type:  1},
+        {name: '背水殇歌', type:  1},
+        {name: '蜃影幻镜', type:  2},
+        {name: '亢龙无悔', type:  1},
+        {name: '龙血之契', type:  2},
+        {name: '斗转参横', type:  1},
+        {name: '龙行天下', type:  1},
+        {name: '修竹', type:  2},
+        {name: '繁花', type:  2},
+        {name: '魅妖', type:  2},
+        {name: '镜影', type:  2},
+        {name: '塔灵', type:  2},
+        {name: '墨之殇', type:  2},
+        {name: '洒墨', type:  1},
+        {name: '墨灵', type:  2},
+        {name: '墨染缠绵', type:  1},
+        {name: '潜移墨化', type:  2},
+        {name: '墨龙凌空', type:  1},
+        {name: '血墨杀', type:  1},
+        {name: '鬼蜮', type:  1},
+        {name: '鬼影', type:  2},
+        {name: '鬼息', type:  2},
+        {name: '鬼迷心窍', type:  1},
+        {name: '鬼出神没', type:  1},
+        {name: '鬼泣', type:  1}
+      ],
+      fiveList: [],
+      fourList: [
+        {name: '最大物理攻击力：+', section: [10, 15]},
+        {name: '最小物理攻击力：+', section: [10, 15]},
+        {name: '最大法术攻击力：+', section: [10, 15]},
+        {name: '最小法术攻击力：+', section: [10, 15]},
+        {name: '物理防御力：+', section: [10, 15]},
+        {name: '法术防御力：+', section: [10, 15]}
+      ],
+      threeList: [
+        {name: '追电：移动速度加成力上升', section: [18, 60]},
+        {name: '疾语：吟唱速度加成力上升', section: [18, 60]},
+        {name: '骤雨：攻击速度加成力上升', section: [18, 60]},
+        {name: '神明：施法保护力和会心防护力上升', section: [18, 60]},
+        {name: '扰心：施法打断力上升', section: [18, 60]},
+        {name: '明思：技力消耗力减少', section: [18, 60]}
+      ],
+      twoList: [
+        {name: '白刃：挥砍重击上升#@#', section: [10, 20]},
+        {name: '阴伤：穿刺重击上升#@#', section: [10, 20]},
+        {name: '崩击：钝击重击上升#@#', section: [10, 20]},
+        {name: '猛毒：毒系重击上升#@#', section: [10, 20]},
+        {name: '真元：元系重击上升#@#', section: [10, 20]},
+        {name: '爆炎：火系重击上升#@#', section: [10, 20]},
+        {name: '怒涛：水系重击上升#@#', section: [10, 20]},
+        {name: '狂风：风系重击上升#@#', section: [10, 20]},
+        {name: '御火：火系化解上升#@#', section: [10, 20]},
+        {name: '御水：水系化解上升#@#', section: [10, 20]},
+        {name: '御风：风系化解上升#@#', section: [10, 20]},
+        {name: '御元：元系化解上升#@#', section: [10, 20]},
+        {name: '御毒：毒系化解上升#@#', section: [10, 20]},
+        {name: '不动：钝击化解上升#@#', section: [10, 20]},
+        {name: '卸刃：挥砍化解上升#@#', section: [10, 20]},
+        {name: '金刚：穿刺化解上升#@#', section: [10, 20]},
+        {name: '附加#@#点火伤', section: [10, 20]},
+        {name: '附加#@#点水伤', section: [10, 20]},
+        {name: '附加#@#点风伤', section: [10, 20]},
+        {name: '附加#@#点毒伤', section: [10, 20]},
+        {name: '附加#@#点元伤害', section: [10, 20]}
+      ],
+      oneList: [
+        {name: '力 +', section: [10, 35]},
+        {name: '敏 +', section: [10, 35]},
+        {name: '魂 +', section: [10, 35]},
+        {name: '体 +', section: [10, 35]},
+        {name: '疾 +', section: [10, 35]},
+        {name: '念 +', section: [10, 35]}
+      ],
+      lianXiaohao: 150
     }
   },
   mounted() {
@@ -956,6 +1218,7 @@ export default {
           break;
         case 5:
           //炼化模拟
+          this.initFiveList()
           this.modalLianhua = true
           break;
         case 4:
@@ -1224,8 +1487,54 @@ export default {
       this.lianList[type].num += 20
       this.lianMoney.allMoney -= this.lianList[type].price*20
     },
+    //核心公式计算炼化
     lianHua (){
+      let xiaohao = this.lianXiaohao
+      let had = this.countLianHad
+      // console.log(xiaohao, had)
+      if(xiaohao > had){
+        this.$Message.warning('糟糕了，您炼化声望消耗殆尽，请购买');
+        return false
+      }
       this.$refs.video.play()
+      if(this.lianNew.one != ''){
+        this.$Message.warning('请先选择保留新炼化属性或者旧炼化属性')
+        return false
+      }
+      //开始组装五条
+      let tiaoshu = this.rangeInt(1, 5)
+      for(let i = 1; i<=tiaoshu; i++ ){
+        switch (parseInt(i)) {
+          case 5:
+            this.lianNew.five = this.dealFive()
+            break;
+          case 4:
+            this.lianNew.four = this.dealFour()
+            break;
+          case 3:
+            this.lianNew.three = this.dealThree()
+            break;
+          case 2:
+            this.lianNew.two = this.dealTwo()
+            break;
+          default:
+            this.lianNew.one = this.dealOne()
+            break;
+        }
+      }
+    },
+    rangeInt(minNum, maxNum){
+      switch(arguments.length){
+        case 1:
+          return parseInt(Math.random()*minNum+1,10);
+          break;
+        case 2:
+          return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10);
+          break;
+        default:
+          return 0;
+          break;
+      }
     },
     lianBao (type){
       if(type == 1){
@@ -1236,6 +1545,67 @@ export default {
       this.lianNew.three = ''
       this.lianNew.four = ''
       this.lianNew.five = ''
+    },
+    initFiveList (){
+      let fiveList = []
+      for(let i in this.fiveOriginList){
+        //开始处理
+        if(this.fiveOriginList[i].type == 1){
+          //有两条插入，否则一条
+          let jineng = {
+            name: this.fiveOriginList[i].name + ': 技能威力增加',
+            section: [0.5, 1, 1.5, 2]
+          }
+          fiveList.push(jineng)
+        }
+        let jili = {
+          name: this.fiveOriginList[i].name + ': 技力值消耗减少',
+          section: [1, 2, 3, 4]
+        }
+        fiveList.push(jili)
+      }
+      this.fiveList = JSON.parse(JSON.stringify(fiveList))
+      // console.log(this.fiveList)
+    },
+    dealFive (){
+      let fiveList = this.fiveList
+      let length = fiveList.length
+      let xiabiao = this.rangeInt(0, length - 1)
+      let fiveSingle = fiveList[xiabiao]
+      let numXiabiao = this.rangeInt(0, fiveSingle.section.length - 1)
+      return fiveSingle.name + fiveSingle.section[numXiabiao] + '%'
+    },
+    dealFour (){
+      let fourList = this.fourList
+      let length = fourList.length
+      let xiabiao = this.rangeInt(0, length - 1)
+      let fourSingle = fourList[xiabiao]
+      let number = this.rangeInt(fourSingle.section[0], fourSingle.section[1])
+      return fourSingle.name + number
+    },
+    dealThree (){
+      let threeList = this.threeList
+      let length = threeList.length
+      let xiabiao = this.rangeInt(0, length - 1)
+      let threeSingle = threeList[xiabiao]
+      let number = this.rangeInt(threeSingle.section[0], threeSingle.section[1])
+      return threeSingle.name + number
+    },
+    dealTwo (){
+      let twoList = this.twoList
+      let length = twoList.length
+      let xiabiao = this.rangeInt(0, length - 1)
+      let twoSingle = twoList[xiabiao]
+      let number = this.rangeInt(twoSingle.section[0], twoSingle.section[1])
+      return twoSingle.name.replace('#@#', number)
+    },
+    dealOne (){
+      let oneList = this.oneList
+      let length = oneList.length
+      let xiabiao = this.rangeInt(0, length - 1)
+      let oneSingle = oneList[xiabiao]
+      let number = this.rangeInt(oneSingle.section[0], oneSingle.section[1])
+      return oneSingle.name + number
     }
   }
 }
@@ -1548,16 +1918,29 @@ export default {
   }
   .start-lian-old{
     position: absolute;
-    left: calc(50% - 265px);
-    top: 276px;
-    width: 126px;
-    height: 35px;
+    left: calc(50% - 316px);
+    top: 212px;
+    width: 160px;
   }
   .start-lian-new{
     position: absolute;
-    left: calc(50% + 151px);
-    top: 276px;
-    width: 126px;
-    height: 35px;
+    left: calc(50% + 113px);
+    top: 212px;
+    width: 160px;
+  }
+  .p-16{
+    font-size: 12px;
+    line-height: 26px;
+    color: #00ff00;
+  }
+  .start-lian-arm{
+    position: absolute;
+    left: calc(50% - 7px);
+    top: 102px;
+  }
+  .start-lian-arm-pic{
+    width: 274px;
+    height: 415px;
+    background: url("../assets/img/lianhua/arm.png");
   }
 </style>
