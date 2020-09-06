@@ -492,8 +492,8 @@
             <p class="xiaohao-yuan">实际消耗元宝：{{countLianUsed}}</p>
             <p class="xiaohao-ren">实际消耗人民币：{{countLianYuan}}</p>
             <p class="start-lian" @click="lianHua"></p>
-            <p class="start-lian-bao-left" @click="lianBao(0)"><Button type="primary">保留旧属性</Button></p>
-            <p class="start-lian-bao-right" @click="lianBao(1)"><Button type="info">保留新属性</Button></p>
+            <p class="start-lian-bao-left" v-if="!checkOldIsEmpty() && !checkNewIsEmpty()" @click="lianBao(0)"><Button type="primary">保留旧属性</Button></p>
+            <p class="start-lian-bao-right" v-if="!checkNewIsEmpty()" @click="lianBao(1)"><Button type="info">保留新属性</Button></p>
             <span class="start-lian-old">
               <p class="p-16">{{lianOld.one}}</p>
               <p class="p-16">{{lianOld.two}}</p>
@@ -516,7 +516,13 @@
               </div>
             </Tooltip>
             </span>
+            <span class="lian-lock-1" :class="{'lian-lock-bg': lianLock.lockOne}" @click="lianLocking(1)"></span>
+            <span class="lian-lock-2" :class="{'lian-lock-bg': lianLock.lockTwo}" @click="lianLocking(2)"></span>
+            <span class="lian-lock-3" :class="{'lian-lock-bg': lianLock.lockThree}" @click="lianLocking(3)"></span>
+            <span class="lian-lock-4" :class="{'lian-lock-bg': lianLock.lockFour}" @click="lianLocking(4)"></span>
+            <span class="lian-lock-3-1" :class="{'lian-lock-big-bg': lianLock.lockThreeBig}" @click="lianLocking(5)"></span>
           </Col>
+          {{countXiaohao}}
         </Row>
       </div>
     </Modal>
@@ -525,8 +531,10 @@
 
 <script>
 import 'echarts/lib/chart/bar'
+import Caspanel from "view-design/src/components/cascader/caspanel";
 export default {
   name: 'Home',
+  components: {Caspanel},
   data () {
     return {
       bangList: [],
@@ -1078,8 +1086,21 @@ export default {
         {name: '疾 +', section: [10, 35]},
         {name: '念 +', section: [10, 35]}
       ],
-      lianXiaohao: 150,
+      lianXiaohao: 193,
       lianHadSheng: 0,
+      lianLock: {
+        lockOne: false,
+        lockTwo: false,
+        lockThree: false,
+        lockFour: false,
+        lockThreeBig: false,
+      },
+      xiaoHaoList: {
+        one: 1643,
+        two: 2053,
+        three: 3234,
+        four: 1643,
+      }
     }
   },
   mounted() {
@@ -1102,15 +1123,36 @@ export default {
     },
     countLianUsed () {
       let hadMoney = this.lianList[0].num*20 + this.lianList[1].num*100
-      let usedMoney = this.lianMoney.moneyInit - this.lianMoney.allMoney
-      // console.log(hadMoney, usedMoney, this.lianMoney.allMoney, usedMoney)
-      return (usedMoney - hadMoney)
+      let usedMoney = this.lianHadSheng
+      return (hadMoney - usedMoney)
     },
     countLianYuan () {
       let hadMoney = this.lianList[0].num*20 + this.lianList[1].num*100
-      let usedMoney = this.lianMoney.moneyInit - this.lianMoney.allMoney
-      return ((usedMoney - hadMoney)/10).toFixed(2)
+      let usedMoney = this.lianHadSheng
+      return ((hadMoney - usedMoney)/10).toFixed(2)
     },
+    countXiaohao (){
+      if(!this.lianLock.lockOne && !this.lianLock.lockTwo && !this.lianLock.lockThree && !this.lianLock.lockFour){
+        this.lianXiaohao = 193
+      }else{
+        this.lianXiaohao = 0
+        if(this.lianLock.lockOne == true){
+          this.lianXiaohao += this.xiaoHaoList.one
+        }
+        if(this.lianLock.lockTwo == true){
+          this.lianXiaohao += this.xiaoHaoList.two
+        }
+        if(this.lianLock.lockThree == true){
+          this.lianXiaohao += this.xiaoHaoList.three
+        }
+        if(this.lianLock.lockFour == true){
+          this.lianXiaohao += this.xiaoHaoList.four
+        }
+        if(this.lianLock.lockThreeBig == true){
+          this.lianXiaohao *= 2
+        }
+      }
+    }
   },
   methods: {
     getList (page) {
@@ -1337,7 +1379,7 @@ export default {
       this.giftDisabled = false
     },
     randomKey(weightArr){
-      const rand = Math.floor( Math.random() * weightArr.length )
+      const rand = Math.floor( Math.random() * (weightArr.length - 1) )
       const middle = weightArr.slice(rand, rand +　1)
       return middle[0]
     },
@@ -1497,15 +1539,42 @@ export default {
         return false
       }
       this.$refs.video.play()
-      if(this.lianNew.one != ''){
+      if(!this.checkNewIsEmpty()){
         this.$Message.warning('请先选择保留新炼化属性或者旧炼化属性')
         return false
       }
       this.lianHadSheng -= this.lianXiaohao
       //开始组装五条
-      let tiaoshu = this.rangeInt(1, 5)
-      for(let i = 1; i<=tiaoshu; i++ ){
-        switch (parseInt(i)) {
+      let min = this.checkLock()
+      let start = min > 0 ?min:1
+      let tiaoshu = this.rangeInt(min, 5)
+      let pool = [1, 2, 3, 4, 5]
+      //预先把锁定的处理完毕
+      if(this.lianLock.lockOne == true){
+        this.lianNew.one = this.dealOne()
+        pool = this.deleteArr(1, pool)
+      }
+      if(this.lianLock.lockTwo == true){
+        this.lianNew.two = this.dealTwo()
+        pool = this.deleteArr(2, pool)
+      }
+      if(this.lianLock.lockThree == true){
+        this.lianNew.three = this.dealThree()
+        pool = this.deleteArr(3, pool)
+      }
+      if(this.lianLock.lockFour == true){
+        this.lianNew.four = this.dealFour()
+        pool = this.deleteArr(4, pool)
+      }
+      pool = JSON.parse(JSON.stringify(pool))
+      // console.log(pool, 1)
+      for(let i = 1; i<=(tiaoshu-min); i++ ){
+        //这里得选择一条
+        let arrSelect = this.checkLianList(pool)
+        let q = this.randomKey(arrSelect)
+        // let q = arrSelect[key]
+        // console.log(arrSelect, q, 2)
+        switch (parseInt(q)) {
           case 5:
             this.lianNew.five = this.dealFive()
             break;
@@ -1579,34 +1648,205 @@ export default {
     dealFour (){
       let fourList = this.fourList
       let length = fourList.length
-      let xiabiao = this.rangeInt(0, length - 1)
-      let fourSingle = fourList[xiabiao]
+      let fourSingle = []
+      if(this.lianLock.lockFour == true){
+        //说明已经锁定该条属性
+        let str = this.lianOld.four.replace(/\d/g, '')
+        fourSingle = this.$find_array(str, fourList)
+        // oneSingle.section[0] = parseInt(this.lianOld.one.replace(/[^0-9]/ig,""))
+      }else{
+        let xiabiao = this.rangeInt(0, length - 1)
+        fourSingle = fourList[xiabiao]
+      }
       let number = this.rangeInt(fourSingle.section[0], fourSingle.section[1])
       return fourSingle.name + number
     },
     dealThree (){
       let threeList = this.threeList
       let length = threeList.length
-      let xiabiao = this.rangeInt(0, length - 1)
-      let threeSingle = threeList[xiabiao]
+      let threeSingle = []
+      if(this.lianLock.lockThree == true){
+        //说明已经锁定该条属性
+        let str = this.lianOld.three.replace(/\d/g, '')
+        threeSingle = this.$find_array(str, threeList)
+        if(this.lianLock.lockThreeBig == true){
+          threeSingle.section[0] = parseInt(this.lianOld.three.replace(/[^0-9]/ig,""))
+        }
+      }else{
+        let xiabiao = this.rangeInt(0, length - 1)
+        threeSingle = threeList[xiabiao]
+      }
       let number = this.rangeInt(threeSingle.section[0], threeSingle.section[1])
       return threeSingle.name + number
     },
     dealTwo (){
       let twoList = this.twoList
       let length = twoList.length
-      let xiabiao = this.rangeInt(0, length - 1)
-      let twoSingle = twoList[xiabiao]
+      let twoSingle = []
+      if(this.lianLock.lockTwo == true){
+        //说明已经锁定该条属性
+        let num = this.lianOld.two.replace(/[^0-9]/ig,"")
+        let str = this.lianOld.two.replace(num, '#@#')
+        console.log(num, str, twoList)
+        twoSingle = this.$find_array(str, twoList)
+        // oneSingle.section[0] = parseInt(this.lianOld.one.replace(/[^0-9]/ig,""))
+      }else{
+        let xiabiao = this.rangeInt(0, length - 1)
+        twoSingle = twoList[xiabiao]
+      }
       let number = this.rangeInt(twoSingle.section[0], twoSingle.section[1])
       return twoSingle.name.replace('#@#', number)
     },
     dealOne (){
       let oneList = this.oneList
       let length = oneList.length
-      let xiabiao = this.rangeInt(0, length - 1)
-      let oneSingle = oneList[xiabiao]
+      let oneSingle = []
+      if(this.lianLock.lockOne == true){
+        //说明已经锁定该条属性
+        let str = this.lianOld.one.replace(/\d/g, '')
+        oneSingle = this.$find_array(str, oneList)
+        // oneSingle.section[0] = parseInt(this.lianOld.one.replace(/[^0-9]/ig,""))
+      }else{
+        let xiabiao = this.rangeInt(0, length - 1)
+        oneSingle = oneList[xiabiao]
+      }
       let number = this.rangeInt(oneSingle.section[0], oneSingle.section[1])
       return oneSingle.name + number
+    },
+    lianLocking (type){
+      let number = this.checkLock()
+      switch (parseInt(type)) {
+        case 5:
+          if(this.lianLock.lockThree == false && number >= 3){
+            this.$Message.warning('最多可固定三条属性')
+            return false
+          }
+          //大锁必须得锁定第三条
+          if(this.lianLock.lockThree == false && this.lianLock.lockThreeBig == false){
+            this.$Message.warning('属性要先固定，才能锁定')
+            return false
+          }
+          this.lianLock.lockThreeBig = !this.lianLock.lockThreeBig
+          break;
+        case 4:
+          if(this.lianOld.four == '')
+            return false;
+          if(this.lianLock.lockFour == false && number >= 3){
+            this.$Message.warning('最多可固定三条属性')
+            return false
+          }
+          this.lianLock.lockFour = !this.lianLock.lockFour
+          break;
+        case 3:
+          if(this.lianOld.three == '')
+            return false;
+          if(this.lianLock.lockThree == false && number >= 3){
+            this.$Message.warning('最多可固定三条属性')
+            return false
+          }
+          if(this.lianLock.lockThree == true){
+            this.lianLock.lockThreeBig = false
+          }
+          this.lianLock.lockThree = !this.lianLock.lockThree
+          break;
+        case 2:
+          if(this.lianOld.two == '')
+            return false;
+          if(this.lianLock.lockTwo == false && number >= 3){
+            this.$Message.warning('最多可固定三条属性')
+            return false
+          }
+          this.lianLock.lockTwo = !this.lianLock.lockTwo
+          break;
+        default:
+          if(this.lianOld.one == '')
+            return false;
+          if(this.lianLock.lockOne == false && number >= 3){
+            this.$Message.warning('最多可固定三条属性')
+            return false
+          }
+          this.lianLock.lockOne = !this.lianLock.lockOne
+          break;
+      }
+    },
+    checkLock (){
+      let number = 0
+      this.lianLock.lockOne == true?number++:''
+      this.lianLock.lockTwo == true?number++:''
+      this.lianLock.lockThree == true?number++:''
+      this.lianLock.lockFour == true?number++:''
+      return number
+    },
+    checkLianList (pool){
+      let arr = []
+      let poolList = pool
+      if(this.lianNew.one != '')
+        arr.push(1)
+      if(this.lianNew.two != '')
+        arr.push(2)
+      if(this.lianNew.three != '')
+        arr.push(3)
+      if(this.lianNew.four != '')
+        arr.push(4)
+      if(this.lianNew.five != '')
+        arr.push(5)
+      // console.log(poolList, arr)
+      return this.$array_diff(poolList, arr)
+    },
+    checkNewIsEmpty (){
+      let re = true
+      if(this.lianNew.one != ''){
+        re = false
+        return re
+      }
+      if(this.lianNew.two != ''){
+        re = false
+        return re
+      }
+      if(this.lianNew.three != ''){
+        re = false
+        return re
+      }
+      if(this.lianNew.four != ''){
+        re = false
+        return re
+      }
+      if(this.lianNew.five != ''){
+        re = false
+        return re
+      }
+      return re
+    },
+    checkOldIsEmpty (){
+      let re = true
+      if(this.lianOld.one != ''){
+        re = false
+        return re
+      }
+      if(this.lianOld.two != ''){
+        re = false
+        return re
+      }
+      if(this.lianOld.three != ''){
+        re = false
+        return re
+      }
+      if(this.lianOld.four != ''){
+        re = false
+        return re
+      }
+      if(this.lianOld.five != ''){
+        re = false
+        return re
+      }
+      return re
+    },
+    deleteArr (value, arr){
+      let xiabiao = arr.indexOf(value)
+      if(xiabiao >= 0){
+        arr.splice(xiabiao, 1)
+      }
+      return arr
     }
   }
 }
@@ -1920,19 +2160,20 @@ export default {
   .start-lian-old{
     position: absolute;
     left: calc(50% - 316px);
-    top: 212px;
-    width: 160px;
+    top: 208px;
+    width: 240px;
   }
   .start-lian-new{
     position: absolute;
     left: calc(50% + 113px);
-    top: 212px;
-    width: 160px;
+    top: 208px;
+    width: 240px;
   }
   .p-16{
     font-size: 12px;
-    line-height: 26px;
+    line-height: 30px;
     color: #00ff00;
+    min-height: 30px;
   }
   .start-lian-arm{
     position: absolute;
@@ -1946,5 +2187,46 @@ export default {
   }
   .jinse{
     color: #ffe326;
+  }
+  .lian-lock-bg{
+    background: url("../assets/img/lianhua/fixed_right.png");
+  }
+  .lian-lock-big-bg{
+    background: url("../assets/img/lianhua/unlock-right.png");
+  }
+  .lian-lock-1{
+    position: absolute;
+    left: calc(50% - 157px);
+    top: 206px;
+    width: 29px;
+    height: 27px;
+  }
+  .lian-lock-2{
+    position: absolute;
+    left: calc(50% - 157px);
+    top: 235px;
+    width: 29px;
+    height: 27px;
+  }
+  .lian-lock-3{
+    position: absolute;
+    left: calc(50% - 157px);
+    top: 264px;
+    width: 29px;
+    height: 27px;
+  }
+  .lian-lock-4{
+    position: absolute;
+    left: calc(50% - 157px);
+    top: 295px;
+    width: 29px;
+    height: 27px;
+  }
+  .lian-lock-3-1{
+    position: absolute;
+    left: calc(50% - 123px);
+    top: 266px;
+    width: 29px;
+    height: 27px;
   }
 </style>
