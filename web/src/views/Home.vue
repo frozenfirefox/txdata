@@ -488,9 +488,9 @@
           <Col span="12" class="bag-lian">
             <p class="xiaohao-lian">{{lianXiaohao}}</p>
             <p class="yongyou-lian">{{lianHadSheng}}</p>
-            <p class="xiaohao-all">剩余元宝：{{lianMoney.allMoney}}</p>
-            <p class="xiaohao-yuan">实际消耗元宝：{{countLianUsed}}</p>
-            <p class="xiaohao-ren">实际消耗人民币：{{countLianYuan}}</p>
+            <p class="xiaohao-all jinse">剩余元宝：{{lianMoney.allMoney}}</p>
+            <p class="xiaohao-yuan jinse">实际消耗元宝：{{countLianUsed}}</p>
+            <p class="xiaohao-ren jinse">实际消耗人民币：{{countLianYuan}}</p>
             <p class="start-lian" @click="lianHua"></p>
             <p class="start-lian-bao-left" v-if="!checkOldIsEmpty() && !checkNewIsEmpty()" @click="lianBao(0)"><Button type="primary">保留旧属性</Button></p>
             <p class="start-lian-bao-right" v-if="!checkNewIsEmpty()" @click="lianBao(1)"><Button type="info">保留新属性</Button></p>
@@ -510,7 +510,7 @@
             </span>
             <span class="start-lian-arm">
               <Tooltip placement="bottom-end">
-              <Button class=""></Button>
+              <Button class="transparent"></Button>
               <div slot="content">
                 <p class="start-lian-arm-pic"></p>
               </div>
@@ -2228,5 +2228,8 @@ export default {
     top: 266px;
     width: 29px;
     height: 27px;
+  }
+  .transparent{
+    background: transparent;
   }
 </style>
