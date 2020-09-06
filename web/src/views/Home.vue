@@ -1671,6 +1671,7 @@ export default {
         threeSingle = this.$find_array(str, threeList)
         if(this.lianLock.lockThreeBig == true){
           threeSingle.section[0] = parseInt(this.lianOld.three.replace(/[^0-9]/ig,""))
+          threeSingle.section[1] = parseInt(this.lianOld.three.replace(/[^0-9]/ig,""))
         }
       }else{
         let xiabiao = this.rangeInt(0, length - 1)
