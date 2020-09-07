@@ -1548,7 +1548,12 @@ export default {
       let min = this.checkLock()
       let start = min > 0 ?min:1
       let tiaoshu = this.rangeInt(min, 5)
-      let pool = [1, 2, 3, 4, 5]
+      let pool = []
+      if(min >= 3){
+        pool = [1, 2, 3, 4, 5]
+      }else{
+        pool = [1, 2, 3, 4]
+      }
       //预先把锁定的处理完毕
       if(this.lianLock.lockOne == true){
         this.lianNew.one = this.dealOne()
