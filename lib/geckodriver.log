@@ -115,3 +115,11 @@ console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "res
 
 JavaScript error: , line 0: AbortError: A request was aborted, for example through a call to IDBTransaction.abort.
 JavaScript error: , line 0: AbortError: A request was aborted, for example through a call to IDBTransaction.abort.
+1599458364627	geckodriver	INFO	Listening on 127.0.0.1:64498
+1599458367704	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\admin\\AppData\\Local\\Temp\\rust_mozprofilet7byWw"
+*** You are running in headless mode.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.error: SearchCache: "_readCacheFile: Error reading cache file:" (new Error("", "(unknown module)"))
+1599458369705	Marionette	INFO	Listening on port 64510
+1599458369823	Marionette	WARN	TLS certificate errors will be ignored for this session
+1599458371261	Marionette	INFO	Stopped listening on port 64510

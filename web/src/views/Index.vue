@@ -83,7 +83,7 @@
 </script>
 <style scoped>
     .index{
-        background: url("../assets/img/mainbg.jpg") repeat-y center;
+        background: url("../assets/img/square/bg.jpg") repeat center;
     }
     .padding-20{
         padding: 20px;
@@ -92,7 +92,7 @@
         margin-top: 20px;
     }
     .card-bg{
-        background-color: rgba(187, 255, 255, 0.8);
+        background-color: rgba(207, 175, 183, 0.8);
     }
     .carousel1{
         background: url("../assets/img/square/mainbg001.jpg");

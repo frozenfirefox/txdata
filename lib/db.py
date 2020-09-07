@@ -62,7 +62,10 @@ class Db:
     def update(self, table, setting, where):
         try:
             curl = self.connect.cursor()
-            return curl.execute("update ? set ?  where ?", table, setting, where)   
+            # print("update "+table+" set "+setting+"  where "+where)
+            curl.execute("update "+table+" set "+setting+"  where "+where)   
+            self.connect.commit()
+            return '更新成功'
         except Exception as e:
             return e.message
     
@@ -80,7 +83,8 @@ class Db:
             curl = self.connect.cursor()
             sql = 'select id as num from '+table
             if where != '':
-                sql = sql+' '+where
+                sql = sql+' where '+where
+            print(sql)
             curl.execute(sql) 
             results = curl.fetchall()
             return len(results)

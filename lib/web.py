@@ -291,6 +291,22 @@ class Html:
         if (Tstring.replace(' ', '')  == sql_value.replace(' ', '')) != True:
             #进行录入修改后数据的展示
             self.mydb.insert(TableConst.InfoRepeatName(), 'bang_id, name,section_name,service_name,level,sect,union_name,abilities,equipment,all_abilities', sql_value)
+            #这里更新下主表信息
+            sqlArr = sql_value.split(',')
+            nameArr = 'name,section_name,service_name,level,sect,union_name,abilities,equipment,all_abilities'.split(',')
+            del sqlArr[0]
+            key = 0
+            setting = ''
+            for sql in sqlArr:
+                if key != 0:
+                    join = ','
+                else:
+                    join = ''
+                setting = setting + join + nameArr[key]+'='+str(sql)
+                key = key + 1
+
+            self.mydb.update(TableConst.InfoName(), setting, where = " bang_id = '"+data[0]+"'")
+
             print("diff log："+time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
             print(Tstring.replace(' ', ''))
             print(sql_value.replace(' ', ''))
@@ -536,8 +552,36 @@ class Html:
         return returnData
         # self.WriteFile('222.txt', equipments)
 
+    #根据bang_id获取相关联信息
+    def repeatList(self, data):
+        bang_id = data['bang_id']
+        page = int(data['page'])
+        pageSize = int(data['pageSize'])
+        #组合where条件
+        # name: '',//姓名
+        # union_name: '',//势力名称
+        # sect: '',//职业名称
+        # abilities_min: '',//修为最小值
+        # abilities_max: '',//修为最大值
+        # equipment_min: '',//装评最小值
+        # equipment_max: '',//装评最大值
+        # all_abilities_min: '',//总修为最小值
+        # all_abilities_max: '',//总修为最大值
+        # section_name: ''//大区名称
+        # service_name: ''//服务器名称
+        where = ' bang_id = "'+bang_id+'"'
+        order = ' id desc'
+        if 'orderby' in data.keys():
+            order = data['orderby']
+
+        result = self.mydb.select(TableConst.InfoRepeatName(), where, '*', page, pageSize, order)
+        count = self.mydb.count(TableConst.InfoRepeatName(), where)
+        return return_list(result, count, page, pageSize)
+
 #开始使用方法
 # html = Html('http://bang.tx3.163.com/bang/ranks?order_key=xiuwei&school=&sector=79%E7%BA%A7%E4%B8%93%E5%8C%BA&server=%E9%A3%9E%E9%B8%BF%E8%B8%8F%E9%9B%AA&count=20')
+# repeatlist = html.repeatList({'bang_id': '10_3121', 'page': 1, 'pageSize': 10})
+# print(repeatlist)
 # # html.main()
 # html.getList()
 # html.evalueate({'bang_id': '21_10885'})

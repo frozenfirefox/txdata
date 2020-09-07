@@ -7,7 +7,7 @@ from urllib.parse import quote,unquote
 
 data = {"key": "开心"}
 host = ('127.0.0.1', 8787)
-# host = ('192.168.0.138', 8787)
+host = ('192.168.0.227', 8787)
 
 class Resquest(BaseHTTPRequestHandler):
     input = {}
@@ -59,6 +59,11 @@ class Resquest(BaseHTTPRequestHandler):
     def evalueate(self, input):
         htmlObj = web.Html('http://bang.tx3.163.com/bang/ranks?order_key=xiuwei&school=&sector=79%E7%BA%A7%E4%B8%93%E5%8C%BA&server=%E9%A3%9E%E9%B8%BF%E8%B8%8F%E9%9B%AA&count=20')
         return htmlObj.evalueate(input)
+
+    #######获取单个人员的信息
+    def repeatlist(self, input):
+        htmlObj = web.Html('http://bang.tx3.163.com/bang/ranks?order_key=xiuwei&school=&sector=79%E7%BA%A7%E4%B8%93%E5%8C%BA&server=%E9%A3%9E%E9%B8%BF%E8%B8%8F%E9%9B%AA&count=20')
+        return htmlObj.repeatList(input)
 
 if __name__ == '__main__':
     server = HTTPServer(host, Resquest)
