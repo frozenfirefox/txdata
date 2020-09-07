@@ -63,10 +63,10 @@
     <!--    做一个图钉-->
     <Affix :offset-bottom="0" style="color: black;padding-left: 10px">
       <Row>
-        <Col span="6">
+        <Col span="5">
           <Button type="warning" style="width: 100%" @click="selectData">筛选</Button>
         </Col>
-        <Col span="6">
+        <Col span="5">
           <Dropdown trigger="click" @on-click="setOrder" style="width: 100%">
             <Button type="primary" style="width: 100%">
               {{orderName}}
@@ -81,10 +81,15 @@
             </DropdownMenu>
           </Dropdown>
         </Col>
-        <Col span="6">
+        <Col span="4">
+          <router-link :to="{path:'/'}">
+            <Button type="error" shape="circle" icon="md-home"></Button>
+          </router-link>
+        </Col>
+        <Col span="5">
           <Button type="success" style="width: 100%" @click="liveShow">日活统计</Button>
         </Col>
-        <Col span="6">
+        <Col span="5">
           <Dropdown trigger="click" @on-click="toSource" style="width: 100%">
             <Button type="info" style="width: 100%">
               加入我们
